@@ -77,15 +77,15 @@ def plot_classification_report(y_true, y_pred, labels):
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
+path_joblib = r'D:\ASUS\New folder (2)\Deploy-Traffic-Sign-Classification-through-Images\joblib\\'
 
-model = joblib.load(r'D:\ASUS\New folder (2)\best_knn_model.joblib')
-label_encoder = joblib.load(r'D:\ASUS\New folder (2)\label_encoder.joblib')
+model = joblib.load(path_joblib + 'best_knn_model.joblib')
+label_encoder = joblib.load(path_joblib + 'label_encoder.joblib')
+train_features = joblib.load(path_joblib + 'train_features.joblib')
+test_features = joblib.load(path_joblib + 'test_features.joblib')
 
-train_features = joblib.load(r'D:\ASUS\New folder (2)\train_features.joblib')
-test_features = joblib.load(r'D:\ASUS\New folder (2)\test_features.joblib')
-
-train_labels_encoded = joblib.load(r'D:\ASUS\New folder (2)\train_labels_encoded.joblib')
-test_labels_encoded = joblib.load(r'D:\ASUS\New folder (2)\test_labels_encoded.joblib')
+train_labels_encoded = joblib.load(path_joblib + 'train_labels_encoded.joblib')
+test_labels_encoded = joblib.load(path_joblib + 'test_labels_encoded.joblib')
 
 X_train, X_val, y_train, y_val = train_test_split(train_features, train_labels_encoded, test_size=0.2, random_state=42)
 
