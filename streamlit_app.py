@@ -77,7 +77,7 @@ def plot_classification_report(y_true, y_pred, labels):
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
-path_joblib = r'D:\ASUS\New folder (2)\Deploy-Traffic-Sign-Classification-through-Images\joblib\\'
+path_joblib = r'joblib/'
 
 model = joblib.load(path_joblib + 'best_knn_model.joblib')
 label_encoder = joblib.load(path_joblib + 'label_encoder.joblib')
