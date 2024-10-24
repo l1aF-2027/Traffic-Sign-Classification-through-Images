@@ -71,22 +71,17 @@ def plot_classification_report(y_true, y_pred, labels, model_name):
     st.markdown(f"<h6 style='text-align: left;'>Classification Report - {model_name}</h6>", unsafe_allow_html=True)
     st.dataframe(df_report)
 
-def plot_decision_boundary(model, X, y, model_name, pca=None):
+def plot_decision_boundary(model, X, y, model_name, pca):
     h = 0.02
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
     xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 
-    if hasattr(model, '_get_tags') and model._get_tags()['requires_fit']:
-        Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
-    else:
-        if pca is not None:
-            mesh_points_inverse = pca.inverse_transform(np.c_[xx.ravel(), yy.ravel()])
-            Z = model.predict(mesh_points_inverse)
-        else:
-            Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
-    
+    mesh_points = np.c_[xx.ravel(), yy.ravel()]
+    mesh_points_original = pca.inverse_transform(mesh_points)
+    Z = model.predict(mesh_points_original)
     Z = Z.reshape(xx.shape)
+
     fig, ax = plt.subplots(figsize=(10, 8))
     ax.contourf(xx, yy, Z, alpha=0.4)
     scatter = ax.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8, edcolors='black')
@@ -122,11 +117,7 @@ def add_decision_boundary_section(train_features, train_labels_encoded, model_KN
     - This is a simplified view as the original feature space has many more dimensions
     """)
 
-st.set_page_config(
-    page_title="Traffic Sign Classification Web",
-    page_icon=":vertical_traffic_light:",
-    layout="wide"
-)
+st.set_page_config(page_title="Traffic Sign Classification Web", page_icon=":vertical_traffic_light:", layout="wide")
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
@@ -142,7 +133,6 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
-    
     weights_options = ['Uniform', 'Distance']
     metrics_options = ['Chi-Square', 'Correlation', 'Bhattacharyya', 'Intersection', 'Euclidean']
     
@@ -177,7 +167,6 @@ with col1:
 
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
-    
     kernel_options = ['linear', 'rbf', 'poly']
     selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
     C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
@@ -216,7 +205,6 @@ if uploaded_files:
         col = cols[i % num_cols]
         with col:
             st.image(img, use_column_width=True, width=128)
-            
             img_np = np.array(img)
             img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)
             img_resized = cv2.resize(img_bgr, (128, 128))
