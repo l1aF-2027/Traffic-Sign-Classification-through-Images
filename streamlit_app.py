@@ -7,9 +7,11 @@ from PIL import Image
 from skimage.feature import hog as skimage_hog
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC  # Thêm SVM như một model thứ hai
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
 
+# [Giữ nguyên các hàm helper từ code gốc]
 def color_histogram(image):
     row, column, channel = image.shape[:3]
     size = row * column
@@ -46,8 +48,8 @@ def intersection_distance(x, y):
 def euclidean_distance(x, y):
     return np.linalg.norm(np.array(x, dtype=np.float32) - np.array(y, dtype=np.float32))
 
-def plot_cm(cm):
-    st.markdown("<h6 style='text-align: left;'>Confusion Matrix</h6>", unsafe_allow_html=True)
+def plot_cm(cm, model_name):
+    st.markdown(f"<h6 style='text-align: left;'>Confusion Matrix - {model_name}</h6>", unsafe_allow_html=True)
     fig, ax = plt.subplots(figsize=(8, 6))
     cax = ax.matshow(cm, cmap=plt.cm.Blues)
     plt.title('Confusion Matrix', pad=20)
@@ -57,84 +59,93 @@ def plot_cm(cm):
     plt.xlabel('Predicted')
     plt.ylabel('True')
     for (i, j), val in np.ndenumerate(cm):
-        # Use white text for darker cells, black text for lighter cells
         text_color = 'white' if cm[i, j] > np.max(cm)/2 else 'black'
         ax.text(j, i, val, ha='center', va='center', color=text_color)
     st.pyplot(fig)
 
-def plot_classification_report(y_true, y_pred, labels):
-
+def plot_classification_report(y_true, y_pred, labels, model_name):
     report = classification_report(y_true, y_pred, target_names=labels, output_dict=True)
-
     df_report = pd.DataFrame(report).T
-
     df_report = df_report.round(3)
     df_report = df_report.drop(['support'], axis=1)
     
-    st.markdown("<h6 style='text-align: left;'>Classification Report</h6>", unsafe_allow_html=True)
-
+    st.markdown(f"<h6 style='text-align: left;'>Classification Report - {model_name}</h6>", unsafe_allow_html=True)
     st.dataframe(df_report)
 
+# Cấu hình trang
 st.set_page_config(
     page_title="Traffic Sign Classification Web",
     page_icon=":vertical_traffic_light:",
+    layout="wide"  # Thêm layout wide để có nhiều không gian hơn cho 2 cột
 )
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
+# Load models và data
 path_joblib = r'joblib/'
-
 model = joblib.load(path_joblib + 'best_knn_model.joblib')
 label_encoder = joblib.load(path_joblib + 'label_encoder.joblib')
 train_features = joblib.load(path_joblib + 'train_features.joblib')
 test_features = joblib.load(path_joblib + 'test_features.joblib')
-
 train_labels_encoded = joblib.load(path_joblib + 'train_labels_encoded.joblib')
 test_labels_encoded = joblib.load(path_joblib + 'test_labels_encoded.joblib')
 
-X_train, X_val, y_train, y_val = train_test_split(train_features, train_labels_encoded, test_size=0.2, random_state=42)
+# Chia layout thành 2 cột
+col1, col2 = st.columns(2)
 
-st.markdown("<h5 style='text-align: left;'>KNeighborsClassifier</h5>", unsafe_allow_html=True)
+# Cột 1: KNN Model
+with col1:
+    st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
+    
+    weights_options = ['Uniform', 'Distance']
+    metrics_options = ['Chi-Square', 'Correlation', 'Bhattacharyya', 'Intersection', 'Euclidean']
+    
+    map_metrics = {
+        'Chi-Square': chi_square_distance,
+        'Correlation': correlation_distance,
+        'Bhattacharyya': bhattacharyya_distance,
+        'Intersection': intersection_distance,
+        'Euclidean': euclidean_distance
+    }
+    
+    map_weights = {
+        'Uniform': 'uniform',
+        'Distance': 'distance'
+    }
+    
+    n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
+    selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
+    selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
+    
+    model_KNN = KNeighborsClassifier(
+        n_neighbors=n_neighbors,
+        weights=map_weights.get(selected_weights),
+        metric=map_metrics.get(selected_metrics)
+    )
+    
+    model_KNN.fit(train_features, train_labels_encoded)
+    y_pred_knn = model_KNN.predict(test_features)
+    
+    plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
+    plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
 
-weights_options = ['Uniform', 'Distance']
-metrics_options = [
-    'Chi-Square', 
-    'Correlation', 
-    'Bhattacharyya', 
-    'Intersection', 
-    'Euclidean'
-]
+# Cột 2: SVM Model
+with col2:
+    st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
+    
+    kernel_options = ['linear', 'rbf', 'poly']
+    selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
+    C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
+    
+    model_SVM = SVC(kernel=selected_kernel, C=C)
+    model_SVM.fit(train_features, train_labels_encoded)
+    y_pred_svm = model_SVM.predict(test_features)
+    
+    plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
+    plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
 
-map_metrics= {
-    'Chi-Square': chi_square_distance, 
-    'Correlation': correlation_distance,  
-    'Bhattacharyya': bhattacharyya_distance, 
-    'Intersection': intersection_distance,  
-    'Euclidean': euclidean_distance  
-}
-
-map_weights = {
-    'Uniform': 'uniform', 
-    'Distance': 'distance'
-}
-n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
-
-selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)  
-
-selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1) 
-
-model_KNN = KNeighborsClassifier(n_neighbors=n_neighbors, weights=map_weights.get(selected_weights), metric=map_metrics.get(selected_metrics))
-
-model_KNN.fit(train_features, train_labels_encoded)
-y_pred = model_KNN.predict(test_features)
-
-plot_classification_report(test_labels_encoded, y_pred, label_encoder.classes_)
-
-cm = confusion_matrix(test_labels_encoded, y_pred)
-
-plot_cm(cm)
-
-st.markdown("<h5 style='text-align: left;'>Thử nghiệm</h5>", unsafe_allow_html=True)
+# Phần thử nghiệm (full width)
+st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
 
 mapping = {
     'Nguyhiem': 'Nguy hiểm',
@@ -143,8 +154,6 @@ mapping = {
     'Hieulenh': 'Hiệu lệnh',
     'Phu': 'Phụ'
 }
-
-
 
 uploaded_files = st.file_uploader("Tải các hình ảnh lên", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
 
@@ -158,19 +167,23 @@ if uploaded_files:
     cols = st.columns(num_cols)
     
     for i, img in enumerate(images):
-        col = cols[i % num_cols]  
+        col = cols[i % num_cols]
         with col:
-            
             st.image(img, use_column_width=False, width=128)
-
             
-            img_np = np.array(img) 
-            img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)  
-            img_resized = cv2.resize(img_bgr, (128, 128)) 
-
+            img_np = np.array(img)
+            img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)
+            img_resized = cv2.resize(img_bgr, (128, 128))
             image_inputs = extract_features([img_resized])
-
-            predictions = model.predict(image_inputs)
-
-            caption = f"<div style='text-align: center; color: black; margin-top: -10px;'>{mapping.get(label_encoder.classes_[predictions[0]], 'Unknown')}</div>"
+            
+            # Dự đoán từ cả hai model
+            pred_knn = model_KNN.predict(image_inputs)[0]
+            pred_svm = model_SVM.predict(image_inputs)[0]
+            
+            caption = f"""
+            <div style='text-align: center; color: black; margin-top: -10px;'>
+                KNN: {mapping.get(label_encoder.classes_[pred_knn], 'Unknown')}<br>
+                SVM: {mapping.get(label_encoder.classes_[pred_svm], 'Unknown')}
+            </div>
+            """
             st.markdown(caption, unsafe_allow_html=True)
