@@ -1,4 +1,4 @@
-# 🚦**[Deploy Traffic Sign Classification through Images](https://github.com/l1aF-2027/Deploy-Traffic-Sign-Classification-through-Images)**
+# 🚦Deploy Traffic Sign Classification through Images
 
 A simple app template for you to classify the traffic signs!
 
