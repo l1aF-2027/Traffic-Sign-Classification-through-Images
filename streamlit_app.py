@@ -72,24 +72,11 @@ def plot_classification_report(y_true, y_pred, labels, model_name):
     st.markdown(f"<h6 style='text-align: left;'>Classification Report - {model_name}</h6>", unsafe_allow_html=True)
     st.dataframe(df_report)
 
-def create_custom_kernel(metric_func):
-    def custom_kernel(X, Y=None):
-        if Y is None:
-            Y = X
-        gram_matrix = np.zeros((X.shape[0], Y.shape[0]))
-        for i in range(X.shape[0]):
-            for j in range(Y.shape[0]):
-                # Chuyển đổi khoảng cách thành độ tương tự bằng cách lấy nghịch đảo
-                similarity = 1.0 / (1.0 + metric_func(X[i], Y[j]))
-                gram_matrix[i, j] = similarity
-        return gram_matrix
-    return custom_kernel
-
 # Cấu hình trang
 st.set_page_config(
     page_title="Traffic Sign Classification Web",
     page_icon=":vertical_traffic_light:",
-    layout="wide"
+    layout="wide"  # Thêm layout wide để có nhiều không gian hơn cho 2 cột
 )
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
@@ -126,14 +113,14 @@ with col1:
         'Distance': 'distance'
     }
     
-    n_neighbors = st.number_input("Chọn n_neighbors (KNN)", min_value=1, max_value=20, value=4, key='knn_n')
-    selected_weights = st.selectbox("Chọn weights (KNN)", options=weights_options, index=1, key='knn_w')
-    selected_metrics_knn = st.selectbox("Chọn metrics (KNN)", options=metrics_options, index=1, key='knn_m')
+    n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
+    selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
+    selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
     
     model_KNN = KNeighborsClassifier(
         n_neighbors=n_neighbors,
         weights=map_weights.get(selected_weights),
-        metric=map_metrics.get(selected_metrics_knn)
+        metric=map_metrics.get(selected_metrics)
     )
     
     model_KNN.fit(train_features, train_labels_encoded)
@@ -142,32 +129,20 @@ with col1:
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
 
-# Cột 2: Custom Kernel SVM
+# Cột 2: SVM Model
 with col2:
-    st.markdown("<h3 style='text-align: center;'>Custom Kernel SVM</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
     
-    selected_metrics_svm = st.selectbox("Chọn metric cho kernel", options=metrics_options, key='svm_m')
-    C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1, key='svm_c')
+    kernel_options = ['linear', 'rbf', 'poly']
+    selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
+    C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
     
-    # Tạo custom kernel từ metric đã chọn
-    custom_kernel_func = create_custom_kernel(map_metrics.get(selected_metrics_svm))
+    model_SVM = SVC(kernel=selected_kernel, C=C)
+    model_SVM.fit(train_features, train_labels_encoded)
+    y_pred_svm = model_SVM.predict(test_features)
     
-    model_SVM = SVC(kernel='precomputed', C=C)
-    
-    # Tính gram matrix cho training
-    gram_matrix_train = custom_kernel_func(train_features)
-    
-    # Fit model
-    model_SVM.fit(gram_matrix_train, train_labels_encoded)
-    
-    # Tính gram matrix cho testing
-    gram_matrix_test = custom_kernel_func(test_features, train_features)
-    
-    # Predict
-    y_pred_svm = model_SVM.predict(gram_matrix_test)
-    
-    plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "Custom Kernel SVM")
-    plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "Custom Kernel SVM")
+    plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
+    plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
 
 # Phần thử nghiệm (full width)
 st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
@@ -194,19 +169,16 @@ if uploaded_files:
     for i, img in enumerate(images):
         col = cols[i % num_cols]
         with col:
-            st.image(img, use_column_width=False, width=128)
+            st.image(img, use_column_width=True, width=128)
             
             img_np = np.array(img)
             img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)
             img_resized = cv2.resize(img_bgr, (128, 128))
             image_inputs = extract_features([img_resized])
             
-            # Dự đoán KNN
+            # Dự đoán từ cả hai model
             pred_knn = model_KNN.predict(image_inputs)[0]
-            
-            # Dự đoán SVM
-            gram_matrix_pred = custom_kernel_func(image_inputs, train_features)
-            pred_svm = model_SVM.predict(gram_matrix_pred)[0]
+            pred_svm = model_SVM.predict(image_inputs)[0]
             
             caption = f"""
             <div style='text-align: center; color: black; margin-top: -10px;'>
