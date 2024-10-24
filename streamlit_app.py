@@ -90,8 +90,10 @@ test_features = joblib.load(path_joblib + 'test_features.joblib')
 train_labels_encoded = joblib.load(path_joblib + 'train_labels_encoded.joblib')
 test_labels_encoded = joblib.load(path_joblib + 'test_labels_encoded.joblib')
 
+# Chia layout thành 2 cột
 col1, col2 = st.columns(2)
 
+# Cột 1: KNN Model
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
     
@@ -127,6 +129,7 @@ with col1:
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
 
+# Cột 2: SVM Model
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
     
@@ -141,6 +144,7 @@ with col2:
     plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
 
+# Phần thử nghiệm (full width)
 st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
 
 mapping = {
@@ -178,8 +182,8 @@ if uploaded_files:
             
             caption = f"""
             <div style='text-align: center; color: black; margin-top: -10px;'>
-                KNN: {mapping.get(label_encoder.classes_[pred_knn])}<br>
-                SVM: {mapping.get(label_encoder.classes_[pred_svm])}
+                KNN: {mapping.get(label_encoder.classes_[pred_knn], 'Unknown')}<br>
+                SVM: {mapping.get(label_encoder.classes_[pred_svm], 'Unknown')}
             </div>
             """
             st.markdown(caption, unsafe_allow_html=True)
