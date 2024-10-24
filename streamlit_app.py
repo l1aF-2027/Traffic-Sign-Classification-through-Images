@@ -75,6 +75,11 @@ def plot_classification_report(y_true, y_pred, labels):
 
     st.dataframe(df_report)
 
+st.set_page_config(
+    page_title="Traffic Sign Classification Web",
+    page_icon=":vertical_traffic_light:",
+)
+
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
 path_joblib = r'joblib/'
