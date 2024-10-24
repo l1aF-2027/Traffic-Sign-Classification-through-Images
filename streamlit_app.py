@@ -72,63 +72,6 @@ def plot_classification_report(y_true, y_pred, labels, model_name):
     st.markdown(f"<h6 style='text-align: left;'>Classification Report - {model_name}</h6>", unsafe_allow_html=True)
     st.dataframe(df_report)
 
-def create_chi_square_kernel(gamma=1.0):
-    def chi_square_kernel(X, Y=None):
-        if Y is None:
-            Y = X
-        kernel_matrix = np.zeros((X.shape[0], Y.shape[0]))
-        for i in range(X.shape[0]):
-            for j in range(Y.shape[0]):
-                distance = cv2.compareHist(np.array(X[i], dtype=np.float32), 
-                                        np.array(Y[j], dtype=np.float32), 
-                                        cv2.HISTCMP_CHISQR)
-                kernel_matrix[i,j] = np.exp(-gamma * distance)
-        return kernel_matrix
-    return chi_square_kernel
-
-def create_correlation_kernel():
-    def correlation_kernel(X, Y=None):
-        if Y is None:
-            Y = X
-        kernel_matrix = np.zeros((X.shape[0], Y.shape[0]))
-        for i in range(X.shape[0]):
-            for j in range(Y.shape[0]):
-                correlation = cv2.compareHist(np.array(X[i], dtype=np.float32), 
-                                           np.array(Y[j], dtype=np.float32), 
-                                           cv2.HISTCMP_CORREL)
-                kernel_matrix[i,j] = correlation  # Correlation đã nằm trong [-1,1]
-        return kernel_matrix
-    return correlation_kernel
-
-def create_bhattacharyya_kernel(gamma=1.0):
-    def bhattacharyya_kernel(X, Y=None):
-        if Y is None:
-            Y = X
-        kernel_matrix = np.zeros((X.shape[0], Y.shape[0]))
-        for i in range(X.shape[0]):
-            for j in range(Y.shape[0]):
-                distance = cv2.compareHist(np.array(X[i], dtype=np.float32), 
-                                        np.array(Y[j], dtype=np.float32), 
-                                        cv2.HISTCMP_BHATTACHARYYA)
-                kernel_matrix[i,j] = np.exp(-gamma * distance)
-        return kernel_matrix
-    return bhattacharyya_kernel
-
-def create_intersection_kernel():
-    def intersection_kernel(X, Y=None):
-        if Y is None:
-            Y = X
-        kernel_matrix = np.zeros((X.shape[0], Y.shape[0]))
-        for i in range(X.shape[0]):
-            for j in range(Y.shape[0]):
-                intersection = cv2.compareHist(np.array(X[i], dtype=np.float32), 
-                                            np.array(Y[j], dtype=np.float32), 
-                                            cv2.HISTCMP_INTERSECT)
-                kernel_matrix[i,j] = intersection
-        return kernel_matrix
-    return intersection_kernel
-
-
 # Cấu hình trang
 st.set_page_config(
     page_title="Traffic Sign Classification Web",
@@ -186,43 +129,22 @@ with col1:
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
 
+# Cột 2: SVM Model
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
     
-    # Thêm tùy chọn cho kernel
-    kernel_options = ['linear', 'rbf', 'poly', 'chi_square', 'correlation', 
-                     'bhattacharyya', 'intersection']
+    kernel_options = ['linear', 'rbf', 'poly']
     selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
+    C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
     
-    # Thêm các tham số
-    C = st.number_input("Chọn C (regularization parameter)", 
-                       min_value=0.1, max_value=10.0, value=1.0, step=0.1)
-    
-    if selected_kernel in ['chi_square', 'bhattacharyya']:
-        gamma = st.number_input("Chọn gamma", 
-                              min_value=0.1, max_value=10.0, value=1.0, step=0.1)
-    
-    # Tạo kernel function dựa trên lựa chọn
-    if selected_kernel == 'chi_square':
-        kernel_func = create_chi_square_kernel(gamma)
-    elif selected_kernel == 'correlation':
-        kernel_func = create_correlation_kernel()
-    elif selected_kernel == 'bhattacharyya':
-        kernel_func = create_bhattacharyya_kernel(gamma)
-    elif selected_kernel == 'intersection':
-        kernel_func = create_intersection_kernel()
-    else:
-        kernel_func = selected_kernel
-    
-    # Tạo và train model
-    model_SVM = SVC(kernel=kernel_func, C=C)
+    model_SVM = SVC(kernel=selected_kernel, C=C)
     model_SVM.fit(train_features, train_labels_encoded)
     y_pred_svm = model_SVM.predict(test_features)
     
-    plot_classification_report(test_labels_encoded, y_pred_svm, 
-                             label_encoder.classes_, "SVM")
+    plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
 
+# Phần thử nghiệm (full width)
 st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
 
 mapping = {
