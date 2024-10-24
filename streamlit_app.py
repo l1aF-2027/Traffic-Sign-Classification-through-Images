@@ -159,156 +159,152 @@ def load_models():
         st.error(f"Error loading models: {str(e)}")
         return None
 
-def main():
-    st.set_page_config(
-        page_title="Traffic Sign Classification Web",
-        page_icon=":vertical_traffic_light:",
-        layout="wide"
+st.set_page_config(
+    page_title="Traffic Sign Classification Web",
+    page_icon=":vertical_traffic_light:",
+    layout="wide"
+)
+
+st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", 
+            unsafe_allow_html=True)
+
+# Load models
+model_data = load_models()
+if not model_data:
+    return
+
+# Create metric mappings
+metrics_map = {
+    'Chi-Square': DistanceMetrics.chi_square,
+    'Correlation': DistanceMetrics.correlation,
+    'Bhattacharyya': DistanceMetrics.bhattacharyya,
+    'Intersection': DistanceMetrics.intersection,
+    'Euclidean': DistanceMetrics.euclidean
+}
+
+weights_map = {
+    'Uniform': 'uniform',
+    'Distance': 'distance'
+}
+
+# Create layout
+col1, col2 = st.columns(2)
+
+# KNN Model Column
+with col1:
+    st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", 
+                unsafe_allow_html=True)
+    
+    n_neighbors = st.number_input("Chọn n_neighbors (KNN)", 
+                                min_value=1, max_value=20, value=4)
+    selected_weights = st.selectbox("Chọn weights (KNN)", 
+                                options=WEIGHTS_OPTIONS, index=1)
+    selected_metrics_knn = st.selectbox("Chọn metrics (KNN)", 
+                                    options=METRICS_OPTIONS, index=1)
+    
+    model_KNN = KNeighborsClassifier(
+        n_neighbors=n_neighbors,
+        weights=weights_map[selected_weights],
+        metric=metrics_map[selected_metrics_knn]
+    )
+    
+    model_KNN.fit(model_data['train_features'], 
+                    model_data['train_labels_encoded'])
+    y_pred_knn = model_KNN.predict(model_data['test_features'])
+    
+    Visualizer.plot_classification_report(
+        model_data['test_labels_encoded'], 
+        y_pred_knn, 
+        model_data['label_encoder'].classes_, 
+        "KNN"
+    )
+    
+    Visualizer.plot_confusion_matrix(
+        confusion_matrix(model_data['test_labels_encoded'], y_pred_knn),
+        "KNN",
+        model_data['label_encoder']
     )
 
-    st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", 
+# Custom Kernel SVM Column
+with col2:
+    st.markdown("<h3 style='text-align: center;'>Custom Kernel SVM</h3>", 
                 unsafe_allow_html=True)
-
-    # Load models
-    model_data = load_models()
-    if not model_data:
-        return
-
-    # Create metric mappings
-    metrics_map = {
-        'Chi-Square': DistanceMetrics.chi_square,
-        'Correlation': DistanceMetrics.correlation,
-        'Bhattacharyya': DistanceMetrics.bhattacharyya,
-        'Intersection': DistanceMetrics.intersection,
-        'Euclidean': DistanceMetrics.euclidean
-    }
-
-    weights_map = {
-        'Uniform': 'uniform',
-        'Distance': 'distance'
-    }
-
-    # Create layout
-    col1, col2 = st.columns(2)
-
-    # KNN Model Column
-    with col1:
-        st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", 
-                    unsafe_allow_html=True)
-        
-        n_neighbors = st.number_input("Chọn n_neighbors (KNN)", 
-                                    min_value=1, max_value=20, value=4)
-        selected_weights = st.selectbox("Chọn weights (KNN)", 
-                                    options=WEIGHTS_OPTIONS, index=1)
-        selected_metrics_knn = st.selectbox("Chọn metrics (KNN)", 
-                                        options=METRICS_OPTIONS, index=1)
-        
-        model_KNN = KNeighborsClassifier(
-            n_neighbors=n_neighbors,
-            weights=weights_map[selected_weights],
-            metric=metrics_map[selected_metrics_knn]
-        )
-        
-        model_KNN.fit(model_data['train_features'], 
-                     model_data['train_labels_encoded'])
-        y_pred_knn = model_KNN.predict(model_data['test_features'])
-        
-        Visualizer.plot_classification_report(
-            model_data['test_labels_encoded'], 
-            y_pred_knn, 
-            model_data['label_encoder'].classes_, 
-            "KNN"
-        )
-        
-        Visualizer.plot_confusion_matrix(
-            confusion_matrix(model_data['test_labels_encoded'], y_pred_knn),
-            "KNN",
-            model_data['label_encoder']
-        )
-
-    # Custom Kernel SVM Column
-    with col2:
-        st.markdown("<h3 style='text-align: center;'>Custom Kernel SVM</h3>", 
-                    unsafe_allow_html=True)
-        
-        selected_metrics_svm = st.selectbox("Chọn metric cho kernel", 
-                                          options=METRICS_OPTIONS, 
-                                          key='svm_m')
-        C = st.number_input("Chọn C (regularization parameter)", 
-                           min_value=0.1, max_value=10.0, 
-                           value=1.0, step=0.1)
-        
-        custom_kernel = CustomKernelSVM.create_kernel(
-            metrics_map[selected_metrics_svm]
-        )
-        
-        model_SVM = SVC(kernel='precomputed', C=C)
-        
-        # Train SVM
-        gram_matrix_train = custom_kernel(model_data['train_features'])
-        model_SVM.fit(gram_matrix_train, model_data['train_labels_encoded'])
-        
-        # Test SVM
-        gram_matrix_test = custom_kernel(
-            model_data['test_features'], 
-            model_data['train_features']
-        )
-        y_pred_svm = model_SVM.predict(gram_matrix_test)
-        
-        Visualizer.plot_classification_report(
-            model_data['test_labels_encoded'], 
-            y_pred_svm, 
-            model_data['label_encoder'].classes_, 
-            "Custom Kernel SVM"
-        )
-        
-        Visualizer.plot_confusion_matrix(
-            confusion_matrix(model_data['test_labels_encoded'], y_pred_svm),
-            "Custom Kernel SVM",
-            model_data['label_encoder']
-        )
-
-    # Image upload and prediction section
-    st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", 
-                unsafe_allow_html=True)
-
-    uploaded_files = st.file_uploader(
-        "Tải các hình ảnh lên",
-        type=["jpg", "jpeg", "png"],
-        accept_multiple_files=True
+    
+    selected_metrics_svm = st.selectbox("Chọn metric cho kernel", 
+                                        options=METRICS_OPTIONS, 
+                                        key='svm_m')
+    C = st.number_input("Chọn C (regularization parameter)", 
+                        min_value=0.1, max_value=10.0, 
+                        value=1.0, step=0.1)
+    
+    custom_kernel = CustomKernelSVM.create_kernel(
+        metrics_map[selected_metrics_svm]
+    )
+    
+    model_SVM = SVC(kernel='precomputed', C=C)
+    
+    # Train SVM
+    gram_matrix_train = custom_kernel(model_data['train_features'])
+    model_SVM.fit(gram_matrix_train, model_data['train_labels_encoded'])
+    
+    # Test SVM
+    gram_matrix_test = custom_kernel(
+        model_data['test_features'], 
+        model_data['train_features']
+    )
+    y_pred_svm = model_SVM.predict(gram_matrix_test)
+    
+    Visualizer.plot_classification_report(
+        model_data['test_labels_encoded'], 
+        y_pred_svm, 
+        model_data['label_encoder'].classes_, 
+        "Custom Kernel SVM"
+    )
+    
+    Visualizer.plot_confusion_matrix(
+        confusion_matrix(model_data['test_labels_encoded'], y_pred_svm),
+        "Custom Kernel SVM",
+        model_data['label_encoder']
     )
 
-    if uploaded_files:
-        num_cols = min(len(uploaded_files), 10)
-        cols = st.columns(num_cols)
-        
-        for i, uploaded_file in enumerate(uploaded_files):
-            col = cols[i % num_cols]
-            with col:
-                # Process image
-                image = Image.open(uploaded_file)
-                st.image(image, use_column_width=True, width=128)
-                
-                # Extract features
-                img_np = np.array(image)
-                img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)
-                img_resized = cv2.resize(img_bgr, (128, 128))
-                image_features = FeatureExtractor.extract_features([img_resized])
-                
-                # Make predictions
-                pred_knn = model_KNN.predict(image_features)[0]
-                pred_svm = model_SVM.predict(
-                    custom_kernel(image_features, model_data['train_features'])
-                )[0]
-                
-                # Display results
-                caption = f"""
-                <div style='text-align: center; color: black; margin-top: -10px;'>
-                    KNN: {MAPPING.get(model_data['label_encoder'].classes_[pred_knn], 'Unknown')}<br>
-                    SVM: {MAPPING.get(model_data['label_encoder'].classes_[pred_svm], 'Unknown')}
-                </div>
-                """
-                st.markdown(caption, unsafe_allow_html=True)
+# Image upload and prediction section
+st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", 
+            unsafe_allow_html=True)
 
-if __name__ == "__main__":
-    main()
+uploaded_files = st.file_uploader(
+    "Tải các hình ảnh lên",
+    type=["jpg", "jpeg", "png"],
+    accept_multiple_files=True
+)
+
+if uploaded_files:
+    num_cols = min(len(uploaded_files), 10)
+    cols = st.columns(num_cols)
+    
+    for i, uploaded_file in enumerate(uploaded_files):
+        col = cols[i % num_cols]
+        with col:
+            # Process image
+            image = Image.open(uploaded_file)
+            st.image(image, use_column_width=True, width=128)
+            
+            # Extract features
+            img_np = np.array(image)
+            img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)
+            img_resized = cv2.resize(img_bgr, (128, 128))
+            image_features = FeatureExtractor.extract_features([img_resized])
+            
+            # Make predictions
+            pred_knn = model_KNN.predict(image_features)[0]
+            pred_svm = model_SVM.predict(
+                custom_kernel(image_features, model_data['train_features'])
+            )[0]
+            
+            # Display results
+            caption = f"""
+            <div style='text-align: center; color: black; margin-top: -10px;'>
+                KNN: {MAPPING.get(model_data['label_encoder'].classes_[pred_knn], 'Unknown')}<br>
+                SVM: {MAPPING.get(model_data['label_encoder'].classes_[pred_svm], 'Unknown')}
+            </div>
+            """
+            st.markdown(caption, unsafe_allow_html=True)
