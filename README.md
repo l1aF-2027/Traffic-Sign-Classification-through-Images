@@ -1,8 +1,8 @@
-# 🎈 Blank app template
+# 🚦**[Deploy Traffic Sign Classification through Images](https://github.com/l1aF-2027/Deploy-Traffic-Sign-Classification-through-Images)**
 
-A simple Streamlit app template for you to modify!
+A simple app template for you to classify the traffic signs!
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deploy-traffic-sign-classification-through-images.streamlit.app/)
+[![Open in streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deploy-traffic-sign-classification-through-images.streamlit.app/)
 
 ### How to run it on your own machine
 
