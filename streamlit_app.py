@@ -170,8 +170,6 @@ st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình 
 
 # Load models
 model_data = load_models()
-if not model_data:
-    return
 
 # Create metric mappings
 metrics_map = {
