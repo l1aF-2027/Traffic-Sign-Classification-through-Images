@@ -163,7 +163,7 @@ if uploaded_files:
         image = Image.open(uploaded_file)
         images.append(image)
 
-    num_cols = 5
+    num_cols = 10
     cols = st.columns(num_cols)
     
     for i, img in enumerate(images):
