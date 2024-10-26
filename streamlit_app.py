@@ -83,13 +83,12 @@ st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình 
 
 # Load models và data
 path_joblib = r'joblib/'
-model = joblib.load(path_joblib + 'best_knn_model.joblib')
+model_knn = joblib.load(path_joblib + 'best_knn_model.joblib')
 label_encoder = joblib.load(path_joblib + 'label_encoder.joblib')
 train_features = joblib.load(path_joblib + 'train_features.joblib')
 test_features = joblib.load(path_joblib + 'test_features.joblib')
 train_labels_encoded = joblib.load(path_joblib + 'train_labels_encoded.joblib')
 test_labels_encoded = joblib.load(path_joblib + 'test_labels_encoded.joblib')
-best_knn_model = joblib.load(path_joblib + 'best_knn_model.joblib')
 
 # Chia layout thành 2 cột
 col1, col2 = st.columns(2)
@@ -147,7 +146,8 @@ with col1:
         y_pred_knn = model_KNN.predict(test_features)
 
     else:
-        y_pred_knn = model.predict(test_features)
+        model_KNN = model_knn
+        y_pred_knn = model_KNN.predict(test_features)
 
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
@@ -195,8 +195,8 @@ if uploaded_files:
             st.image(img, use_column_width=True, width=128)
             
             img_np = np.array(img)
-            img_bgr = cv2.cvtColor(img_np, cv2.COLOR_RGB2BGR)
-            img_resized = cv2.resize(img_bgr, (128, 128))
+            img_bgr = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
+            img_resized = cv2.resize(img_bgr, (64, 64))
             image_inputs = extract_features([img_resized])
             
             # Dự đoán từ cả hai model
