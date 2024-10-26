@@ -1,0 +1,36 @@
+1. Phát biểu bài toán:
+ - 1 slide: Input là gì, output là gì, hình minh họa
+ - Ví dụ: bài toán phân loại ảnh chó mèo (dog, cat)
+   + Input: D = {(x_i, y_i)}_N với x_i là ảnh số, y_i là giá trị nhãn cho ảnh số
+            L = U_{i=1}^{N} y_i = {Dog, Cat}
+
+            ảnh số x
+   + Output: hat(y) = f(x) \belong d: giái trị nhãn của x
+
+   + Minh họa:
+		ảnh số x -> f(x) -> Dog
+
+2. Lý do thực hiện bài toán:
+ - 1 slide
+
+3. Phương pháp thực hiện
+ - CV = Visual Information + ML
+   + Visual Information: image, video -> Feature (làm thử các đặc trưng khác nhau để so sánh kết quả nhưng giữ nguyên phương pháp máy học)
+   + ML: KNN, SVM, Kmeans, DNN (làm thử 2 mô hình khác nhau để so sánh kết quả nhưng giữ nguyên đặc trưng)
+
+*TH1: Nếu là pp đã có:
+ - 2 slide: 
+	1.Giới thiệu về phương pháp đó: tên phương pháp, ý tưởng. Ví dụ thuật toán svm dùng để phân loại; do tác giả...; nơi công bố, năm; hình đại diện phương pháp; trích dẫn
+	2. Áp dụng cho bài toán: Vì sao sử dụng các tham số đó cho phương pháp máy học này? Ví dụ áp dụng SVM: hàm? (thư viện nào); C=?; kernel=?...
+
+*TH2 PP do sinh viên đề xuất phải trình bày chi tiết. Ví dụ sử dụng mạng học sâu thì cần chỉ rõ layer.... còn nếu là cải thiện phương pháp nào trong TH1 thì phải chỉ rõ điểm yếu của phương pháp tồn tại trong TH1 và nói ra cải tiến những gì.
+
+4. Thực nghiệm
+	1. Giới thiệu Dataset (1 slide)
+		+ nguồn gốc
+		+ số lượng(số class, số ảnh, số đối tượng)
+		+ Chia dữ liệu
+	2. Độ đo đánh giá
+	3. Kết quả
+	4. Hình minh họa: 3 đúng + 2 sai / 4 đúng + 1 sai  (đúng thì nên chọn khó đúng còn sai nên chọn dễ sai)
+5. Kết luận (1 slide)
