@@ -98,7 +98,6 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
 
-    # Checkbox để chọn mô hình KNN tốt nhất
     best_model = st.checkbox("Sử dụng Best KNN Model")
 
     weights_options = ['Uniform', 'Distance']
@@ -128,34 +127,28 @@ with col1:
         'Uniform': 'uniform',
         'Distance': 'distance'
     }
-    
-    # Nếu không sử dụng mô hình tốt nhất, cho phép người dùng điều chỉnh tham số
+
     if not best_model:
         n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
         selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
         selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
         
-        # Chọn leaf_size từ danh sách cụ thể
         leaf_size_options = [10, 20, 30, 40, 50]
-        leaf_size = st.selectbox("Chọn leaf_size", options=leaf_size_options, index=2)  # Mặc định là 30
+        leaf_size = st.selectbox("Chọn leaf_size", options=leaf_size_options, index=1)
         
-        # Khởi tạo mô hình KNN với tất cả các tham số
         model_KNN = KNeighborsClassifier(
             n_neighbors=n_neighbors,
             weights=map_weights.get(selected_weights),
             metric=map_metrics.get(selected_metrics),
-            leaf_size=leaf_size  # Thêm leaf_size vào mô hình
+            leaf_size=leaf_size
         )
         
-        # Huấn luyện mô hình KNN
         model_KNN.fit(train_features, train_labels_encoded)
         y_pred_knn = model_KNN.predict(test_features)
 
     else:
-        # Sử dụng mô hình KNN tốt nhất đã tải lên
         y_pred_knn = model.predict(test_features)
 
-    # Vẽ báo cáo phân loại và ma trận nhầm lẫn
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
 
