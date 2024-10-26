@@ -10,14 +10,19 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC  # Thêm SVM như một model thứ hai
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
+from scipy.spatial.distance import cityblock, cosine, correlation, sqeuclidean, euclidean
 
 # [Giữ nguyên các hàm helper từ code gốc]
+def blur_image(image):
+    blurred_image = cv2.medianBlur(image, 5)
+    return blurred_image
+
 def color_histogram(image):
     row, column, channel = image.shape[:3]
     size = row * column
     feature = []
     for k in range(channel):
-        histogram = np.squeeze(cv2.calcHist([image], [k], None, [8], [0, 256]))
+        histogram = np.squeeze(cv2.calcHist([image], [k], None, [32], [0, 256]))
         histogram = histogram / size
         feature.extend(histogram)
     return feature
@@ -28,25 +33,20 @@ def hog(image):
     return hog_features
 
 def extract_features(images):
-    color_features = [color_histogram(image) for image in images]
-    hog_features = [hog(image) for image in images]
+    blurred_images = [blur_image(image) for image in images]
+    color_features = [color_histogram(image) for image in blurred_images]
+    hog_features = [hog(image) for image in blurred_images]
     combined_features = [np.concatenate((color_feature, hog_feature)) for color_feature, hog_feature in zip(color_features, hog_features)]
     return combined_features
 
 def chi_square_distance(x, y):
     return cv2.compareHist(np.array(x, dtype=np.float32), np.array(y, dtype=np.float32), cv2.HISTCMP_CHISQR)
 
-def correlation_distance(x, y):
-    return 1 - cv2.compareHist(np.array(x, dtype=np.float32), np.array(y, dtype=np.float32), cv2.HISTCMP_CORREL)
-
 def bhattacharyya_distance(x, y):
     return cv2.compareHist(np.array(x, dtype=np.float32), np.array(y, dtype=np.float32), cv2.HISTCMP_BHATTACHARYYA)
 
 def intersection_distance(x, y):
     return 1 - cv2.compareHist(np.array(x, dtype=np.float32), np.array(y, dtype=np.float32), cv2.HISTCMP_INTERSECT)
-
-def euclidean_distance(x, y):
-    return np.linalg.norm(np.array(x, dtype=np.float32) - np.array(y, dtype=np.float32))
 
 def plot_cm(cm, model_name):
     st.markdown(f"<h6 style='text-align: left;'>Confusion Matrix - {model_name}</h6>", unsafe_allow_html=True)
@@ -89,6 +89,7 @@ train_features = joblib.load(path_joblib + 'train_features.joblib')
 test_features = joblib.load(path_joblib + 'test_features.joblib')
 train_labels_encoded = joblib.load(path_joblib + 'train_labels_encoded.joblib')
 test_labels_encoded = joblib.load(path_joblib + 'test_labels_encoded.joblib')
+best_knn_model = joblib.load(path_joblib + 'best_knn_model.joblib')
 
 # Chia layout thành 2 cột
 col1, col2 = st.columns(2)
@@ -96,16 +97,31 @@ col1, col2 = st.columns(2)
 # Cột 1: KNN Model
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
-    
+
+    # Checkbox để chọn mô hình KNN tốt nhất
+    best_model = st.checkbox("Sử dụng Best KNN Model")
+
     weights_options = ['Uniform', 'Distance']
-    metrics_options = ['Chi-Square', 'Correlation', 'Bhattacharyya', 'Intersection', 'Euclidean']
+    metrics_options = [
+        'cityblock',
+        'cosine',
+        'correlation',
+        'euclidean',
+        'sqeuclidean',
+        'chi_square',
+        'bhattacharyya',
+        'intersection'
+    ]
     
     map_metrics = {
-        'Chi-Square': chi_square_distance,
-        'Correlation': correlation_distance,
-        'Bhattacharyya': bhattacharyya_distance,
-        'Intersection': intersection_distance,
-        'Euclidean': euclidean_distance
+        'cityblock': cityblock,
+        'cosine': cosine,
+        'correlation': correlation,
+        'euclidean': euclidean,
+        'sqeuclidean': sqeuclidean,
+        'chi_square': chi_square_distance,
+        'bhattacharyya': bhattacharyya_distance,
+        'intersection': intersection_distance
     }
     
     map_weights = {
@@ -113,19 +129,33 @@ with col1:
         'Distance': 'distance'
     }
     
-    n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
-    selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
-    selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
-    
-    model_KNN = KNeighborsClassifier(
-        n_neighbors=n_neighbors,
-        weights=map_weights.get(selected_weights),
-        metric=map_metrics.get(selected_metrics)
-    )
-    
-    model_KNN.fit(train_features, train_labels_encoded)
-    y_pred_knn = model_KNN.predict(test_features)
-    
+    # Nếu không sử dụng mô hình tốt nhất, cho phép người dùng điều chỉnh tham số
+    if not best_model:
+        n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
+        selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
+        selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
+        
+        # Chọn leaf_size từ danh sách cụ thể
+        leaf_size_options = [10, 20, 30, 40, 50]
+        leaf_size = st.selectbox("Chọn leaf_size", options=leaf_size_options, index=2)  # Mặc định là 30
+        
+        # Khởi tạo mô hình KNN với tất cả các tham số
+        model_KNN = KNeighborsClassifier(
+            n_neighbors=n_neighbors,
+            weights=map_weights.get(selected_weights),
+            metric=map_metrics.get(selected_metrics),
+            leaf_size=leaf_size  # Thêm leaf_size vào mô hình
+        )
+        
+        # Huấn luyện mô hình KNN
+        model_KNN.fit(train_features, train_labels_encoded)
+        y_pred_knn = model_KNN.predict(test_features)
+
+    else:
+        # Sử dụng mô hình KNN tốt nhất đã tải lên
+        y_pred_knn = model.predict(test_features)
+
+    # Vẽ báo cáo phân loại và ma trận nhầm lẫn
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
 
