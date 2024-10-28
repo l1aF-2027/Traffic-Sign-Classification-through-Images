@@ -7,10 +7,13 @@ from PIL import Image
 from skimage.feature import hog as skimage_hog
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC  # Thêm SVM như một model thứ hai
+from sklearn.svm import SVC 
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
 from scipy.spatial.distance import cityblock, cosine, correlation, sqeuclidean, euclidean
+import os
+
+project_dir = os.getcwd()
 
 # [Giữ nguyên các hàm helper từ code gốc]
 def blur_image(image):
@@ -82,13 +85,14 @@ st.set_page_config(
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
 # Load models và data
-path_joblib = r'joblib/'
-model_knn = joblib.load(path_joblib + 'best_knn_model.joblib')
-label_encoder = joblib.load(path_joblib + 'label_encoder.joblib')
-train_features = joblib.load(path_joblib + 'train_features.joblib')
-test_features = joblib.load(path_joblib + 'test_features.joblib')
-train_labels_encoded = joblib.load(path_joblib + 'train_labels_encoded.joblib')
-test_labels_encoded = joblib.load(path_joblib + 'test_labels_encoded.joblib')
+
+model_knn = joblib.load(project_dir + '/joblib/best_knn_model.joblib')
+model_svm = joblib.load(project_dir + '/joblib/best_svm_model.joblib')
+label_encoder = joblib.load(project_dir + '/joblib/label_encoder.joblib')
+train_features = joblib.load(project_dir + '/joblib/train_features.joblib')
+test_features = joblib.load(project_dir + '/joblib/test_features.joblib')
+train_labels_encoded = joblib.load(project_dir + '/joblib/train_labels_encoded.joblib')
+test_labels_encoded = joblib.load(project_dir + '/joblib/test_labels_encoded.joblib')
 
 # Chia layout thành 2 cột
 col1, col2 = st.columns(2)
@@ -97,7 +101,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
 
-    best_model = st.checkbox("Sử dụng Best KNN Model")
+    best_model_knn = st.checkbox("Sử dụng Best KNN Model", value=True)
 
     weights_options = ['Uniform', 'Distance']
     metrics_options = [
@@ -127,7 +131,7 @@ with col1:
         'Distance': 'distance'
     }
 
-    if not best_model:
+    if not best_model_knn:
         n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
         selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
         selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
@@ -155,14 +159,20 @@ with col1:
 # Cột 2: SVM Model
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
+    best_model_svm  = st.checkbox("Sử dụng Best SVM Model", value=True)
     
     kernel_options = ['linear', 'rbf', 'poly']
-    selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
-    C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
+    if not best_model_knn:
+        selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
+        C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
     
-    model_SVM = SVC(kernel=selected_kernel, C=C)
-    model_SVM.fit(train_features, train_labels_encoded)
-    y_pred_svm = model_SVM.predict(test_features)
+        model_SVM = SVC(kernel=selected_kernel, C=C)
+        model_SVM.fit(train_features, train_labels_encoded)
+        y_pred_svm = model_SVM.predict(test_features)
+    else:
+        model_SVM = model_svm
+        y_pred_svm = model_SVM.predict(test_features)
+
     
     plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
