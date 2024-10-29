@@ -117,6 +117,12 @@ map_weights = {
 kernel_options = ['linear', 'rbf', 'poly']  # For SVM kernel options
 
 
+if 'best_model_knn' not in st.session_state:
+    st.session_state.best_model_knn = True 
+
+if 'best_model_svm' not in st.session_state:
+    st.session_state.best_model_svm = True 
+
 # Cột 1: KNN Model
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
