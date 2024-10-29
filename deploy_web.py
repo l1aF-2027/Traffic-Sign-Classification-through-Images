@@ -75,17 +75,43 @@ def plot_classification_report(y_true, y_pred, labels, model_name):
     st.markdown(f"<h6 style='text-align: left;'>Classification Report - {model_name}</h6>", unsafe_allow_html=True)
     st.dataframe(df_report)
 
+# Phần cập nhật mô hình
+def update_knn_model(n_neighbors, weights, metrics, leaf_size):
+    model_KNN = KNeighborsClassifier(
+        n_neighbors=n_neighbors,
+        weights=map_weights.get(weights),
+        metric=map_metrics.get(metrics),
+        leaf_size=leaf_size
+    )
+    model_KNN.fit(train_features, train_labels_encoded)
+    return model_KNN
+
+def update_svm_model(kernel, C):
+    model_SVM = SVC(kernel=kernel, C=C)
+    model_SVM.fit(train_features, train_labels_encoded)
+    return model_SVM
+
+# Phần hiển thị kết quả dự đoán
+def display_predictions(model_knn, model_svm):
+    y_pred_knn = model_knn.predict(test_features)
+    y_pred_svm = model_svm.predict(test_features)
+
+    plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
+    plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
+
+    plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
+    plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
+
 # Cấu hình trang
 st.set_page_config(
     page_title="Traffic Sign Classification Web",
     page_icon=":vertical_traffic_light:",
-    layout="wide"  # Thêm layout wide để có nhiều không gian hơn cho 2 cột
+    layout="wide"
 )
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
 # Load models và data
-
 model_knn = joblib.load(project_dir + '/joblib/best_knn_model.joblib')
 model_svm = joblib.load(project_dir + '/joblib/best_svm_model.joblib')
 label_encoder = joblib.load(project_dir + '/joblib/label_encoder.joblib')
@@ -116,7 +142,6 @@ map_weights = {
 
 kernel_options = ['linear', 'rbf', 'poly']  # For SVM kernel options
 
-
 if 'best_model_knn' not in st.session_state:
     st.session_state.best_model_knn = True 
 
@@ -130,32 +155,15 @@ with col1:
     # Cập nhật trạng thái của best_model_knn
     if st.checkbox("Sử dụng Best KNN Model", value=st.session_state.best_model_knn):
         st.session_state.best_model_knn = True
+        model_KNN = model_knn
     else:
         st.session_state.best_model_knn = False
-
-    if not st.session_state.best_model_knn:
         n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
         selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=1)
         selected_metrics = st.selectbox("Chọn metrics", options=list(map_metrics.keys()), index=1)
-        
         leaf_size_options = [10, 20, 30, 40, 50]
         leaf_size = st.selectbox("Chọn leaf_size", options=leaf_size_options, index=1)
-        
-        model_KNN = KNeighborsClassifier(
-            n_neighbors=n_neighbors,
-            weights=map_weights.get(selected_weights),
-            metric=map_metrics.get(selected_metrics),
-            leaf_size=leaf_size
-        )
-        
-        model_KNN.fit(train_features, train_labels_encoded)
-        y_pred_knn = model_KNN.predict(test_features)
-    else:
-        model_KNN = model_knn
-        y_pred_knn = model_KNN.predict(test_features)
-
-    plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
-    plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
+        model_KNN = update_knn_model(n_neighbors, selected_weights, selected_metrics, leaf_size)
 
 # Cột 2: SVM Model
 with col2:
@@ -164,22 +172,15 @@ with col2:
     # Cập nhật trạng thái của best_model_svm
     if st.checkbox("Sử dụng Best SVM Model", value=st.session_state.best_model_svm):
         st.session_state.best_model_svm = True
+        model_SVM = model_svm
     else:
         st.session_state.best_model_svm = False
-
-    if not st.session_state.best_model_svm:
         selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
         C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
-    
-        model_SVM = SVC(kernel=selected_kernel, C=C)
-        model_SVM.fit(train_features, train_labels_encoded)
-        y_pred_svm = model_SVM.predict(test_features)
-    else:
-        model_SVM = model_svm
-        y_pred_svm = model_SVM.predict(test_features)
+        model_SVM = update_svm_model(selected_kernel, C)
 
-    plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
-    plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
+# Hiển thị kết quả dự đoán
+display_predictions(model_KNN, model_SVM)
 
 # Phần thử nghiệm (full width)
 st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
