@@ -97,44 +97,40 @@ test_labels_encoded = joblib.load(project_dir + '/joblib/test_labels_encoded.job
 # Chia layout thành 2 cột
 col1, col2 = st.columns(2)
 
+# Parameter Maps
+map_metrics = {
+    'cityblock': cityblock,
+    'cosine': cosine,
+    'correlation': correlation,
+    'euclidean': euclidean,
+    'sqeuclidean': sqeuclidean,
+    'chi_square': chi_square_distance,
+    'bhattacharyya': bhattacharyya_distance,
+    'intersection': intersection_distance
+}
+
+map_weights = {
+    'Uniform': 'uniform',
+    'Distance': 'distance'
+}
+
+kernel_options = ['linear', 'rbf', 'poly']  # For SVM kernel options
+
+
 # Cột 1: KNN Model
 with col1:
     st.markdown("<h3 style='text-align: center;'>KNN Model</h3>", unsafe_allow_html=True)
 
-    best_model_knn = st.checkbox("Sử dụng Best KNN Model", value=True)
+    # Cập nhật trạng thái của best_model_knn
+    if st.checkbox("Sử dụng Best KNN Model", value=st.session_state.best_model_knn):
+        st.session_state.best_model_knn = True
+    else:
+        st.session_state.best_model_knn = False
 
-    weights_options = ['Uniform', 'Distance']
-    metrics_options = [
-        'cityblock',
-        'cosine',
-        'correlation',
-        'euclidean',
-        'sqeuclidean',
-        'chi_square',
-        'bhattacharyya',
-        'intersection'
-    ]
-    
-    map_metrics = {
-        'cityblock': cityblock,
-        'cosine': cosine,
-        'correlation': correlation,
-        'euclidean': euclidean,
-        'sqeuclidean': sqeuclidean,
-        'chi_square': chi_square_distance,
-        'bhattacharyya': bhattacharyya_distance,
-        'intersection': intersection_distance
-    }
-    
-    map_weights = {
-        'Uniform': 'uniform',
-        'Distance': 'distance'
-    }
-
-    if not best_model_knn:
+    if not st.session_state.best_model_knn:
         n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
-        selected_weights = st.selectbox("Chọn weights", options=weights_options, index=1)
-        selected_metrics = st.selectbox("Chọn metrics", options=metrics_options, index=1)
+        selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=1)
+        selected_metrics = st.selectbox("Chọn metrics", options=list(map_metrics.keys()), index=1)
         
         leaf_size_options = [10, 20, 30, 40, 50]
         leaf_size = st.selectbox("Chọn leaf_size", options=leaf_size_options, index=1)
@@ -148,7 +144,6 @@ with col1:
         
         model_KNN.fit(train_features, train_labels_encoded)
         y_pred_knn = model_KNN.predict(test_features)
-
     else:
         model_KNN = model_knn
         y_pred_knn = model_KNN.predict(test_features)
@@ -159,10 +154,14 @@ with col1:
 # Cột 2: SVM Model
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
-    best_model_svm  = st.checkbox("Sử dụng Best SVM Model", value=True)
-    
-    kernel_options = ['linear', 'rbf', 'poly']
-    if not best_model_knn:
+
+    # Cập nhật trạng thái của best_model_svm
+    if st.checkbox("Sử dụng Best SVM Model", value=st.session_state.best_model_svm):
+        st.session_state.best_model_svm = True
+    else:
+        st.session_state.best_model_svm = False
+
+    if not st.session_state.best_model_svm:
         selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
         C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
     
@@ -173,7 +172,6 @@ with col2:
         model_SVM = model_svm
         y_pred_svm = model_SVM.predict(test_features)
 
-    
     plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
 
