@@ -198,36 +198,44 @@ if 'uploaded_images' not in st.session_state:
 
 # File uploader for images
 uploaded_files = st.file_uploader("Tải các hình ảnh lên", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
-
-if uploaded_files:
-    # Update the uploaded images in session state
-    st.session_state.uploaded_images = [Image.open(file) for file in uploaded_files]
-    
-    # Clear previous predictions
+# Initialize session state for images and predictions
+if 'uploaded_images' not in st.session_state:
+    st.session_state.uploaded_images = []
     st.session_state.predictions_knn = []
     st.session_state.predictions_svm = []
-    
-    # Process each uploaded image and make predictions
-    for img in st.session_state.uploaded_images:
-        img_np = np.array(img)
-        img_bgr = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
-        img_resized = cv2.resize(img_bgr, (64, 64))
-        image_inputs = extract_features([img_resized])
-        
-        # Store predictions
-        pred_knn = model_KNN.predict(image_inputs)[0]
-        pred_svm = model_SVM.predict(image_inputs)[0]
-        
-        st.session_state.predictions_knn.append(pred_knn)
-        st.session_state.predictions_svm.append(pred_svm)
 
+# File uploader for images
+uploaded_files = st.file_uploader("Tải các hình ảnh lên", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
+
+if uploaded_files:
+    # Add new images to the session state
+    for file in uploaded_files:
+        if file not in st.session_state.uploaded_images:  # Check if the image is already uploaded
+            st.session_state.uploaded_images.append(file)
+
+# Display the uploaded images and their predictions
 num_cols = 10
 cols = st.columns(num_cols)
 
-for i, img in enumerate(st.session_state.uploaded_images):
+for i, uploaded_file in enumerate(st.session_state.uploaded_images):
     col = cols[i % num_cols]
     with col:
+        img = Image.open(uploaded_file)
         st.image(img, use_column_width=True, width=128)
+        
+        # If predictions are not available for this image, compute them
+        if len(st.session_state.predictions_knn) < len(st.session_state.uploaded_images):
+            img_np = np.array(img)
+            img_bgr = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
+            img_resized = cv2.resize(img_bgr, (64, 64))
+            image_inputs = extract_features([img_resized])
+            
+            # Store predictions
+            pred_knn = model_KNN.predict(image_inputs)[0]
+            pred_svm = model_SVM.predict(image_inputs)[0]
+            
+            st.session_state.predictions_knn.append(pred_knn)
+            st.session_state.predictions_svm.append(pred_svm)
 
         # Get predictions for this image
         pred_knn = st.session_state.predictions_knn[i]
@@ -241,7 +249,14 @@ for i, img in enumerate(st.session_state.uploaded_images):
         """
         st.markdown(caption, unsafe_allow_html=True)
 
-# Allow removal of images
+        # Option to remove the image and its predictions
+        if st.button("Xóa", key=f"remove_{i}"):
+            st.session_state.uploaded_images.pop(i)
+            st.session_state.predictions_knn.pop(i)
+            st.session_state.predictions_svm.pop(i)
+            st.experimental_rerun()  # Rerun the app to refresh the state
+
+# Clear all images and predictions
 if st.button("Xóa tất cả hình ảnh"):
     st.session_state.uploaded_images = []
     st.session_state.predictions_knn = []
