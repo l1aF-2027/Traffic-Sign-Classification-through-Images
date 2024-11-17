@@ -1,0 +1,3855 @@
+Date and Time: 2024-11-17_08_37_02
+Image Size: (64, 64)
+Best Parameters: {'leaf_size': 10, 'metric': <function correlation at 0x000001D65F9A9760>, 'n_neighbors': 3, 'weights': 'distance'}
+Best Score: 0.8515992309095757
+Detailed Grid Search Results:
+Result 1:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.003609736760457357
+  std_fit_time: 0.005104938683235514
+  mean_score_time: 3.5183266003926597
+  std_score_time: 0.03744724383754577
+  mean_test_score: 0.8224378856562765
+  std_test_score: 0.00022163349538266043
+Result 2:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.01246794064839681
+  std_fit_time: 0.004332820199632433
+  mean_score_time: 3.392355442047119
+  std_score_time: 0.07816292708410237
+  mean_test_score: 0.842752819764314
+  std_test_score: 0.0034555909142396594
+Result 3:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.00028586387634277344
+  std_fit_time: 0.00040427257091649557
+  mean_score_time: 3.3008651733398438
+  std_score_time: 0.015147856439903368
+  mean_test_score: 0.8065204272100823
+  std_test_score: 0.01440400274346046
+Result 4:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005590279897054036
+  std_fit_time: 0.007905849647875489
+  mean_score_time: 3.3544088204701743
+  std_score_time: 0.04469117313862638
+  mean_test_score: 0.8418803418803419
+  std_test_score: 0.006419988479455341
+Result 5:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.011937618255615234
+  std_fit_time: 0.008651200207772708
+  mean_score_time: 3.405058224995931
+  std_score_time: 0.009620681846877461
+  mean_test_score: 0.804761436945345
+  std_test_score: 0.012063139617232375
+Result 6:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0052089691162109375
+  std_fit_time: 0.0073665947701281025
+  mean_score_time: 3.544536590576172
+  std_score_time: 0.05517617315443606
+  mean_test_score: 0.8268517348977119
+  std_test_score: 0.005110784045091968
+Result 7:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0052144527435302734
+  std_fit_time: 0.007374349790254107
+  mean_score_time: 3.400928497314453
+  std_score_time: 0.05930520112750403
+  mean_test_score: 0.7897375081283128
+  std_test_score: 0.013274772377531729
+Result 8:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005207141240437825
+  std_fit_time: 0.007364009763419435
+  mean_score_time: 3.400790294011434
+  std_score_time: 0.023366182102429252
+  mean_test_score: 0.8312609059735497
+  std_test_score: 0.009941312685528232
+Result 9:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.015613238016764322
+  std_fit_time: 1.8868068697930153e-05
+  mean_score_time: 3.417541742324829
+  std_score_time: 0.022966684866740743
+  mean_test_score: 0.7862054931020449
+  std_test_score: 0.019548525089401858
+Result 10:
+  param_leaf_size: 10
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.007538000742594401
+  std_fit_time: 0.0063731238566025195
+  mean_score_time: 3.3713456789652505
+  std_score_time: 0.03473256166886835
+  mean_test_score: 0.8127166575442438
+  std_test_score: 0.008289191313462722
+Result 11:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.01646312077840169
+  std_fit_time: 0.0011634407194407058
+  mean_score_time: 8.93266781171163
+  std_score_time: 0.18202531411353123
+  mean_test_score: 0.7959337384624741
+  std_test_score: 0.00997538711305521
+Result 12:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0077973206837972
+  std_fit_time: 0.00639443924454691
+  mean_score_time: 8.703344265619913
+  std_score_time: 0.05010127195285676
+  mean_test_score: 0.8233127026230475
+  std_test_score: 0.015760180633421935
+Result 13:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.01714150110880534
+  std_fit_time: 0.002148028500864027
+  mean_score_time: 8.700353940327963
+  std_score_time: 0.0943151312080335
+  mean_test_score: 0.780030314513073
+  std_test_score: 0.017786245638397986
+Result 14:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.01613140106201172
+  std_fit_time: 0.0007609698830650171
+  mean_score_time: 8.911375999450684
+  std_score_time: 0.2847911972959584
+  mean_test_score: 0.8189082097128074
+  std_test_score: 0.010166714072261746
+Result 15:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.010429700215657553
+  std_fit_time: 0.007374923628320238
+  mean_score_time: 8.883732716242472
+  std_score_time: 0.01417628042462888
+  mean_test_score: 0.7809051314798441
+  std_test_score: 0.014609179009624955
+Result 16:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0007135868072509766
+  std_fit_time: 0.0010091641407448467
+  mean_score_time: 9.047782182693481
+  std_score_time: 0.1046766793325083
+  mean_test_score: 0.8127119793786459
+  std_test_score: 0.01205729413296878
+Result 17:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.012560288111368815
+  std_fit_time: 0.004280347837835969
+  mean_score_time: 8.870540301005045
+  std_score_time: 0.050875658636113756
+  mean_test_score: 0.7791438021323079
+  std_test_score: 0.010840497842483376
+Result 18:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.017570972442626953
+  std_fit_time: 0.0027545613744498834
+  mean_score_time: 8.740758657455444
+  std_score_time: 0.07625733498741435
+  mean_test_score: 0.8153691774381429
+  std_test_score: 0.0014786592900901854
+Result 19:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.012984514236450195
+  std_fit_time: 0.0037087740383122464
+  mean_score_time: 9.071439584096273
+  std_score_time: 0.2055805697355736
+  mean_test_score: 0.7782619679171403
+  std_test_score: 0.016050129968347263
+Result 20:
+  param_leaf_size: 10
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0056761900583903
+  std_fit_time: 0.008027344963182892
+  mean_score_time: 8.978203376134237
+  std_score_time: 0.2525322119180804
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 21:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0051949818929036455
+  std_fit_time: 0.00734681384922699
+  mean_score_time: 18.65977430343628
+  std_score_time: 0.5474963986318859
+  mean_test_score: 0.8383436486884763
+  std_test_score: 0.0041523733579738875
+Result 22:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.011795759201049805
+  std_fit_time: 0.00836906476656334
+  mean_score_time: 20.18825078010559
+  std_score_time: 1.9411012694824088
+  mean_test_score: 0.8515992309095757
+  std_test_score: 0.007303981459774288
+Result 23:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.015611807505289713
+  std_fit_time: 5.05710978922861e-05
+  mean_score_time: 19.77630130449931
+  std_score_time: 0.5486153565614605
+  mean_test_score: 0.808291112888814
+  std_test_score: 0.01828625129325068
+Result 24:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.007911443710327148
+  std_fit_time: 0.006379103945092995
+  mean_score_time: 19.5736247698466
+  std_score_time: 0.4575440257425533
+  mean_test_score: 0.8445398790226376
+  std_test_score: 0.013708348754878632
+Result 25:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.00620571772257487
+  std_fit_time: 0.008776210167524457
+  mean_score_time: 20.028257926305134
+  std_score_time: 1.202012782488432
+  mean_test_score: 0.8144990386369697
+  std_test_score: 0.011866592381614414
+Result 26:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0077210267384847
+  std_fit_time: 0.006392411504800433
+  mean_score_time: 18.750126202901203
+  std_score_time: 0.01289166420970262
+  mean_test_score: 0.8365799802581412
+  std_test_score: 0.0105591166808318
+Result 27:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.013295968373616537
+  std_fit_time: 0.003436564849648925
+  mean_score_time: 17.87039597829183
+  std_score_time: 1.095409956116126
+  mean_test_score: 0.8012317610018759
+  std_test_score: 0.003992710879505235
+Result 28:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.009908596674601236
+  std_fit_time: 0.007143483717584697
+  mean_score_time: 20.82057778040568
+  std_score_time: 0.9437631580002307
+  mean_test_score: 0.8392301610692415
+  std_test_score: 0.006416874527182837
+Result 29:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0052073001861572266
+  std_fit_time: 0.007364234546611492
+  mean_score_time: 19.92183844248454
+  std_score_time: 0.3670245286183519
+  mean_test_score: 0.8074209740876407
+  std_test_score: 0.00975353156460326
+Result 30:
+  param_leaf_size: 10
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.00622407595316569
+  std_fit_time: 0.006763008597712011
+  mean_score_time: 19.503541549046833
+  std_score_time: 1.0507958470694185
+  mean_test_score: 0.82155371235831
+  std_test_score: 0.009782702564138147
+Result 31:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.010151386260986328
+  std_fit_time: 0.007298411358665725
+  mean_score_time: 3.2953808307647705
+  std_score_time: 0.0062394556944987585
+  mean_test_score: 0.7959313993796752
+  std_test_score: 0.007629533774504347
+Result 32:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.014915863672892252
+  std_fit_time: 0.0017197128125750621
+  mean_score_time: 3.3677499294281006
+  std_score_time: 0.0155891176800795
+  mean_test_score: 0.8241945368382151
+  std_test_score: 0.014537012502563782
+Result 33:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010414520899454752
+  std_fit_time: 0.007364178495543011
+  mean_score_time: 3.6345321337381997
+  std_score_time: 0.17952824871789674
+  mean_test_score: 0.7791461412151067
+  std_test_score: 0.0127851531262994
+Result 34:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005218187967936198
+  std_fit_time: 0.007379632195267471
+  mean_score_time: 3.4491279125213623
+  std_score_time: 0.14371921296070303
+  mean_test_score: 0.8153738556037408
+  std_test_score: 0.008954537492908277
+Result 35:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.01041110356648763
+  std_fit_time: 0.007361763177224747
+  mean_score_time: 3.3941288789113364
+  std_score_time: 0.007921694973324374
+  mean_test_score: 0.7800186190990789
+  std_test_score: 0.015378650968516946
+Result 36:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.002830664316813151
+  std_fit_time: 0.0035511019902734527
+  mean_score_time: 3.3928104241689048
+  std_score_time: 0.05837447578433265
+  mean_test_score: 0.8135938135938137
+  std_test_score: 0.01283119939610818
+Result 37:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.010392506917317709
+  std_fit_time: 0.007354046198170104
+  mean_score_time: 3.371435801188151
+  std_score_time: 0.020453283488490622
+  mean_test_score: 0.7773731164535763
+  std_test_score: 0.012262855680293798
+Result 38:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.379284143447876
+  std_score_time: 0.08742593695914302
+  mean_test_score: 0.815369177438143
+  std_test_score: 0.0026224049689532324
+Result 39:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005208492279052734
+  std_fit_time: 0.007365920420551928
+  mean_score_time: 3.5751165548960366
+  std_score_time: 0.24192762046797456
+  mean_test_score: 0.7764959604040064
+  std_test_score: 0.01482490379643068
+Result 40:
+  param_leaf_size: 10
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.004182656606038411
+  std_fit_time: 0.0059151696990089415
+  mean_score_time: 3.3800995349884033
+  std_score_time: 0.008785239423657975
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 41:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.006767114003499349
+  std_fit_time: 0.009570144401873672
+  mean_score_time: 4.148682753245036
+  std_score_time: 0.04549139047439623
+  mean_test_score: 0.7005412637596545
+  std_test_score: 0.013257582900162603
+Result 42:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 4.138999303181966
+  std_score_time: 0.021439678419532687
+  mean_test_score: 0.7252700471091277
+  std_test_score: 0.006747079366438259
+Result 43:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.003853321075439453
+  std_fit_time: 0.005449418925064555
+  mean_score_time: 4.164463837941487
+  std_score_time: 0.041423315005109006
+  mean_test_score: 0.7040662615375259
+  std_test_score: 0.0048256100157100055
+Result 44:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.004054943720499675
+  std_fit_time: 0.005734556404190256
+  mean_score_time: 4.116435368855794
+  std_score_time: 0.0008909120182831868
+  mean_test_score: 0.726154220407094
+  std_test_score: 0.00799042735477738
+Result 45:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.006819407145182292
+  std_fit_time: 0.009644098072060786
+  mean_score_time: 4.330719629923503
+  std_score_time: 0.1812315801259457
+  mean_test_score: 0.6916878353659962
+  std_test_score: 0.00697082858258937
+Result 46:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.01661197344462077
+  std_fit_time: 0.0014005116781180013
+  mean_score_time: 4.109832127888997
+  std_score_time: 0.026965333214110685
+  mean_test_score: 0.7270313764566638
+  std_test_score: 0.00434492673361
+Result 47:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.010487874348958334
+  std_fit_time: 0.007416621091468793
+  mean_score_time: 4.161714156468709
+  std_score_time: 0.03708376794625568
+  mean_test_score: 0.7005248901800627
+  std_test_score: 0.007692626348930566
+Result 48:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005209684371948242
+  std_fit_time: 0.007367606294492364
+  mean_score_time: 4.144712527592977
+  std_score_time: 0.013912934850604089
+  mean_test_score: 0.7279061934234349
+  std_test_score: 0.012119919545676488
+Result 49:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005209525426228841
+  std_fit_time: 0.007367381511300306
+  mean_score_time: 4.154891808827718
+  std_score_time: 0.01933583868917922
+  mean_test_score: 0.6978817266173589
+  std_test_score: 0.012005228016994197
+Result 50:
+  param_leaf_size: 10
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.006139437357584636
+  std_fit_time: 0.006801608172897313
+  mean_score_time: 4.232661644617717
+  std_score_time: 0.11704026370851786
+  mean_test_score: 0.7252606907779322
+  std_test_score: 0.014497315909162218
+Result 51:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.005226691563924153
+  std_fit_time: 0.007391658096042582
+  mean_score_time: 3.7847156524658203
+  std_score_time: 0.035720774770982296
+  mean_test_score: 0.784453520085704
+  std_test_score: 0.006570686343769743
+Result 52:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.009890476862589518
+  std_fit_time: 0.007025955033232513
+  mean_score_time: 3.7266109784444175
+  std_score_time: 0.00449601110513764
+  mean_test_score: 0.8021159342998424
+  std_test_score: 0.003537335143764381
+Result 53:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.000515143076578776
+  std_fit_time: 0.000728522325460307
+  mean_score_time: 3.767594496409098
+  std_score_time: 0.022315694448782026
+  mean_test_score: 0.7588101553618795
+  std_test_score: 0.01914697598929536
+Result 54:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005219936370849609
+  std_fit_time: 0.0073821048103801115
+  mean_score_time: 3.7730367183685303
+  std_score_time: 0.042543344961532455
+  mean_test_score: 0.7968155726776417
+  std_test_score: 0.004683854296937408
+Result 55:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005205710728963216
+  std_fit_time: 0.0073619867146909115
+  mean_score_time: 3.776517311731974
+  std_score_time: 0.03718910190571789
+  mean_test_score: 0.7650087247788399
+  std_test_score: 0.007239874274497198
+Result 56:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.010438124338785807
+  std_fit_time: 0.007380868505390944
+  mean_score_time: 3.9624794324239097
+  std_score_time: 0.13601009287739854
+  mean_test_score: 0.7879761787807764
+  std_test_score: 0.010116204005608883
+Result 57:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.01040347417195638
+  std_fit_time: 0.00735639237929711
+  mean_score_time: 3.738539695739746
+  std_score_time: 0.019838214654719702
+  mean_test_score: 0.7676378538447505
+  std_test_score: 0.024869613421549083
+Result 58:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.008219480514526367
+  std_fit_time: 0.006400709350069327
+  mean_score_time: 3.7375497023264566
+  std_score_time: 0.02550470247825182
+  mean_test_score: 0.7897304908799162
+  std_test_score: 0.018889860358421117
+Result 59:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.755452553431193
+  std_score_time: 0.02930311598822242
+  mean_test_score: 0.7588195116930749
+  std_test_score: 0.011736426203775765
+Result 60:
+  param_leaf_size: 10
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005206505457560222
+  std_fit_time: 0.007363110630651201
+  mean_score_time: 3.739562431971232
+  std_score_time: 0.023369824095242804
+  mean_test_score: 0.7817799484466151
+  std_test_score: 0.020790097669524145
+Result 61:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.010425885518391928
+  std_fit_time: 0.00737222958842128
+  mean_score_time: 3.3176965713500977
+  std_score_time: 0.014959346492407216
+  mean_test_score: 0.7005014993520741
+  std_test_score: 0.023747599141087785
+Result 62:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.006880601247151692
+  std_fit_time: 0.009730639601003156
+  mean_score_time: 3.508309523264567
+  std_score_time: 0.1654669101684479
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 63:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.01750834782918294
+  std_fit_time: 0.002663962318766901
+  mean_score_time: 3.3322118123372397
+  std_score_time: 0.012938221111576914
+  mean_test_score: 0.6828390851379357
+  std_test_score: 0.020905560595214177
+Result 64:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.01192776362101237
+  std_fit_time: 0.008635324204211661
+  mean_score_time: 3.338723659515381
+  std_score_time: 0.03448381604064115
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 65:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.010417779286702475
+  std_fit_time: 0.007366484117315238
+  mean_score_time: 3.350409507751465
+  std_score_time: 0.012686712554434461
+  mean_test_score: 0.6907826103228402
+  std_test_score: 0.024487952443375854
+Result 66:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0010967254638671875
+  std_fit_time: 0.0015510040252009003
+  mean_score_time: 3.3254615465799966
+  std_score_time: 0.01979498945029731
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 67:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.005220810572306315
+  std_fit_time: 0.0073833411179364304
+  mean_score_time: 3.3610592683156333
+  std_score_time: 0.017993005022117065
+  mean_test_score: 0.6863640829158072
+  std_test_score: 0.027571134187491377
+Result 68:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.002017498016357422
+  std_fit_time: 0.0028531730567934823
+  mean_score_time: 3.515878597895304
+  std_score_time: 0.1053694291884479
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 69:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.010416348775227865
+  std_fit_time: 0.00736547085674033
+  mean_score_time: 3.3456262747446694
+  std_score_time: 0.02035796024293594
+  mean_test_score: 0.6854892659490361
+  std_test_score: 0.018774710995184546
+Result 70:
+  param_leaf_size: 10
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005193789800008138
+  std_fit_time: 0.0073451279752865545
+  mean_score_time: 3.3223235607147217
+  std_score_time: 0.035105696973046385
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 71:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.010429064432779947
+  std_fit_time: 0.007374478217342292
+  mean_score_time: 3.428041855494181
+  std_score_time: 0.03431904017035091
+  mean_test_score: 0.8224378856562765
+  std_test_score: 0.00022163349538266043
+Result 72:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.009748458862304688
+  std_fit_time: 0.004148322258488143
+  mean_score_time: 3.3672280311584473
+  std_score_time: 0.022691799386221893
+  mean_test_score: 0.842752819764314
+  std_test_score: 0.0034555909142396594
+Result 73:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.00677188237508138
+  std_fit_time: 0.006565320244686445
+  mean_score_time: 3.438143253326416
+  std_score_time: 0.01683579595495991
+  mean_test_score: 0.8065204272100823
+  std_test_score: 0.01440400274346046
+Result 74:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005221446355183919
+  std_fit_time: 0.007384240250704664
+  mean_score_time: 3.4332403341929116
+  std_score_time: 0.07014951439270271
+  mean_test_score: 0.8418803418803419
+  std_test_score: 0.006419988479455341
+Result 75:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.007795890172322591
+  std_fit_time: 0.006770818923078725
+  mean_score_time: 3.574793259302775
+  std_score_time: 0.18016482354981614
+  mean_test_score: 0.804761436945345
+  std_test_score: 0.012063139617232375
+Result 76:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0169985294342041
+  std_fit_time: 0.0019209447800011496
+  mean_score_time: 3.3754740556081138
+  std_score_time: 0.008228285560996525
+  mean_test_score: 0.8268517348977119
+  std_test_score: 0.005110784045091968
+Result 77:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.015615065892537435
+  std_fit_time: 1.925179791196984e-05
+  mean_score_time: 3.4684413274129233
+  std_score_time: 0.012342262545282076
+  mean_test_score: 0.7897375081283128
+  std_test_score: 0.013274772377531729
+Result 78:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.01041563351949056
+  std_fit_time: 0.007364965792401767
+  mean_score_time: 3.41815447807312
+  std_score_time: 0.05863474219390463
+  mean_test_score: 0.8312609059735497
+  std_test_score: 0.009941312685528232
+Result 79:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.010439713795979818
+  std_fit_time: 0.007381993075874732
+  mean_score_time: 3.409810702006022
+  std_score_time: 0.009553924632941769
+  mean_test_score: 0.7862054931020449
+  std_test_score: 0.019548525089401858
+Result 80:
+  param_leaf_size: 20
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0052073001861572266
+  std_fit_time: 0.007364234546611492
+  mean_score_time: 3.441323200861613
+  std_score_time: 0.026762038024903338
+  mean_test_score: 0.8127166575442438
+  std_test_score: 0.008289191313462722
+Result 81:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.831775426864624
+  std_score_time: 0.18477370036126486
+  mean_test_score: 0.7959337384624741
+  std_test_score: 0.00997538711305521
+Result 82:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.655838012695312
+  std_score_time: 0.060375204584935345
+  mean_test_score: 0.8233127026230475
+  std_test_score: 0.015760180633421935
+Result 83:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.831742525100708
+  std_score_time: 0.15501915786902995
+  mean_test_score: 0.780030314513073
+  std_test_score: 0.017786245638397986
+Result 84:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.618223110834757
+  std_score_time: 0.04384686158943272
+  mean_test_score: 0.8189082097128074
+  std_test_score: 0.010166714072261746
+Result 85:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.676985422770182
+  std_score_time: 0.06313369554450837
+  mean_test_score: 0.7809051314798441
+  std_test_score: 0.014609179009624955
+Result 86:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.005223751068115234
+  std_fit_time: 0.007387499606989506
+  mean_score_time: 8.849403540293375
+  std_score_time: 0.29729053388592336
+  mean_test_score: 0.8127119793786459
+  std_test_score: 0.01205729413296878
+Result 87:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.777766386667887
+  std_score_time: 0.0804674806255027
+  mean_test_score: 0.7791438021323079
+  std_test_score: 0.010840497842483376
+Result 88:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.011969804763793945
+  std_fit_time: 0.008791529203638264
+  mean_score_time: 8.91620683670044
+  std_score_time: 0.21743733566656073
+  mean_test_score: 0.8153691774381429
+  std_test_score: 0.0014786592900901854
+Result 89:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.010429461797078451
+  std_fit_time: 0.0073747581969145345
+  mean_score_time: 8.710353215535482
+  std_score_time: 0.11584504768357252
+  mean_test_score: 0.7782619679171403
+  std_test_score: 0.016050129968347263
+Result 90:
+  param_leaf_size: 20
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.577411015828451
+  std_score_time: 0.03586788246977022
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 91:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.011064291000366211
+  std_fit_time: 0.007983713862060302
+  mean_score_time: 17.816433032353718
+  std_score_time: 1.597781620348665
+  mean_test_score: 0.8383436486884763
+  std_test_score: 0.0041523733579738875
+Result 92:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0013380845387776692
+  std_fit_time: 0.0018923373023411276
+  mean_score_time: 17.11475396156311
+  std_score_time: 1.610145876946489
+  mean_test_score: 0.8515992309095757
+  std_test_score: 0.007303981459774288
+Result 93:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0038487116495768228
+  std_fit_time: 0.00544290021249487
+  mean_score_time: 18.962459723154705
+  std_score_time: 0.3904535096626752
+  mean_test_score: 0.808291112888814
+  std_test_score: 0.01828625129325068
+Result 94:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.011442740758260092
+  std_fit_time: 0.008184138544059782
+  mean_score_time: 18.832183440526325
+  std_score_time: 0.4133579679235541
+  mean_test_score: 0.8445398790226376
+  std_test_score: 0.013708348754878632
+Result 95:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.010602553685506185
+  std_fit_time: 0.007499868053480482
+  mean_score_time: 16.90514898300171
+  std_score_time: 1.2698774608953498
+  mean_test_score: 0.8144990386369697
+  std_test_score: 0.011866592381614414
+Result 96:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.006880283355712891
+  std_fit_time: 0.00973019003461904
+  mean_score_time: 15.821024338404337
+  std_score_time: 0.8721880886522058
+  mean_test_score: 0.8365799802581412
+  std_test_score: 0.0105591166808318
+Result 97:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 18.87408669789632
+  std_score_time: 0.4936455159656256
+  mean_test_score: 0.8012317610018759
+  std_test_score: 0.003992710879505235
+Result 98:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0013297398885091145
+  std_fit_time: 0.0018805361847580773
+  mean_score_time: 15.61587651570638
+  std_score_time: 0.4655845202755546
+  mean_test_score: 0.8392301610692415
+  std_test_score: 0.006416874527182837
+Result 99:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.01540811856587728
+  std_fit_time: 0.0002868711111143697
+  mean_score_time: 15.67837087313334
+  std_score_time: 1.0295509183455924
+  mean_test_score: 0.8074209740876407
+  std_test_score: 0.00975353156460326
+Result 100:
+  param_leaf_size: 20
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005207220713297526
+  std_fit_time: 0.007364122155015463
+  mean_score_time: 18.68245569864909
+  std_score_time: 0.04013870150382634
+  mean_test_score: 0.82155371235831
+  std_test_score: 0.009782702564138147
+Result 101:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.011763811111450195
+  std_fit_time: 0.005482986485312544
+  mean_score_time: 3.639302651087443
+  std_score_time: 0.16994118340067274
+  mean_test_score: 0.7959313993796752
+  std_test_score: 0.007629533774504347
+Result 102:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.010410706202189127
+  std_fit_time: 0.007361482373951705
+  mean_score_time: 3.3825837771097818
+  std_score_time: 0.026359876530745573
+  mean_test_score: 0.8241945368382151
+  std_test_score: 0.014537012502563782
+Result 103:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010426998138427734
+  std_fit_time: 0.007373017538383331
+  mean_score_time: 3.456724007924398
+  std_score_time: 0.039154585562598744
+  mean_test_score: 0.7791461412151067
+  std_test_score: 0.0127851531262994
+Result 104:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.010426044464111328
+  std_fit_time: 0.007372345750150615
+  mean_score_time: 3.3949971993764243
+  std_score_time: 0.026489307123433184
+  mean_test_score: 0.8153738556037408
+  std_test_score: 0.008954537492908277
+Result 105:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.416224161783854
+  std_score_time: 0.022087214623750462
+  mean_test_score: 0.7800186190990789
+  std_test_score: 0.015378650968516946
+Result 106:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0052187442779541016
+  std_fit_time: 0.0073804189364396755
+  mean_score_time: 3.39007568359375
+  std_score_time: 0.020125035564560224
+  mean_test_score: 0.8135938135938137
+  std_test_score: 0.01283119939610818
+Result 107:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.005219777425130208
+  std_fit_time: 0.007381880027188053
+  mean_score_time: 3.351569890975952
+  std_score_time: 0.06979389939004975
+  mean_test_score: 0.7773731164535763
+  std_test_score: 0.012262855680293798
+Result 108:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0023086071014404297
+  std_fit_time: 0.0029263937012204947
+  mean_score_time: 3.1390326817830405
+  std_score_time: 0.08740661421608907
+  mean_test_score: 0.815369177438143
+  std_test_score: 0.0026224049689532324
+Result 109:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.010656356811523438
+  std_fit_time: 0.007577047743404707
+  mean_score_time: 3.500655730565389
+  std_score_time: 0.03473549014413746
+  mean_test_score: 0.7764959604040064
+  std_test_score: 0.01482490379643068
+Result 110:
+  param_leaf_size: 20
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005536635716756185
+  std_fit_time: 0.00782998532055588
+  mean_score_time: 3.093769152959188
+  std_score_time: 0.21938781113136235
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 111:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.004971504211425781
+  std_fit_time: 0.006727932505093378
+  mean_score_time: 3.533973534901937
+  std_score_time: 0.05533255481009817
+  mean_test_score: 0.7005412637596545
+  std_test_score: 0.013257582900162603
+Result 112:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.006375630696614583
+  std_fit_time: 0.009016503399834569
+  mean_score_time: 3.404517412185669
+  std_score_time: 0.09295101485657521
+  mean_test_score: 0.7252700471091277
+  std_test_score: 0.006747079366438259
+Result 113:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0033483505249023438
+  std_fit_time: 0.004735282723895966
+  mean_score_time: 3.3520652453104653
+  std_score_time: 0.004781350085935381
+  mean_test_score: 0.7040662615375259
+  std_test_score: 0.0048256100157100055
+Result 114:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.01115727424621582
+  std_fit_time: 0.007889384543842864
+  mean_score_time: 3.4719953536987305
+  std_score_time: 0.11002523368424948
+  mean_test_score: 0.726154220407094
+  std_test_score: 0.00799042735477738
+Result 115:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.01085368792215983
+  std_fit_time: 0.007691317340263704
+  mean_score_time: 4.099809090296428
+  std_score_time: 0.08453752574901288
+  mean_test_score: 0.6916878353659962
+  std_test_score: 0.00697082858258937
+Result 116:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.003515005111694336
+  std_fit_time: 0.0049709679007688854
+  mean_score_time: 4.1311891078948975
+  std_score_time: 0.008734601743941183
+  mean_test_score: 0.7270313764566638
+  std_test_score: 0.00434492673361
+Result 117:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.011408249537150065
+  std_fit_time: 0.00824809679684882
+  mean_score_time: 4.137008825937907
+  std_score_time: 0.023318820356650498
+  mean_test_score: 0.7005248901800627
+  std_test_score: 0.007692626348930566
+Result 118:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0052242279052734375
+  std_fit_time: 0.0073881739565656804
+  mean_score_time: 4.155682881673177
+  std_score_time: 0.043197467029066884
+  mean_test_score: 0.7279061934234349
+  std_test_score: 0.012119919545676488
+Result 119:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 4.044351259867351
+  std_score_time: 0.2094690083178343
+  mean_test_score: 0.6978817266173589
+  std_test_score: 0.012005228016994197
+Result 120:
+  param_leaf_size: 20
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.014164288838704428
+  std_fit_time: 0.005002031336638782
+  mean_score_time: 3.56107505162557
+  std_score_time: 0.13998357295338107
+  mean_test_score: 0.7252606907779322
+  std_test_score: 0.014497315909162218
+Result 121:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.008292595545450846
+  std_fit_time: 0.006866595595557085
+  mean_score_time: 3.0685160160064697
+  std_score_time: 0.015278133428825686
+  mean_test_score: 0.784453520085704
+  std_test_score: 0.006570686343769743
+Result 122:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.014264583587646484
+  std_fit_time: 0.005218376598188711
+  mean_score_time: 3.108285983403524
+  std_score_time: 0.00997939634599761
+  mean_test_score: 0.8021159342998424
+  std_test_score: 0.003537335143764381
+Result 123:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.093529462814331
+  std_score_time: 0.02850694421319653
+  mean_test_score: 0.7588101553618795
+  std_test_score: 0.01914697598929536
+Result 124:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.0033959547678629556
+  std_fit_time: 0.0026811617631725265
+  mean_score_time: 3.035345474878947
+  std_score_time: 0.01343358423970389
+  mean_test_score: 0.7968155726776417
+  std_test_score: 0.004683854296937408
+Result 125:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005131959915161133
+  std_fit_time: 0.007257687313575952
+  mean_score_time: 3.0490527947743735
+  std_score_time: 0.02523925067371937
+  mean_test_score: 0.7650087247788399
+  std_test_score: 0.007239874274497198
+Result 126:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0030576388041178384
+  std_fit_time: 0.00029638931820702923
+  mean_score_time: 3.1254216035207114
+  std_score_time: 0.12353047783582842
+  mean_test_score: 0.7879761787807764
+  std_test_score: 0.010116204005608883
+Result 127:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0035021305084228516
+  std_fit_time: 0.00495276046221218
+  mean_score_time: 3.207228740056356
+  std_score_time: 0.010562072409987503
+  mean_test_score: 0.7676378538447505
+  std_test_score: 0.024869613421549083
+Result 128:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.008984883626302084
+  std_fit_time: 0.006684919630099771
+  mean_score_time: 5.240738391876221
+  std_score_time: 1.1991291971319773
+  mean_test_score: 0.7897304908799162
+  std_test_score: 0.018889860358421117
+Result 129:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.015054861704508463
+  std_fit_time: 0.004975333374091697
+  mean_score_time: 4.076691150665283
+  std_score_time: 0.22610436844028264
+  mean_test_score: 0.7588195116930749
+  std_test_score: 0.011736426203775765
+Result 130:
+  param_leaf_size: 20
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0026595592498779297
+  std_fit_time: 0.0037611847611121836
+  mean_score_time: 3.6207427978515625
+  std_score_time: 0.08164239773660106
+  mean_test_score: 0.7817799484466151
+  std_test_score: 0.020790097669524145
+Result 131:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.005330324172973633
+  std_fit_time: 0.007538216737264463
+  mean_score_time: 3.39969801902771
+  std_score_time: 0.08217336105934536
+  mean_test_score: 0.7005014993520741
+  std_test_score: 0.023747599141087785
+Result 132:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005861918131510417
+  std_fit_time: 0.008290004123102783
+  mean_score_time: 3.442064046859741
+  std_score_time: 0.23381698178770347
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 133:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010259628295898438
+  std_fit_time: 0.004633793521586598
+  mean_score_time: 3.523194154103597
+  std_score_time: 0.07906881965464453
+  mean_test_score: 0.6828390851379357
+  std_test_score: 0.020905560595214177
+Result 134:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.008702993392944336
+  std_fit_time: 0.0023809603410467547
+  mean_score_time: 3.6844757397969565
+  std_score_time: 0.1587297669259505
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 135:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.012223243713378906
+  std_fit_time: 0.003190458886367728
+  mean_score_time: 3.5345369974772134
+  std_score_time: 0.10942402033599474
+  mean_test_score: 0.6907826103228402
+  std_test_score: 0.024487952443375854
+Result 136:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.005740642547607422
+  std_fit_time: 0.0041510592379264775
+  mean_score_time: 3.1240262190500894
+  std_score_time: 0.0702471239131099
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 137:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.007549842198689778
+  std_fit_time: 0.0063901135395158844
+  mean_score_time: 3.3488712310791016
+  std_score_time: 0.09038447119509736
+  mean_test_score: 0.6863640829158072
+  std_test_score: 0.027571134187491377
+Result 138:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.006260315577189128
+  std_fit_time: 0.0044398830517695205
+  mean_score_time: 3.635507583618164
+  std_score_time: 0.09308922746266053
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 139:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.01070245107014974
+  std_fit_time: 0.0034772396882850956
+  mean_score_time: 3.5766138235727944
+  std_score_time: 0.046578179811351324
+  mean_test_score: 0.6854892659490361
+  std_test_score: 0.018774710995184546
+Result 140:
+  param_leaf_size: 20
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.004848321278889974
+  std_fit_time: 0.0034364167404285495
+  mean_score_time: 3.3999218146006265
+  std_score_time: 0.13426953417374976
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 141:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.0447239875793457
+  std_score_time: 0.055041058282064535
+  mean_test_score: 0.8224378856562765
+  std_test_score: 0.00022163349538266043
+Result 142:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005258480707804362
+  std_fit_time: 0.0074366147344542
+  mean_score_time: 2.9462033112843833
+  std_score_time: 0.06620141838770148
+  mean_test_score: 0.842752819764314
+  std_test_score: 0.0034555909142396594
+Result 143:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.002348740895589193
+  std_fit_time: 0.0033216212290425656
+  mean_score_time: 2.9797183672587075
+  std_score_time: 0.04405282792577454
+  mean_test_score: 0.8065204272100823
+  std_test_score: 0.01440400274346046
+Result 144:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005231459935506185
+  std_fit_time: 0.007398401591804324
+  mean_score_time: 2.949563503265381
+  std_score_time: 0.015809907587881027
+  mean_test_score: 0.8418803418803419
+  std_test_score: 0.006419988479455341
+Result 145:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.010464827219645182
+  std_fit_time: 0.007400325574132804
+  mean_score_time: 3.034813165664673
+  std_score_time: 0.17729840065598715
+  mean_test_score: 0.804761436945345
+  std_test_score: 0.012063139617232375
+Result 146:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.005208253860473633
+  std_fit_time: 0.007365583245763841
+  mean_score_time: 3.178706248601278
+  std_score_time: 0.14070939335090574
+  mean_test_score: 0.8268517348977119
+  std_test_score: 0.005110784045091968
+Result 147:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.005219856897989909
+  std_fit_time: 0.007381992418784082
+  mean_score_time: 3.0004711945851645
+  std_score_time: 0.06381255640738415
+  mean_test_score: 0.7897375081283128
+  std_test_score: 0.013274772377531729
+Result 148:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 2.9386959870656333
+  std_score_time: 0.029407321028233572
+  mean_test_score: 0.8312609059735497
+  std_test_score: 0.009941312685528232
+Result 149:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005209445953369141
+  std_fit_time: 0.007367269119704277
+  mean_score_time: 2.9724062283833823
+  std_score_time: 0.06669848600753515
+  mean_test_score: 0.7862054931020449
+  std_test_score: 0.019548525089401858
+Result 150:
+  param_leaf_size: 30
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.010414918263753256
+  std_fit_time: 0.007364459455874245
+  mean_score_time: 2.9166595141092935
+  std_score_time: 0.028256044103200356
+  mean_test_score: 0.8127166575442438
+  std_test_score: 0.008289191313462722
+Result 151:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0038345654805501304
+  std_fit_time: 0.002717126834412755
+  mean_score_time: 7.515087366104126
+  std_score_time: 0.6163111446271308
+  mean_test_score: 0.7959337384624741
+  std_test_score: 0.00997538711305521
+Result 152:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.010416746139526367
+  std_fit_time: 0.007365751910973585
+  mean_score_time: 7.765612522761027
+  std_score_time: 0.312314884743974
+  mean_test_score: 0.8233127026230475
+  std_test_score: 0.015760180633421935
+Result 153:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010212341944376627
+  std_fit_time: 0.00722563906322915
+  mean_score_time: 8.091543753941854
+  std_score_time: 0.6661855669991039
+  mean_test_score: 0.780030314513073
+  std_test_score: 0.017786245638397986
+Result 154:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005956252415974935
+  std_fit_time: 0.0042479007319763925
+  mean_score_time: 9.3163853486379
+  std_score_time: 0.4894136441644331
+  mean_test_score: 0.8189082097128074
+  std_test_score: 0.010166714072261746
+Result 155:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.015630006790161133
+  std_fit_time: 2.4377060954325216e-05
+  mean_score_time: 8.702266772588095
+  std_score_time: 0.10226280776597838
+  mean_test_score: 0.7809051314798441
+  std_test_score: 0.014609179009624955
+Result 156:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.01042922337849935
+  std_fit_time: 0.007374592702703046
+  mean_score_time: 9.379688262939453
+  std_score_time: 0.8079635901562354
+  mean_test_score: 0.8127119793786459
+  std_test_score: 0.01205729413296878
+Result 157:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.01041412353515625
+  std_fit_time: 0.0073638973743964725
+  mean_score_time: 8.962961832682291
+  std_score_time: 0.39215710909416596
+  mean_test_score: 0.7791438021323079
+  std_test_score: 0.010840497842483376
+Result 158:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0052225589752197266
+  std_fit_time: 0.00738581373304907
+  mean_score_time: 8.657900969187418
+  std_score_time: 0.025746078632610137
+  mean_test_score: 0.8153691774381429
+  std_test_score: 0.0014786592900901854
+Result 159:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0053637027740478516
+  std_fit_time: 0.007585421207596664
+  mean_score_time: 8.87308152516683
+  std_score_time: 0.39432555628523847
+  mean_test_score: 0.7782619679171403
+  std_test_score: 0.016050129968347263
+Result 160:
+  param_leaf_size: 30
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.010417540868123373
+  std_fit_time: 0.007366375190502883
+  mean_score_time: 8.659401337305704
+  std_score_time: 0.030226919188756435
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 161:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.006344238917032878
+  std_fit_time: 0.007514233210562707
+  mean_score_time: 19.19932476679484
+  std_score_time: 1.0802980766491768
+  mean_test_score: 0.8383436486884763
+  std_test_score: 0.0041523733579738875
+Result 162:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005209207534790039
+  std_fit_time: 0.00736693194491619
+  mean_score_time: 22.06995987892151
+  std_score_time: 3.027292119690508
+  mean_test_score: 0.8515992309095757
+  std_test_score: 0.007303981459774288
+Result 163:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010441939036051432
+  std_fit_time: 0.00738356606536615
+  mean_score_time: 19.918545643488567
+  std_score_time: 0.1843398979495617
+  mean_test_score: 0.808291112888814
+  std_test_score: 0.01828625129325068
+Result 164:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.004986127217610677
+  std_fit_time: 0.007051448734862645
+  mean_score_time: 19.80956792831421
+  std_score_time: 1.2080468202902157
+  mean_test_score: 0.8445398790226376
+  std_test_score: 0.013708348754878632
+Result 165:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.010007301966349283
+  std_fit_time: 0.007093181329492951
+  mean_score_time: 19.210355679194134
+  std_score_time: 0.9584001430828917
+  mean_test_score: 0.8144990386369697
+  std_test_score: 0.011866592381614414
+Result 166:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 19.572004000345867
+  std_score_time: 0.8729352244381468
+  mean_test_score: 0.8365799802581412
+  std_test_score: 0.0105591166808318
+Result 167:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.008507013320922852
+  std_fit_time: 0.005791496980133328
+  mean_score_time: 19.59731364250183
+  std_score_time: 0.9055278895908236
+  mean_test_score: 0.8012317610018759
+  std_test_score: 0.003992710879505235
+Result 168:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.010646820068359375
+  std_fit_time: 0.007532717112036027
+  mean_score_time: 20.52402353286743
+  std_score_time: 0.3818868345411548
+  mean_test_score: 0.8392301610692415
+  std_test_score: 0.006416874527182837
+Result 169:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.008254607518513998
+  std_fit_time: 0.007296302146219464
+  mean_score_time: 20.205079158147175
+  std_score_time: 0.7388810549716656
+  mean_test_score: 0.8074209740876407
+  std_test_score: 0.00975353156460326
+Result 170:
+  param_leaf_size: 30
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.012029012044270834
+  std_fit_time: 0.004316111050419153
+  mean_score_time: 18.394638140996296
+  std_score_time: 5.127635975593832
+  mean_test_score: 0.82155371235831
+  std_test_score: 0.009782702564138147
+Result 171:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0018702348073323567
+  std_fit_time: 0.0021182939474779657
+  mean_score_time: 2.3493029276529946
+  std_score_time: 0.0012387968791429795
+  mean_test_score: 0.7959313993796752
+  std_test_score: 0.007629533774504347
+Result 172:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0016979376475016277
+  std_fit_time: 0.0024012464491606693
+  mean_score_time: 2.3442276318868003
+  std_score_time: 0.034532599904496745
+  mean_test_score: 0.8241945368382151
+  std_test_score: 0.014537012502563782
+Result 173:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0026307900746663413
+  std_fit_time: 0.002058059136493033
+  mean_score_time: 2.344751993815104
+  std_score_time: 0.012736485662305399
+  mean_test_score: 0.7791461412151067
+  std_test_score: 0.0127851531262994
+Result 174:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005745251973470052
+  std_fit_time: 0.008125013260132137
+  mean_score_time: 2.6461501121520996
+  std_score_time: 0.09696352337151896
+  mean_test_score: 0.8153738556037408
+  std_test_score: 0.008954537492908277
+Result 175:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.0037062962849934897
+  std_fit_time: 0.002623128241418376
+  mean_score_time: 2.381298224131266
+  std_score_time: 0.027343973296379567
+  mean_test_score: 0.7800186190990789
+  std_test_score: 0.015378650968516946
+Result 176:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.01776011784871419
+  std_fit_time: 0.0015617706926628417
+  mean_score_time: 2.3376657168070474
+  std_score_time: 0.03542591495974091
+  mean_test_score: 0.8135938135938137
+  std_test_score: 0.01283119939610818
+Result 177:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 2.6333762804667153
+  std_score_time: 0.2374871480468444
+  mean_test_score: 0.7773731164535763
+  std_test_score: 0.012262855680293798
+Result 178:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005464871724446614
+  std_fit_time: 0.007216956676398454
+  mean_score_time: 3.3732887903849282
+  std_score_time: 0.08515974753488492
+  mean_test_score: 0.815369177438143
+  std_test_score: 0.0026224049689532324
+Result 179:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005300362904866536
+  std_fit_time: 0.007495845105561511
+  mean_score_time: 3.4114700158437095
+  std_score_time: 0.009369788813396927
+  mean_test_score: 0.7764959604040064
+  std_test_score: 0.01482490379643068
+Result 180:
+  param_leaf_size: 30
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005065361658732097
+  std_fit_time: 0.007163503156103607
+  mean_score_time: 3.483487288157145
+  std_score_time: 0.06022591355295763
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 181:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 4.3545262813568115
+  std_score_time: 0.13402009819314445
+  mean_test_score: 0.7005412637596545
+  std_test_score: 0.013257582900162603
+Result 182:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.010436137517293295
+  std_fit_time: 0.007379470155994554
+  mean_score_time: 4.156792004903157
+  std_score_time: 0.01970587389199178
+  mean_test_score: 0.7252700471091277
+  std_test_score: 0.006747079366438259
+Result 183:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.005209525426228841
+  std_fit_time: 0.007367381511300306
+  mean_score_time: 4.205917119979858
+  std_score_time: 0.04093817951280007
+  mean_test_score: 0.7040662615375259
+  std_test_score: 0.0048256100157100055
+Result 184:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.012546618779500326
+  std_fit_time: 0.009247975023339412
+  mean_score_time: 4.11350949605306
+  std_score_time: 0.012587634075925357
+  mean_test_score: 0.726154220407094
+  std_test_score: 0.00799042735477738
+Result 185:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.013135671615600586
+  std_fit_time: 0.009877794794765603
+  mean_score_time: 4.14739974339803
+  std_score_time: 0.0022171835234370625
+  mean_test_score: 0.6916878353659962
+  std_test_score: 0.00697082858258937
+Result 186:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.00516963005065918
+  std_fit_time: 0.0073109609300937226
+  mean_score_time: 4.317203998565674
+  std_score_time: 0.17964847549391721
+  mean_test_score: 0.7270313764566638
+  std_test_score: 0.00434492673361
+Result 187:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0052080949147542315
+  std_fit_time: 0.007365358462571784
+  mean_score_time: 4.1925943692525225
+  std_score_time: 0.0873291321263764
+  mean_test_score: 0.7005248901800627
+  std_test_score: 0.007692626348930566
+Result 188:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005201657613118489
+  std_fit_time: 0.007356254743293431
+  mean_score_time: 4.12354040145874
+  std_score_time: 0.008348559814786874
+  mean_test_score: 0.7279061934234349
+  std_test_score: 0.012119919545676488
+Result 189:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.015178839365641275
+  std_fit_time: 0.0005735180381168787
+  mean_score_time: 3.7517006397247314
+  std_score_time: 0.3189677083310882
+  mean_test_score: 0.6978817266173589
+  std_test_score: 0.012005228016994197
+Result 190:
+  param_leaf_size: 30
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.007035255432128906
+  std_fit_time: 0.009165469847817196
+  mean_score_time: 3.545984427134196
+  std_score_time: 0.21703876840064104
+  mean_test_score: 0.7252606907779322
+  std_test_score: 0.014497315909162218
+Result 191:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0008052190144856771
+  std_fit_time: 0.0011387516509663422
+  mean_score_time: 3.192986249923706
+  std_score_time: 0.07931807434437554
+  mean_test_score: 0.784453520085704
+  std_test_score: 0.006570686343769743
+Result 192:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.127673864364624
+  std_score_time: 0.11257873281697957
+  mean_test_score: 0.8021159342998424
+  std_test_score: 0.003537335143764381
+Result 193:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.011000871658325195
+  std_fit_time: 0.007781297525115096
+  mean_score_time: 3.377740462621053
+  std_score_time: 0.2783092349886275
+  mean_test_score: 0.7588101553618795
+  std_test_score: 0.01914697598929536
+Result 194:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.008882919947306315
+  std_fit_time: 0.008681642714501853
+  mean_score_time: 3.154246171315511
+  std_score_time: 0.10559747070132243
+  mean_test_score: 0.7968155726776417
+  std_test_score: 0.004683854296937408
+Result 195:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005028247833251953
+  std_fit_time: 0.0019020386433242803
+  mean_score_time: 3.047017256418864
+  std_score_time: 0.031916579854049075
+  mean_test_score: 0.7650087247788399
+  std_test_score: 0.007239874274497198
+Result 196:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.0498344898223877
+  std_score_time: 0.002117503493322307
+  mean_test_score: 0.7879761787807764
+  std_test_score: 0.010116204005608883
+Result 197:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.010817925135294596
+  std_fit_time: 0.007665486638496487
+  mean_score_time: 3.734200636545817
+  std_score_time: 0.07417460335861052
+  mean_test_score: 0.7676378538447505
+  std_test_score: 0.024869613421549083
+Result 198:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.01041873296101888
+  std_fit_time: 0.007367156892711721
+  mean_score_time: 3.745258649190267
+  std_score_time: 0.02039351753292277
+  mean_test_score: 0.7897304908799162
+  std_test_score: 0.018889860358421117
+Result 199:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005282163619995117
+  std_fit_time: 0.007470107430070858
+  mean_score_time: 3.9884308179219565
+  std_score_time: 0.1600877510322279
+  mean_test_score: 0.7588195116930749
+  std_test_score: 0.011736426203775765
+Result 200:
+  param_leaf_size: 30
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.008230765660603842
+  std_fit_time: 0.006406083983705034
+  mean_score_time: 3.774890899658203
+  std_score_time: 0.012891239125052963
+  mean_test_score: 0.7817799484466151
+  std_test_score: 0.020790097669524145
+Result 201:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0064690907796223955
+  std_fit_time: 0.006661594472914205
+  mean_score_time: 3.3366329669952393
+  std_score_time: 0.019766382961119648
+  mean_test_score: 0.7005014993520741
+  std_test_score: 0.023747599141087785
+Result 202:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.010737975438435873
+  std_fit_time: 0.007603106195756805
+  mean_score_time: 3.12209423383077
+  std_score_time: 0.25765573081090637
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 203:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0007526874542236328
+  std_fit_time: 0.0010644608059911396
+  mean_score_time: 2.765575091044108
+  std_score_time: 0.026464926950663503
+  mean_test_score: 0.6828390851379357
+  std_test_score: 0.020905560595214177
+Result 204:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005400260289510091
+  std_fit_time: 0.007260440809161274
+  mean_score_time: 2.683548370997111
+  std_score_time: 0.014210629522927858
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 205:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.009189367294311523
+  std_fit_time: 0.005329135546703618
+  mean_score_time: 2.7458383242289224
+  std_score_time: 0.03452838099527921
+  mean_test_score: 0.6907826103228402
+  std_test_score: 0.024487952443375854
+Result 206:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.015479564666748047
+  std_fit_time: 0.0032523313144024128
+  mean_score_time: 2.88438614209493
+  std_score_time: 0.038619970874745745
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 207:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.005855242411295573
+  std_fit_time: 0.006955424130825416
+  mean_score_time: 2.7711180051167807
+  std_score_time: 0.030154834507154754
+  mean_test_score: 0.6863640829158072
+  std_test_score: 0.027571134187491377
+Result 208:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.003936449686686198
+  std_fit_time: 0.0027849681017114046
+  mean_score_time: 2.743156830469767
+  std_score_time: 0.031390342020968236
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 209:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.011353333791097006
+  std_fit_time: 0.007292777429295087
+  mean_score_time: 2.734135468800863
+  std_score_time: 0.04797873521936422
+  mean_test_score: 0.6854892659490361
+  std_test_score: 0.018774710995184546
+Result 210:
+  param_leaf_size: 30
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.01248606046040853
+  std_fit_time: 0.005121682242833751
+  mean_score_time: 2.6992194652557373
+  std_score_time: 0.02465026218615808
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 211:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.005339701970418294
+  std_fit_time: 0.006897750352834558
+  mean_score_time: 2.9277919928232827
+  std_score_time: 0.056670935315704635
+  mean_test_score: 0.8224378856562765
+  std_test_score: 0.00022163349538266043
+Result 212:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005193551381429036
+  std_fit_time: 0.007344790800498467
+  mean_score_time: 3.2384070555369058
+  std_score_time: 0.20670530062938405
+  mean_test_score: 0.842752819764314
+  std_test_score: 0.0034555909142396594
+Result 213:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0061266422271728516
+  std_fit_time: 0.008664380529475551
+  mean_score_time: 3.6212848822275796
+  std_score_time: 0.10205690481342493
+  mean_test_score: 0.8065204272100823
+  std_test_score: 0.01440400274346046
+Result 214:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.010507822036743164
+  std_fit_time: 0.007431011509271916
+  mean_score_time: 3.4286890824635825
+  std_score_time: 0.009711224438903647
+  mean_test_score: 0.8418803418803419
+  std_test_score: 0.006419988479455341
+Result 215:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.01807228724161784
+  std_fit_time: 0.0018139392154825384
+  mean_score_time: 3.429989814758301
+  std_score_time: 0.03620871149383611
+  mean_test_score: 0.804761436945345
+  std_test_score: 0.012063139617232375
+Result 216:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.424208720525106
+  std_score_time: 0.030891329781889246
+  mean_test_score: 0.8268517348977119
+  std_test_score: 0.005110784045091968
+Result 217:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.006957689921061198
+  std_fit_time: 0.009839659449151335
+  mean_score_time: 3.4257503350575766
+  std_score_time: 0.007740857777241353
+  mean_test_score: 0.7897375081283128
+  std_test_score: 0.013274772377531729
+Result 218:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.010716517766316732
+  std_fit_time: 0.007588320781564362
+  mean_score_time: 3.4046403566996255
+  std_score_time: 0.02766650903622318
+  mean_test_score: 0.8312609059735497
+  std_test_score: 0.009941312685528232
+Result 219:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005207220713297526
+  std_fit_time: 0.007364122155015463
+  mean_score_time: 3.488905588785807
+  std_score_time: 0.11136050679166438
+  mean_test_score: 0.7862054931020449
+  std_test_score: 0.019548525089401858
+Result 220:
+  param_leaf_size: 40
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.002589702606201172
+  std_fit_time: 0.002457239946826136
+  mean_score_time: 3.5200483004252114
+  std_score_time: 0.15987308906063488
+  mean_test_score: 0.8127166575442438
+  std_test_score: 0.008289191313462722
+Result 221:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.683402935663858
+  std_score_time: 0.03825996265809824
+  mean_test_score: 0.7959337384624741
+  std_test_score: 0.00997538711305521
+Result 222:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005432446797688802
+  std_fit_time: 0.007214919895841936
+  mean_score_time: 8.415181239446005
+  std_score_time: 0.3178396025802407
+  mean_test_score: 0.8233127026230475
+  std_test_score: 0.015760180633421935
+Result 223:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 7.294094721476237
+  std_score_time: 0.2517581735635155
+  mean_test_score: 0.780030314513073
+  std_test_score: 0.017786245638397986
+Result 224:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.008464654286702475
+  std_fit_time: 0.006612138195105564
+  mean_score_time: 6.941224575042725
+  std_score_time: 0.08199138381875538
+  mean_test_score: 0.8189082097128074
+  std_test_score: 0.010166714072261746
+Result 225:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.0075867970784505205
+  std_fit_time: 0.006917515010772248
+  mean_score_time: 6.9394707679748535
+  std_score_time: 0.02036270174238979
+  mean_test_score: 0.7809051314798441
+  std_test_score: 0.014609179009624955
+Result 226:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0016701221466064453
+  std_fit_time: 0.0023619093905505014
+  mean_score_time: 8.25613808631897
+  std_score_time: 0.6597621241203647
+  mean_test_score: 0.8127119793786459
+  std_test_score: 0.01205729413296878
+Result 227:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 8.716347535451254
+  std_score_time: 0.1089605587046137
+  mean_test_score: 0.7791438021323079
+  std_test_score: 0.010840497842483376
+Result 228:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005204598108927409
+  std_fit_time: 0.007360413232346504
+  mean_score_time: 8.56209143002828
+  std_score_time: 0.15430861430345955
+  mean_test_score: 0.8153691774381429
+  std_test_score: 0.0014786592900901854
+Result 229:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.010627985000610352
+  std_fit_time: 0.007549715881721942
+  mean_score_time: 7.0444865226745605
+  std_score_time: 0.18302835499311768
+  mean_test_score: 0.7782619679171403
+  std_test_score: 0.016050129968347263
+Result 230:
+  param_leaf_size: 40
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0006913344065348307
+  std_fit_time: 0.0009776944938567126
+  mean_score_time: 7.054291486740112
+  std_score_time: 0.10237402315333308
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 231:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 16.59917116165161
+  std_score_time: 1.5628433244252025
+  mean_test_score: 0.8383436486884763
+  std_test_score: 0.0041523733579738875
+Result 232:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.016777992248535156
+  std_fit_time: 0.0019395370118019414
+  mean_score_time: 18.85987623532613
+  std_score_time: 0.3008766655497271
+  mean_test_score: 0.8515992309095757
+  std_test_score: 0.007303981459774288
+Result 233:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010429620742797852
+  std_fit_time: 0.007374875675373192
+  mean_score_time: 18.938586155573528
+  std_score_time: 0.2697767939805105
+  mean_test_score: 0.808291112888814
+  std_test_score: 0.01828625129325068
+Result 234:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.010795275370279947
+  std_fit_time: 0.007645275580400178
+  mean_score_time: 15.649852832158407
+  std_score_time: 0.5098127625424084
+  mean_test_score: 0.8445398790226376
+  std_test_score: 0.013708348754878632
+Result 235:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005575259526570638
+  std_fit_time: 0.007884607636225997
+  mean_score_time: 16.07686384518941
+  std_score_time: 0.4039837618277629
+  mean_test_score: 0.8144990386369697
+  std_test_score: 0.011866592381614414
+Result 236:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 18.27187991142273
+  std_score_time: 1.1414997250424272
+  mean_test_score: 0.8365799802581412
+  std_test_score: 0.0105591166808318
+Result 237:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.011635224024454752
+  std_fit_time: 0.008391074525757483
+  mean_score_time: 15.365886608759562
+  std_score_time: 0.5212247458888549
+  mean_test_score: 0.8012317610018759
+  std_test_score: 0.003992710879505235
+Result 238:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.001913309097290039
+  std_fit_time: 0.0027058276743993966
+  mean_score_time: 16.482082843780518
+  std_score_time: 1.6857387244546813
+  mean_test_score: 0.8392301610692415
+  std_test_score: 0.006416874527182837
+Result 239:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005757808685302734
+  std_fit_time: 0.007611642101821356
+  mean_score_time: 18.29839277267456
+  std_score_time: 0.9770979318726027
+  mean_test_score: 0.8074209740876407
+  std_test_score: 0.00975353156460326
+Result 240:
+  param_leaf_size: 40
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 18.837788979212444
+  std_score_time: 0.40832547621178994
+  mean_test_score: 0.82155371235831
+  std_test_score: 0.009782702564138147
+Result 241:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.005190451939900716
+  std_fit_time: 0.007340407528253334
+  mean_score_time: 3.1676058769226074
+  std_score_time: 0.20604110296017042
+  mean_test_score: 0.7959313993796752
+  std_test_score: 0.007629533774504347
+Result 242:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.012684504191080729
+  std_fit_time: 0.004148469561947581
+  mean_score_time: 2.813780943552653
+  std_score_time: 0.037784682524938516
+  mean_test_score: 0.8241945368382151
+  std_test_score: 0.014537012502563782
+Result 243:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.007563988367716472
+  std_fit_time: 0.006912716237792393
+  mean_score_time: 2.997528314590454
+  std_score_time: 0.13941510153085904
+  mean_test_score: 0.7791461412151067
+  std_test_score: 0.0127851531262994
+Result 244:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.006381829579671224
+  std_fit_time: 0.009025269944324834
+  mean_score_time: 2.899996201197306
+  std_score_time: 0.07249608692317576
+  mean_test_score: 0.8153738556037408
+  std_test_score: 0.008954537492908277
+Result 245:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005550940831502278
+  std_fit_time: 0.007850215807841109
+  mean_score_time: 2.971120834350586
+  std_score_time: 0.11480193438947589
+  mean_test_score: 0.7800186190990789
+  std_test_score: 0.015378650968516946
+Result 246:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.01114034652709961
+  std_fit_time: 0.007877671769748159
+  mean_score_time: 2.8331414063771567
+  std_score_time: 0.023549759304735216
+  mean_test_score: 0.8135938135938137
+  std_test_score: 0.01283119939610818
+Result 247:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.00480961799621582
+  std_fit_time: 0.0068018270000821225
+  mean_score_time: 2.8949225743611655
+  std_score_time: 0.06330723090533763
+  mean_test_score: 0.7773731164535763
+  std_test_score: 0.012262855680293798
+Result 248:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005913178126017253
+  std_fit_time: 0.0038886628766404766
+  mean_score_time: 2.9467384815216064
+  std_score_time: 0.013779944575884877
+  mean_test_score: 0.815369177438143
+  std_test_score: 0.0026224049689532324
+Result 249:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0013251304626464844
+  std_fit_time: 0.0018740174721883923
+  mean_score_time: 3.074122985204061
+  std_score_time: 0.19063874175417828
+  mean_test_score: 0.7764959604040064
+  std_test_score: 0.01482490379643068
+Result 250:
+  param_leaf_size: 40
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0035996437072753906
+  std_fit_time: 0.005090664950539825
+  mean_score_time: 3.499381144841512
+  std_score_time: 0.10664012437580139
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 251:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.0019372304280598958
+  std_fit_time: 0.0027396575448041414
+  mean_score_time: 4.231002330780029
+  std_score_time: 0.10179660828070063
+  mean_test_score: 0.7005412637596545
+  std_test_score: 0.013257582900162603
+Result 252:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.010228315989176432
+  std_fit_time: 0.007237564285612098
+  mean_score_time: 4.164300441741943
+  std_score_time: 0.03372456666969253
+  mean_test_score: 0.7252700471091277
+  std_test_score: 0.006747079366438259
+Result 253:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.011621634165445963
+  std_fit_time: 0.005603366371342506
+  mean_score_time: 4.149367173512776
+  std_score_time: 0.013879048146865568
+  mean_test_score: 0.7040662615375259
+  std_test_score: 0.0048256100157100055
+Result 254:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.01215378443400065
+  std_fit_time: 0.008858385681434862
+  mean_score_time: 4.0205174287160235
+  std_score_time: 0.18428555955030365
+  mean_test_score: 0.726154220407094
+  std_test_score: 0.00799042735477738
+Result 255:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.011143128077189127
+  std_fit_time: 0.007879381802750125
+  mean_score_time: 3.4387170473734536
+  std_score_time: 0.00786930773567534
+  mean_test_score: 0.6916878353659962
+  std_test_score: 0.00697082858258937
+Result 256:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.002019802729288737
+  std_fit_time: 0.002856432413078325
+  mean_score_time: 3.7034363746643066
+  std_score_time: 0.1406817534575118
+  mean_test_score: 0.7270313764566638
+  std_test_score: 0.00434492673361
+Result 257:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.002595186233520508
+  std_fit_time: 0.002531694426371987
+  mean_score_time: 3.420910914738973
+  std_score_time: 0.09490014118671358
+  mean_test_score: 0.7005248901800627
+  std_test_score: 0.007692626348930566
+Result 258:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.005313555399576823
+  std_fit_time: 0.004049703046312302
+  mean_score_time: 3.3438122272491455
+  std_score_time: 0.01978830915096241
+  mean_test_score: 0.7279061934234349
+  std_test_score: 0.012119919545676488
+Result 259:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.013387521107991537
+  std_fit_time: 0.008269058682550444
+  mean_score_time: 3.3643592993418374
+  std_score_time: 0.02634509939285121
+  mean_test_score: 0.6978817266173589
+  std_test_score: 0.012005228016994197
+Result 260:
+  param_leaf_size: 40
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.007326046625773112
+  std_fit_time: 0.006598144416443595
+  mean_score_time: 3.352360963821411
+  std_score_time: 0.032883898702083574
+  mean_test_score: 0.7252606907779322
+  std_test_score: 0.014497315909162218
+Result 261:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.012108564376831055
+  std_fit_time: 0.00863932244897826
+  mean_score_time: 3.0488481521606445
+  std_score_time: 0.012455633034646448
+  mean_test_score: 0.784453520085704
+  std_test_score: 0.006570686343769743
+Result 262:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.149451812108358
+  std_score_time: 0.09584721561909199
+  mean_test_score: 0.8021159342998424
+  std_test_score: 0.003537335143764381
+Result 263:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.010412295659383139
+  std_fit_time: 0.007362605569109688
+  mean_score_time: 3.895737330118815
+  std_score_time: 0.09574076699135468
+  mean_test_score: 0.7588101553618795
+  std_test_score: 0.01914697598929536
+Result 264:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.017446041107177734
+  std_fit_time: 0.0025810730688766706
+  mean_score_time: 3.759483814239502
+  std_score_time: 0.016364554120108076
+  mean_test_score: 0.7968155726776417
+  std_test_score: 0.004683854296937408
+Result 265:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.014085133870442709
+  std_fit_time: 0.002176866395960785
+  mean_score_time: 3.7861239115397134
+  std_score_time: 0.013398502436020289
+  mean_test_score: 0.7650087247788399
+  std_test_score: 0.007239874274497198
+Result 266:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.005206902821858724
+  std_fit_time: 0.007363672588631348
+  mean_score_time: 3.734454949696859
+  std_score_time: 0.015327022220613022
+  mean_test_score: 0.7879761787807764
+  std_test_score: 0.010116204005608883
+Result 267:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.010460138320922852
+  std_fit_time: 0.007401515176002912
+  mean_score_time: 3.810543696085612
+  std_score_time: 0.04114144877119016
+  mean_test_score: 0.7676378538447505
+  std_test_score: 0.024869613421549083
+Result 268:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0029752254486083984
+  std_fit_time: 0.0030608210303890914
+  mean_score_time: 3.880683978398641
+  std_score_time: 0.16918862636592785
+  mean_test_score: 0.7897304908799162
+  std_test_score: 0.018889860358421117
+Result 269:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0002040863037109375
+  std_fit_time: 0.00028862161860260233
+  mean_score_time: 3.842429002126058
+  std_score_time: 0.06013067481136253
+  mean_test_score: 0.7588195116930749
+  std_test_score: 0.011736426203775765
+Result 270:
+  param_leaf_size: 40
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005208492279052734
+  std_fit_time: 0.007365920420551928
+  mean_score_time: 3.787860870361328
+  std_score_time: 0.03473963329132646
+  mean_test_score: 0.7817799484466151
+  std_test_score: 0.020790097669524145
+Result 271:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.005208730697631836
+  std_fit_time: 0.007366257595340015
+  mean_score_time: 3.3570635318756104
+  std_score_time: 0.026471286876039155
+  mean_test_score: 0.7005014993520741
+  std_test_score: 0.023747599141087785
+Result 272:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005194505055745442
+  std_fit_time: 0.007346139499650816
+  mean_score_time: 3.3322552839914956
+  std_score_time: 0.012884938860265377
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 273:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.005195061365763347
+  std_fit_time: 0.007346926240823019
+  mean_score_time: 3.395843505859375
+  std_score_time: 0.029495066576386394
+  mean_test_score: 0.6828390851379357
+  std_test_score: 0.020905560595214177
+Result 274:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.005414883295694987
+  std_fit_time: 0.007250504244729694
+  mean_score_time: 3.3881074587504068
+  std_score_time: 0.08039331024463822
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 275:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005209922790527344
+  std_fit_time: 0.007367943469280451
+  mean_score_time: 3.3173439502716064
+  std_score_time: 0.294421966332283
+  mean_test_score: 0.6907826103228402
+  std_test_score: 0.024487952443375854
+Result 276:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.004772186279296875
+  std_fit_time: 0.006748890558352439
+  mean_score_time: 2.8109544118245444
+  std_score_time: 0.07491847236721139
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 277:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.008945465087890625
+  std_fit_time: 0.006898680583788041
+  mean_score_time: 2.724283218383789
+  std_score_time: 0.006827806994606396
+  mean_test_score: 0.6863640829158072
+  std_test_score: 0.027571134187491377
+Result 278:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 2.733154296875
+  std_score_time: 0.027192953664823615
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 279:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.01471400260925293
+  std_fit_time: 0.00552108845970123
+  mean_score_time: 2.934835513432821
+  std_score_time: 0.1311726185582513
+  mean_test_score: 0.6854892659490361
+  std_test_score: 0.018774710995184546
+Result 280:
+  param_leaf_size: 40
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0055999755859375
+  std_fit_time: 0.007919561422591032
+  mean_score_time: 2.8776371479034424
+  std_score_time: 0.12344900396803156
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 281:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.01573014259338379
+  std_fit_time: 0.006194668275357973
+  mean_score_time: 2.9723316033681235
+  std_score_time: 0.14909427416713208
+  mean_test_score: 0.8224378856562765
+  std_test_score: 0.00022163349538266043
+Result 282:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0053912003835042315
+  std_fit_time: 0.007624308699822716
+  mean_score_time: 3.0322927633921304
+  std_score_time: 0.12998332981596528
+  mean_test_score: 0.842752819764314
+  std_test_score: 0.0034555909142396594
+Result 283:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0003768603006998698
+  std_fit_time: 0.0005329609483697587
+  mean_score_time: 3.1400833129882812
+  std_score_time: 0.18958141029207776
+  mean_test_score: 0.8065204272100823
+  std_test_score: 0.01440400274346046
+Result 284:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.004491408665974935
+  std_fit_time: 0.006351811049581804
+  mean_score_time: 3.3096530437469482
+  std_score_time: 0.10384562258918291
+  mean_test_score: 0.8418803418803419
+  std_test_score: 0.006419988479455341
+Result 285:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.007279316584269206
+  std_fit_time: 0.010294508238280903
+  mean_score_time: 3.415551503499349
+  std_score_time: 0.03756640625295848
+  mean_test_score: 0.804761436945345
+  std_test_score: 0.012063139617232375
+Result 286:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.010416348775227865
+  std_fit_time: 0.007365470946778459
+  mean_score_time: 3.4001778761545816
+  std_score_time: 0.023479386451687907
+  mean_test_score: 0.8268517348977119
+  std_test_score: 0.005110784045091968
+Result 287:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.005208412806193034
+  std_fit_time: 0.007365808028955899
+  mean_score_time: 3.43522572517395
+  std_score_time: 0.021322680766692356
+  mean_test_score: 0.7897375081283128
+  std_test_score: 0.013274772377531729
+Result 288:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.002471446990966797
+  std_fit_time: 0.00349515385331142
+  mean_score_time: 3.4534169832865396
+  std_score_time: 0.05361263584865153
+  mean_test_score: 0.8312609059735497
+  std_test_score: 0.009941312685528232
+Result 289:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.60762890179952
+  std_score_time: 0.3047706563269893
+  mean_test_score: 0.7862054931020449
+  std_test_score: 0.019548525089401858
+Result 290:
+  param_leaf_size: 50
+  param_metric: <function cityblock at 0x000001D65F9A9B20>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.0056324005126953125
+  std_fit_time: 0.00733967618754392
+  mean_score_time: 2.92230757077535
+  std_score_time: 0.1000950045919223
+  mean_test_score: 0.8127166575442438
+  std_test_score: 0.008289191313462722
+Result 291:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.008460680643717447
+  std_fit_time: 0.0043352512434741705
+  mean_score_time: 6.95805557568868
+  std_score_time: 0.057088184181368816
+  mean_test_score: 0.7959337384624741
+  std_test_score: 0.00997538711305521
+Result 292:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.009128491083780924
+  std_fit_time: 0.0069431418034790506
+  mean_score_time: 6.895547151565552
+  std_score_time: 0.022198368573028596
+  mean_test_score: 0.8233127026230475
+  std_test_score: 0.015760180633421935
+Result 293:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.011612653732299805
+  std_fit_time: 0.008233595705702349
+  mean_score_time: 7.3730088869730634
+  std_score_time: 0.1782034516879862
+  mean_test_score: 0.780030314513073
+  std_test_score: 0.017786245638397986
+Result 294:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.011015971501668295
+  std_fit_time: 0.0044023121169777775
+  mean_score_time: 7.958868503570557
+  std_score_time: 0.755045018576597
+  mean_test_score: 0.8189082097128074
+  std_test_score: 0.010166714072261746
+Result 295:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.006385008494059245
+  std_fit_time: 0.009029765608165995
+  mean_score_time: 8.77586841583252
+  std_score_time: 0.10865678965794599
+  mean_test_score: 0.7809051314798441
+  std_test_score: 0.014609179009624955
+Result 296:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.013083855311075846
+  std_fit_time: 0.009277466173859371
+  mean_score_time: 8.702478726704916
+  std_score_time: 0.10325435319345361
+  mean_test_score: 0.8127119793786459
+  std_test_score: 0.01205729413296878
+Result 297:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.007891019185384115
+  std_fit_time: 0.006378430714494929
+  mean_score_time: 8.704490343729654
+  std_score_time: 0.08208124258210124
+  mean_test_score: 0.7791438021323079
+  std_test_score: 0.010840497842483376
+Result 298:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.015755573908487957
+  std_fit_time: 0.00022447142635034046
+  mean_score_time: 8.913889328638712
+  std_score_time: 0.3598460860889812
+  mean_test_score: 0.8153691774381429
+  std_test_score: 0.0014786592900901854
+Result 299:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0072286128997802734
+  std_fit_time: 0.0064484462723277645
+  mean_score_time: 8.102786699930826
+  std_score_time: 0.6963767946557563
+  mean_test_score: 0.7782619679171403
+  std_test_score: 0.016050129968347263
+Result 300:
+  param_leaf_size: 50
+  param_metric: <function cosine at 0x000001D65F9A9800>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005622307459513347
+  std_fit_time: 0.007951143461075194
+  mean_score_time: 6.977394342422485
+  std_score_time: 0.0515697269241353
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 301:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.008835872014363607
+  std_fit_time: 0.0084253666270366
+  mean_score_time: 15.440053939819336
+  std_score_time: 0.3291407518218132
+  mean_test_score: 0.8383436486884763
+  std_test_score: 0.0041523733579738875
+Result 302:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 18.244033495585125
+  std_score_time: 1.268949829562302
+  mean_test_score: 0.8515992309095757
+  std_test_score: 0.007303981459774288
+Result 303:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0032002131144205728
+  std_fit_time: 0.002465118321880829
+  mean_score_time: 16.087212562561035
+  std_score_time: 0.43041846496975683
+  mean_test_score: 0.808291112888814
+  std_test_score: 0.01828625129325068
+Result 304:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.0026350816090901694
+  std_fit_time: 0.0037265681495352357
+  mean_score_time: 16.260301907857258
+  std_score_time: 0.9047330482974061
+  mean_test_score: 0.8445398790226376
+  std_test_score: 0.013708348754878632
+Result 305:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.00744477907816569
+  std_fit_time: 0.008111972772782123
+  mean_score_time: 18.93292546272278
+  std_score_time: 0.38160236232210876
+  mean_test_score: 0.8144990386369697
+  std_test_score: 0.011866592381614414
+Result 306:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.006694237391153972
+  std_fit_time: 0.006979769698633816
+  mean_score_time: 18.775884469350178
+  std_score_time: 0.3578982460468231
+  mean_test_score: 0.8365799802581412
+  std_test_score: 0.0105591166808318
+Result 307:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 16.281304121017456
+  std_score_time: 1.2745289116770881
+  mean_test_score: 0.8012317610018759
+  std_test_score: 0.003992710879505235
+Result 308:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0016764005025227864
+  std_fit_time: 0.0016960159671789786
+  mean_score_time: 16.015975952148438
+  std_score_time: 0.17383884639896371
+  mean_test_score: 0.8392301610692415
+  std_test_score: 0.006416874527182837
+Result 309:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.004669745763142903
+  std_fit_time: 0.006604017791070994
+  mean_score_time: 18.178776343663532
+  std_score_time: 0.6068189330862899
+  mean_test_score: 0.8074209740876407
+  std_test_score: 0.00975353156460326
+Result 310:
+  param_leaf_size: 50
+  param_metric: <function correlation at 0x000001D65F9A9760>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.004910469055175781
+  std_fit_time: 0.006944451935442988
+  mean_score_time: 15.215922196706137
+  std_score_time: 0.44857972069169405
+  mean_test_score: 0.82155371235831
+  std_test_score: 0.009782702564138147
+Result 311:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.002651850382486979
+  std_fit_time: 0.002077399279639463
+  mean_score_time: 2.8918561935424805
+  std_score_time: 0.069718354389931
+  mean_test_score: 0.7959313993796752
+  std_test_score: 0.007629533774504347
+Result 312:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0004924933115641276
+  std_fit_time: 0.0006964907205920275
+  mean_score_time: 2.911008596420288
+  std_score_time: 0.05000066566248702
+  mean_test_score: 0.8241945368382151
+  std_test_score: 0.014537012502563782
+Result 313:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.0032242933909098306
+  std_fit_time: 0.0019556106736748524
+  mean_score_time: 3.021620512008667
+  std_score_time: 0.14756220453132138
+  mean_test_score: 0.7791461412151067
+  std_test_score: 0.0127851531262994
+Result 314:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.007704734802246094
+  std_fit_time: 0.00684035307910355
+  mean_score_time: 3.2494990030924478
+  std_score_time: 0.1887206828305135
+  mean_test_score: 0.8153738556037408
+  std_test_score: 0.008954537492908277
+Result 315:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.005205790201822917
+  std_fit_time: 0.007362099106286941
+  mean_score_time: 3.432561159133911
+  std_score_time: 0.013877275207805679
+  mean_test_score: 0.7800186190990789
+  std_test_score: 0.015378650968516946
+Result 316:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.00629417101542155
+  std_fit_time: 0.00890130201390479
+  mean_score_time: 3.4271856943766275
+  std_score_time: 0.013277392268127849
+  mean_test_score: 0.8135938135938137
+  std_test_score: 0.01283119939610818
+Result 317:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.4171335697174072
+  std_score_time: 0.01545852030901626
+  mean_test_score: 0.7773731164535763
+  std_test_score: 0.012262855680293798
+Result 318:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.4282302856445312
+  std_score_time: 0.03809966564041972
+  mean_test_score: 0.815369177438143
+  std_test_score: 0.0026224049689532324
+Result 319:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005654732386271159
+  std_fit_time: 0.006904069760602776
+  mean_score_time: 3.4487592379252114
+  std_score_time: 0.036634373070886676
+  mean_test_score: 0.7764959604040064
+  std_test_score: 0.01482490379643068
+Result 320:
+  param_leaf_size: 50
+  param_metric: <function sqeuclidean at 0x000001D65F9A96C0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005356947580973308
+  std_fit_time: 0.0038768177487800387
+  mean_score_time: 3.6511956055959067
+  std_score_time: 0.23753688269729226
+  mean_test_score: 0.8012387782502725
+  std_test_score: 0.0120219772231382
+Result 321:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.012397209803263346
+  std_fit_time: 0.004870172778121482
+  mean_score_time: 4.203451315561931
+  std_score_time: 0.04399048105805041
+  mean_test_score: 0.7005412637596545
+  std_test_score: 0.013257582900162603
+Result 322:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.0052026112874348955
+  std_fit_time: 0.007357603442445779
+  mean_score_time: 4.111584822336833
+  std_score_time: 0.028460149228891573
+  mean_test_score: 0.7252700471091277
+  std_test_score: 0.006747079366438259
+Result 323:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.011437257130940756
+  std_fit_time: 0.008183001439979107
+  mean_score_time: 4.177567323048909
+  std_score_time: 0.008274916868679712
+  mean_test_score: 0.7040662615375259
+  std_test_score: 0.0048256100157100055
+Result 324:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.014212687810262045
+  std_fit_time: 0.005327374072930791
+  mean_score_time: 4.135003328323364
+  std_score_time: 0.019421332734980475
+  mean_test_score: 0.726154220407094
+  std_test_score: 0.00799042735477738
+Result 325:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.015616099039713541
+  std_fit_time: 3.5877221304819504e-05
+  mean_score_time: 4.328657468159993
+  std_score_time: 0.18644902702076363
+  mean_test_score: 0.6916878353659962
+  std_test_score: 0.00697082858258937
+Result 326:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.011197566986083984
+  std_fit_time: 0.007971776063226098
+  mean_score_time: 3.971768061319987
+  std_score_time: 0.21970219138147185
+  mean_test_score: 0.7270313764566638
+  std_test_score: 0.00434492673361
+Result 327:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 3.3887338638305664
+  std_score_time: 0.007795711674941076
+  mean_test_score: 0.7005248901800627
+  std_test_score: 0.007692626348930566
+Result 328:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.006906747817993164
+  std_fit_time: 0.006041537617661422
+  mean_score_time: 3.3517284393310547
+  std_score_time: 0.03437215233794286
+  mean_test_score: 0.7279061934234349
+  std_test_score: 0.012119919545676488
+Result 329:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.0016614596048990886
+  std_fit_time: 0.002349658706583335
+  mean_score_time: 3.4003962675730386
+  std_score_time: 0.04633635806320574
+  mean_test_score: 0.6978817266173589
+  std_test_score: 0.012005228016994197
+Result 330:
+  param_leaf_size: 50
+  param_metric: <function chi_square_distance at 0x000001D662BBF6A0>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.010207017262776693
+  std_fit_time: 0.007220096958151945
+  mean_score_time: 3.3446315129597983
+  std_score_time: 0.03910934040217876
+  mean_test_score: 0.7252606907779322
+  std_test_score: 0.014497315909162218
+Result 331:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.011330684026082357
+  std_fit_time: 0.008098315600614943
+  mean_score_time: 3.316276470820109
+  std_score_time: 0.2114629480631196
+  mean_test_score: 0.784453520085704
+  std_test_score: 0.006570686343769743
+Result 332:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.010258992513020834
+  std_fit_time: 0.007342023918856731
+  mean_score_time: 3.1676780382792153
+  std_score_time: 0.1481475050521031
+  mean_test_score: 0.8021159342998424
+  std_test_score: 0.003537335143764381
+Result 333:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.005669832229614258
+  std_fit_time: 0.004031313416726996
+  mean_score_time: 3.04921825726827
+  std_score_time: 0.007838016224348779
+  mean_test_score: 0.7588101553618795
+  std_test_score: 0.01914697598929536
+Result 334:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.0056298573811848955
+  std_fit_time: 0.007961820662697957
+  mean_score_time: 3.488849719365438
+  std_score_time: 0.30876518961522864
+  mean_test_score: 0.7968155726776417
+  std_test_score: 0.004683854296937408
+Result 335:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.00021807352701822916
+  std_fit_time: 0.00030840253950371524
+  mean_score_time: 3.805365482966105
+  std_score_time: 0.014273183795111949
+  mean_test_score: 0.7650087247788399
+  std_test_score: 0.007239874274497198
+Result 336:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.01563541094462077
+  std_fit_time: 1.7628291323228363e-05
+  mean_score_time: 3.7391304175059
+  std_score_time: 0.01075814548894414
+  mean_test_score: 0.7879761787807764
+  std_test_score: 0.010116204005608883
+Result 337:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.005123058954874675
+  std_fit_time: 0.007245099454820698
+  mean_score_time: 3.9058353106180825
+  std_score_time: 0.05773576405208765
+  mean_test_score: 0.7676378538447505
+  std_test_score: 0.024869613421549083
+Result 338:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.011957724889119467
+  std_fit_time: 0.005241606921845001
+  mean_score_time: 3.8353254000345864
+  std_score_time: 0.12922214727392273
+  mean_test_score: 0.7897304908799162
+  std_test_score: 0.018889860358421117
+Result 339:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.01529677708943685
+  std_fit_time: 0.0025463578203499563
+  mean_score_time: 3.621795177459717
+  std_score_time: 0.22774037078499568
+  mean_test_score: 0.7588195116930749
+  std_test_score: 0.011736426203775765
+Result 340:
+  param_leaf_size: 50
+  param_metric: <function bhattacharyya_distance at 0x000001D662BBFD80>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.010388056437174479
+  std_fit_time: 0.007411112532473803
+  mean_score_time: 3.238740603129069
+  std_score_time: 0.17760079039508284
+  mean_test_score: 0.7817799484466151
+  std_test_score: 0.020790097669524145
+Result 341:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: uniform
+  mean_fit_time: 0.006828784942626953
+  std_fit_time: 0.005933796603847432
+  mean_score_time: 2.7201578617095947
+  std_score_time: 0.012133660112115389
+  mean_test_score: 0.7005014993520741
+  std_test_score: 0.023747599141087785
+Result 342:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 3
+  param_weights: distance
+  mean_fit_time: 0.005992730458577474
+  std_fit_time: 0.006901485619861746
+  mean_score_time: 2.760935624440511
+  std_score_time: 0.05461718094162485
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 343:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: uniform
+  mean_fit_time: 0.005596160888671875
+  std_fit_time: 0.00639079783171105
+  mean_score_time: 2.8259154160817466
+  std_score_time: 0.12265287034183081
+  mean_test_score: 0.6828390851379357
+  std_test_score: 0.020905560595214177
+Result 344:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 4
+  param_weights: distance
+  mean_fit_time: 0.0008795261383056641
+  std_fit_time: 0.0012438377932535046
+  mean_score_time: 2.942999521891276
+  std_score_time: 0.19350385402414952
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 345:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: uniform
+  mean_fit_time: 0.007033904393513997
+  std_fit_time: 0.007429726369482361
+  mean_score_time: 2.797764698664347
+  std_score_time: 0.08434095833094345
+  mean_test_score: 0.6907826103228402
+  std_test_score: 0.024487952443375854
+Result 346:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 5
+  param_weights: distance
+  mean_fit_time: 0.010190407435099283
+  std_fit_time: 0.007303641775889213
+  mean_score_time: 2.8626632690429688
+  std_score_time: 0.06497533485019562
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 347:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: uniform
+  mean_fit_time: 0.0
+  std_fit_time: 0.0
+  mean_score_time: 2.776881376902262
+  std_score_time: 0.01998524372481539
+  mean_test_score: 0.6863640829158072
+  std_test_score: 0.027571134187491377
+Result 348:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 6
+  param_weights: distance
+  mean_fit_time: 0.00990907351175944
+  std_fit_time: 0.007161808612296804
+  mean_score_time: 2.7783310413360596
+  std_score_time: 0.1304291198358521
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
+Result 349:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: uniform
+  mean_fit_time: 0.005207538604736328
+  std_fit_time: 0.007364571721399579
+  mean_score_time: 3.3377405802408853
+  std_score_time: 0.0501616851557242
+  mean_test_score: 0.6854892659490361
+  std_test_score: 0.018774710995184546
+Result 350:
+  param_leaf_size: 50
+  param_metric: <function intersection_distance at 0x000001D66DA13B00>
+  param_n_neighbors: 7
+  param_weights: distance
+  mean_fit_time: 0.005192359288533528
+  std_fit_time: 0.007343104926558031
+  mean_score_time: 3.3449954986572266
+  std_score_time: 0.019194216872280265
+  mean_test_score: 0.23586609218793128
+  std_test_score: 0.0002944086729709805
