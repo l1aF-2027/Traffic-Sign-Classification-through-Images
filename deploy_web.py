@@ -138,8 +138,7 @@ with col1:
         selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=1)
         selected_metrics = st.selectbox("Chọn metrics", options=list(map_metrics.keys()), index=1)
         
-        leaf_size_options = [10, 20, 30, 40, 50]
-        leaf_size = st.selectbox("Chọn leaf_size", options=leaf_size_options, index=1)
+        leaf_size = st.number_input("Chọn leaf_size", min_value=0, max_value=100, value=10)
         
         model_KNN = KNeighborsClassifier(
             n_neighbors=n_neighbors,
@@ -169,9 +168,10 @@ with col2:
 
     if not st.session_state.best_model_svm:
         selected_kernel = st.selectbox("Chọn kernel", options=kernel_options, index=1)
-        C = st.number_input("Chọn C (regularization parameter)", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
-    
-        model_SVM = SVC(kernel=selected_kernel, C=C)
+        C = st.number_input("Chọn C (regularization parameter)", min_value=0.001, max_value=10.0, value=0.1, step=0.1)
+        degree = st.number_input("Chọn degree", min_value=1, max_value=4, value=3, step=1)
+        gamma = st.number_input("Chọn gamma", min_value=0.001, max_value=10.0, value=0.1)
+        model_SVM = SVC(kernel=selected_kernel, C=C, degree=degree, gamma=gamma)
         model_SVM.fit(train_features, train_labels_encoded)
         y_pred_svm = model_SVM.predict(test_features)
     else:
