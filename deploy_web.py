@@ -110,8 +110,8 @@ map_metrics = {
 }
 
 map_weights = {
-    'Uniform': 'uniform',
-    'Distance': 'distance'
+    'distance': 'distance',
+    'uniform': 'uniform'
 }
 
 kernel_options = ['linear', 'rbf', 'poly']  # For SVM kernel options
@@ -135,7 +135,7 @@ with col1:
 
     if not st.session_state.best_model_knn:
         n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=3)
-        selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=2)
+        selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=1)
         selected_metrics = st.selectbox("Chọn metrics", options=list(map_metrics.keys()), index=1)
         
         leaf_size = st.number_input("Chọn leaf_size", min_value=0, max_value=100, value=10)
