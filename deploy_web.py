@@ -134,8 +134,8 @@ with col1:
         st.session_state.best_model_knn = False
 
     if not st.session_state.best_model_knn:
-        n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=4)
-        selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=1)
+        n_neighbors = st.number_input("Chọn n_neighbors", min_value=1, max_value=20, value=3)
+        selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=2)
         selected_metrics = st.selectbox("Chọn metrics", options=list(map_metrics.keys()), index=1)
         
         leaf_size = st.number_input("Chọn leaf_size", min_value=0, max_value=100, value=10)
