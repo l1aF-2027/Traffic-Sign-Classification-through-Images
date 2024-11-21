@@ -106,9 +106,11 @@ def plot_misclassified_images(test_images, test_labels_encoded, y_pred, label_en
         true_label = label_encoder.classes_[test_labels_encoded[misclass_idx]]
         pred_label = label_encoder.classes_[y_pred[misclass_idx]]
         
+        color = 'red' if true_label != pred_label else 'green'
+        
         axes[idx].imshow(image)
-        axes[idx].set_title(f'True: {true_label}\nPred: {pred_label}', fontsize=15)
-        axes[idx].axis('off')
+        axes[idx].set_title(f'True: {true_label}\nPred: {pred_label}', 
+                            color=color, fontsize=15)
     
     # Hide any unused subplots
     for idx in range(len(misclassified_indices), len(axes)):
