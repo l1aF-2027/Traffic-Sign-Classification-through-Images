@@ -83,10 +83,13 @@ st.set_page_config(
     layout="wide"  # Thêm layout wide để có nhiều không gian hơn cho 2 cột
 )
 
-def plot_prediction_images(test_images, test_labels_encoded, y_pred, label_encoder, model_name):
+def plot_misclassified_images(test_images, test_labels_encoded, y_pred, label_encoder, model_name):
+    # Find indices of misclassified images
+    misclassified_indices = np.where(test_labels_encoded != y_pred)[0]
+    
     # Calculate number of columns and rows
     n_columns = 5  # Reduced from 10 to make it more readable
-    n_rows = math.ceil(len(test_images) / n_columns)
+    n_rows = math.ceil(len(misclassified_indices) / n_columns)
     
     # Create subplot
     fig, axes = plt.subplots(n_rows, n_columns, figsize=(20, n_rows * 4))
@@ -94,30 +97,26 @@ def plot_prediction_images(test_images, test_labels_encoded, y_pred, label_encod
     # Flatten axes for easier indexing if there are multiple rows
     axes = axes.flatten() if n_rows > 1 else axes
     
-    # Plot images with predictions
-    for idx, image in enumerate(test_images):
+    # Plot misclassified images
+    for idx, misclass_idx in enumerate(misclassified_indices):
         if idx >= len(axes):
             break
         
-        true_label = label_encoder.classes_[test_labels_encoded[idx]]
-        pred_label = label_encoder.classes_[y_pred[idx]]
-        
-        # Highlight misclassified images with red title
-        color = 'red' if true_label != pred_label else 'green'
+        image = test_images[misclass_idx]
+        true_label = label_encoder.classes_[test_labels_encoded[misclass_idx]]
+        pred_label = label_encoder.classes_[y_pred[misclass_idx]]
         
         axes[idx].imshow(image)
-        axes[idx].set_title(f'True: {true_label}\nPred: {pred_label}', 
-                            color=color, fontsize=10)
+        axes[idx].set_title(f'True: {true_label}\nPred: {pred_label}', fontsize=15)
         axes[idx].axis('off')
     
     # Hide any unused subplots
-    for idx in range(len(test_images), len(axes)):
+    for idx in range(len(misclassified_indices), len(axes)):
         axes[idx].axis('off')
     
-    plt.suptitle(f'Prediction Results - {model_name}', fontsize=16)
+    # plt.suptitle(f'Misclassified Images - {model_name}', fontsize=16)
     plt.tight_layout()
     st.pyplot(fig)
-
 
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
@@ -192,7 +191,7 @@ with col1:
 
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
-    plot_prediction_images(test_images, test_labels_encoded, y_pred_knn, label_encoder, 'KNN')
+    plot_misclassified_images(test_images, test_labels_encoded, y_pred_knn, label_encoder, 'KNN')
 # Cột 2: SVM Model
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
@@ -217,7 +216,7 @@ with col2:
 
     plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
-    plot_prediction_images(test_images, test_labels_encoded, y_pred_svm, label_encoder, 'SVM')
+    plot_misclassified_images(test_images, test_labels_encoded, y_pred_svm, label_encoder, 'SVM')
 # Phần thử nghiệm (full width)
 st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
 
