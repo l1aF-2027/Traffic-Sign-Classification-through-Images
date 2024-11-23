@@ -118,6 +118,45 @@ def plot_misclassified_images(test_images, test_labels_encoded, y_pred, label_en
     plt.tight_layout()
     st.pyplot(fig)
 
+def load_and_predict_images(image_path, model_knn, model_svm, label_encoder):
+    img = cv2.imread(image_path)
+    img_resized = cv2.resize(img, (64, 64))
+    image_features = extract_features([img_resized])
+    
+    pred_knn = model_knn.predict(image_features)[0]
+    pred_svm = model_svm.predict(image_features)[0]
+    
+    return img, label_encoder.classes_[pred_knn], label_encoder.classes_[pred_svm]
+
+def plot_demo_images(image_paths, predictions, model_name, n_columns=6):
+    n_images = len(image_paths)
+    n_columns = n_images if n_images < 6 else 6
+    n_rows = math.ceil(n_images / n_columns)
+    
+    fig, axes = plt.subplots(n_rows, n_columns, figsize=(20, n_rows * 4))
+    axes = axes.flatten() if n_rows > 1 else axes
+    
+    for idx, img_path in enumerate(image_paths):
+        if idx >= len(axes):
+            break
+        
+        img = Image.open(img_path)
+        prediction = predictions[idx]
+        img = Image.open(img_path).resize((64, 64)) 
+        true_label = os.path.basename(img_path).split('_')[0]
+        
+        axes[idx].imshow(img)
+        axes[idx].set_title(f"True: {true_label}\nPred: {prediction}", fontsize=12)
+        axes[idx].axis('off')
+    
+    for idx in range(len(image_paths), len(axes)):
+        axes[idx].axis('off')
+    
+    fig.suptitle(f"{model_name} Model", fontsize=20)
+    fig.subplots_adjust(top=0.5, bottom=0.4)
+    plt.tight_layout()
+    st.pyplot(fig)
+
 st.markdown("<h1 style='text-align: center;'>Dự đoán biển báo từ hình ảnh</h1>", unsafe_allow_html=True)
 
 # Load models và data
@@ -191,7 +230,7 @@ with col1:
 
     plot_classification_report(test_labels_encoded, y_pred_knn, label_encoder.classes_, "KNN")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_knn), "KNN")
-    plot_misclassified_images(test_images, test_labels_encoded, y_pred_knn, label_encoder, 'KNN')
+    # plot_misclassified_images(test_images, test_labels_encoded, y_pred_knn, label_encoder, 'KNN')
 # Cột 2: SVM Model
 with col2:
     st.markdown("<h3 style='text-align: center;'>SVM Model</h3>", unsafe_allow_html=True)
@@ -216,8 +255,41 @@ with col2:
 
     plot_classification_report(test_labels_encoded, y_pred_svm, label_encoder.classes_, "SVM")
     plot_cm(confusion_matrix(test_labels_encoded, y_pred_svm), "SVM")
-    plot_misclassified_images(test_images, test_labels_encoded, y_pred_svm, label_encoder, 'SVM')
+    # plot_misclassified_images(test_images, test_labels_encoded, y_pred_svm, label_encoder, 'SVM')
+
+#Phần demo
+st.markdown("<br><br>", unsafe_allow_html=True) 
+st.markdown("<h3 style='text-align: center;'>Demo phân loại biển báo giao thông</h3>", unsafe_allow_html=True)
+
+correct_pred_path = os.path.join(project_dir, 'data', 'demo', 'test_images', 'correct_predictions')
+incorrect_pred_path = os.path.join(project_dir, 'data', 'demo', 'test_images', 'incorrect_predictions')
+new_images_path = os.path.join(project_dir, 'data', 'demo', 'new_demo_images')
+
+st.markdown("<h4>Ảnh từ tập test</h4>", unsafe_allow_html=True)
+correct_images = [os.path.join(correct_pred_path, img_file) for img_file in os.listdir(correct_pred_path) if img_file.endswith(('.jpg', '.png', '.jpeg'))]
+incorrect_images = [os.path.join(incorrect_pred_path, img_file) for img_file in os.listdir(incorrect_pred_path) if img_file.endswith(('.jpg', '.png', '.jpeg'))]
+
+correct_predictions_knn = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[1] for img in correct_images]
+incorrect_predictions_knn = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[1] for img in incorrect_images]
+all_knn_images = correct_images + incorrect_images
+all_knn_predictions = correct_predictions_knn + incorrect_predictions_knn
+plot_demo_images(all_knn_images[:18], all_knn_predictions[:18], "KNN", n_columns=6)
+
+correct_predictions_svm = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[2] for img in correct_images]
+incorrect_predictions_svm = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[2] for img in incorrect_images]
+all_svm_images = correct_images + incorrect_images
+all_svm_predictions = correct_predictions_svm + incorrect_predictions_svm
+plot_demo_images(all_svm_images[:18], all_svm_predictions[:18], "SVM", n_columns=6)
+
+st.markdown("<h4>Ảnh không tồn tại trong bộ dữ liệu</h4>", unsafe_allow_html=True)
+new_images = [os.path.join(new_images_path, img_file) for img_file in os.listdir(new_images_path) if img_file.endswith(('.jpg', '.png', '.jpeg'))]
+new_predictions_knn = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[1] for img in new_images]
+plot_demo_images(new_images[:18], new_predictions_knn[:18], "KNN", n_columns=6)
+new_predictions_svm = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[2] for img in new_images]
+plot_demo_images(new_images[:18], new_predictions_svm[:18], "SVM", n_columns=6)
+
 # Phần thử nghiệm (full width)
+st.markdown("<br><br>", unsafe_allow_html=True) 
 st.markdown("<h3 style='text-align: center;'>Thử nghiệm</h3>", unsafe_allow_html=True)
 
 mapping = {
