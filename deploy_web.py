@@ -281,6 +281,7 @@ all_svm_images = correct_images + incorrect_images
 all_svm_predictions = correct_predictions_svm + incorrect_predictions_svm
 plot_demo_images(all_svm_images[:18], all_svm_predictions[:18], "SVM", n_columns=6)
 
+st.markdown("<br><br>", unsafe_allow_html=True) 
 st.markdown("<h4>Ảnh không tồn tại trong bộ dữ liệu</h4>", unsafe_allow_html=True)
 new_images = [os.path.join(new_images_path, img_file) for img_file in os.listdir(new_images_path) if img_file.endswith(('.jpg', '.png', '.jpeg'))]
 new_predictions_knn = [load_and_predict_images(img, model_KNN, model_SVM, label_encoder)[1] for img in new_images]
