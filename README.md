@@ -37,6 +37,10 @@ A simple app template for you to classify the traffic signs and also our Compute
 
 5. **model**: Contains the main notebook file (main.ipynb) for Vietnam traffic sign classification program
 
-6. **deploy_web.py**: Python file containing code to deploy website using Streamlit framework
+6. **report**: Contains files related to the report, including .tex, .pdf, and other resources.
 
-7. **requirements.txt**: Store necessary dependencies and requirements
+7. **slide**: Contains the slide presentation for the project.
+  
+8. **deploy_web.py**: Python file containing code to deploy website using Streamlit framework
+
+9. **requirements.txt**: Store necessary dependencies and requirements
