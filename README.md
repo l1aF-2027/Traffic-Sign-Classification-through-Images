@@ -3,6 +3,7 @@
 A simple app template for you to classify the traffic signs and also our Computer Vision Introduction - CS231.P12 course project!
 
 [![Open in streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deploy-traffic-sign-classification-through-images.streamlit.app/)
+![image](https://github.com/user-attachments/assets/e4ec6f0d-1328-4e18-bd65-e2910ccb4b16)
 
 ### How to run it on your own machine
 
