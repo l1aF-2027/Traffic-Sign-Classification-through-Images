@@ -1,8 +1,11 @@
-# 🚦Deploy Traffic Sign Classification through Images
+# 🚦Traffic Sign Classification through Images
 
 A simple app template for you to classify the traffic signs and also our Computer Vision Introduction - CS231.P12 course project!
 
-[![Open in streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://deploy-traffic-sign-classification-through-images.streamlit.app/)
+[![Open in streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://traffic-sign-classification-through-images.streamlit.app/)
+
+<img src="https://github.com/user-attachments/assets/908fb731-680c-410c-8884-3c90796e84a4" width="300" height="auto" />
+
 
 ### How to run it on your own machine
 
