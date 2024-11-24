@@ -1,4 +1,4 @@
-# 🚦Deploy Traffic Sign Classification through Images
+# 🚦Traffic Sign Classification through Images
 
 A simple app template for you to classify the traffic signs and also our Computer Vision Introduction - CS231.P12 course project!
 
