@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 from skimage.feature import hog as skimage_hog
-from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC 
 import matplotlib.pyplot as plt
