@@ -134,18 +134,6 @@ Hà Huy Hoàng & 22520460 & \parbox{5cm}{\centering Trích xuất đặc trưng 
 \end{center}
 
 \newpage
-% \vspace*{\fill}
-\begin{center}
-    \textbf{\large WEB DEMO QR CODE}  % Căn giữa tiêu đề
-\end{center}
-\addcontentsline{toc}{section}{WEB DEMO QR CODE}
-\begin{center}
-    Để truy cập web, quét mã QR dưới đây:
-    \includegraphics[width=0.6\textwidth]{link_web.png}
-\end{center}
-% \vspace*{\fill}
-
-\newpage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \pagestyle{plain}
@@ -1111,6 +1099,48 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
     \caption{Ảnh không tồn tại trong bộ dữ liệu}
     \label{fig:new_images}
 \end{figure}
+
+\newpage
+\section*{\centering Web Demo Phân Loại Biển Báo Giao Thông}
+\addcontentsline{toc}{section}{\textbf{WEB DEMO PHÂN LOẠI BIỂN BÁO GIAO THÔNG}}
+\vspace{1cm}
+\setcounter{section}{4}
+\setcounter{subsection}{0}
+
+\subsection{Giới thiệu}
+\hspace{5mm}Web demo này được xây dựng để phân loại biển báo giao thông sử dụng hai mô hình học máy: KNN (K-Nearest Neighbors) và SVM (Support Vector Machine).
+
+\subsection{Cách sử dụng}
+\subsubsection{Chọn mô hình}
+\begin{itemize}
+    \item Người dùng có thể chọn sử dụng mô hình tốt nhất (Best Model) hoặc tùy chỉnh thông số.
+    \item Đối với KNN: có thể điều chỉnh n\_neighbors, weights, metrics và leaf\_size
+    \item Đối với SVM: có thể điều chỉnh kernel, C, degree và gamma
+\end{itemize}
+
+\subsubsection{Xem kết quả đánh giá}
+\begin{itemize}
+    \item Classification Report: hiển thị các metric đánh giá (precision, recall, f1-score)
+    \item Confusion Matrix: thể hiện kết quả phân loại 1 cách chi tiết
+\end{itemize}
+
+\subsubsection{Phần Demo}
+\begin{itemize}
+    \item Xem kết quả phân loại trên ảnh từ tập test
+    \item Xem kết quả phân loại trên ảnh mới (không có trong tập dữ liệu)
+\end{itemize}
+
+\subsubsection{Thử nghiệm}
+\begin{itemize}
+    \item Người dùng có thể tải lên ảnh biển báo của riêng mình (hỗ trợ nhiều định dạng ảnh: jpg, jpeg, png)
+    \item Hệ thống sẽ hiển thị kết quả phân loại từ cả hai mô hình
+\end{itemize}
+
+\subsection{Truy cập web}
+\hspace{5mm}Để truy cập trang web, nhấn vào \href{https://traffic-sign-classification-through-images.streamlit.app/}{\textbf{Traffic Sign Classification Web}} hoặc quét mã QR dưới đây:
+\begin{center}
+    \includegraphics[width=0.35\textwidth]{link_web.png}
+\end{center}
 
 \newpage
 \pagenumbering{gobble}
