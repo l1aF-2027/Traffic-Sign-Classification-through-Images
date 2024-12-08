@@ -141,18 +141,22 @@ def plot_demo_images(image_paths, predictions, model_name, n_columns=6):
         
         img = Image.open(img_path)
         prediction = predictions[idx]
-        img = Image.open(img_path).resize((64, 64)) 
-        true_label = os.path.basename(img_path).split('_')[0]
+        true_label = os.path.basename(img_path).split('_')[0]  # Assuming file naming convention contains true label.
         
-        axes[idx].imshow(img)
-        axes[idx].set_title(f"True: {true_label}\nPred: {prediction}", fontsize=12)
+        # Determine the color of the text
+        if prediction == true_label:
+            title_color = 'green'
+        else:
+            title_color = 'red'
+        
+        axes[idx].imshow(img.resize((64, 64)))  # Resize for uniformity
+        axes[idx].set_title(f"True: {true_label}\nPred: {prediction}", fontsize=12, color=title_color)
         axes[idx].axis('off')
     
     for idx in range(len(image_paths), len(axes)):
         axes[idx].axis('off')
     
     fig.suptitle(f"{model_name} Model", fontsize=20)
-    fig.subplots_adjust(top=0.5, bottom=0.4)
     plt.tight_layout()
     st.pyplot(fig)
 
