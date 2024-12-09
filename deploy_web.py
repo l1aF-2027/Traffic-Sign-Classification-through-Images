@@ -9,7 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC 
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
-from scipy.spatial.distance import cityblock, cosine, correlation, sqeuclidean, euclidean
+from scipy.spatial.distance import cityblock, cosine, sqeuclidean, euclidean
 import os
 import math
 
@@ -179,7 +179,6 @@ col1, col2 = st.columns(2)
 map_metrics = {
     'cityblock': cityblock,
     'cosine': cosine,
-    'correlation': correlation,
     'euclidean': euclidean,
     'sqeuclidean': sqeuclidean,
     'chi_square': chi_square_distance,
@@ -216,13 +215,10 @@ with col1:
         selected_weights = st.selectbox("Chọn weights", options=list(map_weights.keys()), index=1)
         selected_metrics = st.selectbox("Chọn metrics", options=list(map_metrics.keys()), index=1)
         
-        leaf_size = st.number_input("Chọn leaf_size", min_value=0, max_value=100, value=10)
-        
         model_KNN = KNeighborsClassifier(
             n_neighbors=n_neighbors,
             weights=map_weights.get(selected_weights),
-            metric=map_metrics.get(selected_metrics),
-            leaf_size=leaf_size
+            metric=map_metrics.get(selected_metrics)
         )
         
         model_KNN.fit(train_features, train_labels_encoded)
