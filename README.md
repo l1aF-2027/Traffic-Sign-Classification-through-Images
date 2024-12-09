@@ -4,7 +4,8 @@ A simple app template for you to classify the traffic signs and also our Compute
 
 [![Open in streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://traffic-sign-classification-through-images.streamlit.app/)
 
-<img src="https://github.com/user-attachments/assets/908fb731-680c-410c-8884-3c90796e84a4" width="300" height="auto" />
+<img src="https://github.com/user-attachments/assets/70f8dd7f-f775-42d5-9a60-5748ce2edf4f" width="300" height="auto" />
+
 
 
 ### How to run it on your own machine
