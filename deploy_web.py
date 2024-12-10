@@ -17,7 +17,7 @@ project_dir = os.getcwd()
 
 # [Giữ nguyên các hàm helper từ code gốc]
 def blur_image(image):
-    blurred_image = cv2.medianBlur(image, 5)
+    blurred_image = cv2.GaussianBlur(image, (5,5), 0)
     return blurred_image
 
 def color_histogram(image):
