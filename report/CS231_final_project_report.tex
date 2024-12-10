@@ -624,7 +624,7 @@ Trong đó:
 \hspace{5mm}Hàm mục tiêu của SVM là tối thiểu hóa hàm chi phí, bao gồm hai thành phần: một phần về sai số (penalty) và một phần về biên tối đa. Công thức hàm mục tiêu là:
 
 \[
-\min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 \quad \text{subject to} \quad y_i (\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1 \quad \forall i
+\min_{\mathbf{w}, b} \frac{1}{2} \|\mathbf{w}\|^2 \quad \text{với điều kiện} \quad y_i (\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1 \quad \forall i
 \quad \text{\cite{boser1992}}
 \]
 Trong đó:
@@ -634,7 +634,20 @@ Trong đó:
     \item \(y_i\) là nhãn của điểm dữ liệu (\(y_i = \pm 1\)).
     \item \(\mathbf{x}_i\) là điểm dữ liệu.
 \end{itemize}
-
+\hspace{5mm}Năm 1995, Corinna Cortes và Vladimir N. Vapnik đề xuất một ý tưởng mới cho phép thuật toán gán nhãn sai cho một số mẫu luyện tập. Nếu không tồn tại siêu phẳng nào phân tách được hai lớp dữ liệu, thì thuật toán \textbf{Biên mềm} sẽ chọn một siêu phẳng phân tách các mẫu luyện tập tốt nhất có thể, và đồng thời cực đại hóa khoảng cách giữa siêu phẳng với các mẫu được gán đúng nhãn. Phương pháp này sử dụng các biến bù $\xi_i$ dùng để đo độ sai lệch của mẫu $x_i$. Hàm mục tiêu có thêm một số hạng mới để phạt thuật toán khi $\xi_i$ khác không, và bài toán tối ưu hóa trở thành việc trao đổi giữa độ lứa của biên và mức phạt nhỏ. Theo đó hàm mục tiêu trở thành:
+\[
+\min_{\mathbf{w}, b,\xi_i} (\frac{1}{2} \|\mathbf{w}\|^2 \quad  + C\sum{\xi_i})\text{với điều kiện} \quad y_i (\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1 - \xi_i \quad \forall i, \xi_i \req 0
+\quad \text{\cite{boser1992}}
+\]
+Trong đó:
+\begin{itemize}
+    \item \(\mathbf{w}\) là vector trọng số.
+    \item \(b\) là bias (hệ số bù).
+    \item \(y_i\) là nhãn của điểm dữ liệu (\(y_i = \pm 1\)).
+    \item \(\mathbf{x}_i\) là điểm dữ liệu.
+    \item \(\xi_i\) là biến bù của điểmm dữ liệu \(x_i\).
+    \item \(C\) là tham số điều chỉnh mức phạt đối với các lỗi phân loại.
+\end{itemize}
 \subparagraph{Kernel Trick (Nếu dữ liệu phi tuyến)}  
 \hspace{5mm}Nếu dữ liệu không thể phân chia một cách rõ ràng bằng siêu phẳng trong không gian gốc (dữ liệu phi tuyến), SVM sử dụng kernel trick để ánh xạ dữ liệu vào không gian đặc trưng cao hơn, nơi phân chia trở thành tuyến tính. Hàm kernel \(K(\mathbf{x}_i, \mathbf{x}_j)\) có thể tính toán khoảng cách trong không gian cao mà không cần tính toán trực tiếp các tọa độ trong không gian đó. Một số hàm kernel phổ biến \cite{svm_kernel}
 
@@ -655,9 +668,10 @@ Trong đó:
     \end{itemize}
     \item \textbf{Radial Basis Function (RBF) kernel:}
     \[
-    K(\mathbf{x}_i, \mathbf{x}_j) = \exp\left(-\frac{\|\mathbf{x}_i - \mathbf{x}_j\|^2}{2\sigma^2}\right)
+    K(\mathbf{x}_i, \mathbf{x}_j) = \exp\left(-\gamma{\|\mathbf{x}_i - \mathbf{x}_j\|^2}\right)
     \]
     \begin{itemize}
+        \item Với \(\gamma\) là hệ số quyết định mức độ ảnh hưởng của một điểm dữ liệu khác.
         \item Kernel Gaussian, sử dụng khoảng cách Euclid để tính toán ảnh hưởng của các điểm dữ liệu.
     \end{itemize}
     \item \textbf{Sigmoid kernel:}
@@ -959,7 +973,7 @@ Trong đó:
 \end{itemize}
 
 \subsubsection{Precision}
-\textbf{Khái niệm:} Precision đo lường tỷ lệ mẫu dự đoán đúng trong số các mẫu được dự đoán là dương.  
+\textbf{Khái niệm:} Precision đo lường tỷ lệ mẫu dương dự đoán đúng trong số các mẫu được dự đoán là dương.  
 \textbf{Công thức:}  
 \[
 \text{Precision} = \frac{TP}{TP + FP}
