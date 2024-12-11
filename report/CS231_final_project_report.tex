@@ -403,8 +403,8 @@ def hog_features(image):
 
 \begin{minted}[frame=single,fontsize=\footnotesize,linenos]{python}
 def blur_image(image):
-    # gaussian_blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
-    blurred_image = cv2.medianBlur(image, 5)
+    gaussian_blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
+    # blurred_image = cv2.medianBlur(image, 5)
     return blurred_image
 
 def extract_features(images):
