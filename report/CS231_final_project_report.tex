@@ -403,8 +403,8 @@ def hog_features(image):
 
 \begin{minted}[frame=single,fontsize=\footnotesize,linenos]{python}
 def blur_image(image):
-    # gaussian_blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
-    blurred_image = cv2.medianBlur(image, 5)
+    gaussian_blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
+    # blurred_image = cv2.medianBlur(image, 5)
     return blurred_image
 
 def extract_features(images):
@@ -560,7 +560,6 @@ from sklearn.neighbors import KNeighborsClassifier
 knn_model = KNeighborsClassifier(
     n_neighbors=5, 
     weights='distance', 
-    leaf_size=30, 
     metric='euclidean'
 )
 knn_model.fit(X_train, y_train)
@@ -579,19 +578,6 @@ y_pred = knn_model.predict(X_test)
     \begin{itemize}
         \item \texttt{'uniform'}: Mọi láng giềng có trọng số như nhau.
         \item \texttt{'distance'}: Láng giềng gần hơn có trọng số lớn hơn (dựa trên khoảng cách).
-    \end{itemize}
-
-    \item \texttt{leaf\_size}: Quy định kích thước lá (leaf) trong cây tìm kiếm K-D Tree hoặc Ball Tree.
-    \begin{itemize}
-        \item \textbf{Giá trị nhỏ}: Tăng tốc độ truy vấn vì cây sẽ có nhiều tầng hơn và mỗi lá sẽ chứa ít điểm, giúp tìm kiếm nhanh chóng trong không gian phân tán. Tuy nhiên, cây sẽ chiếm nhiều bộ nhớ hơn vì có nhiều node.
-        \item \textbf{Giá trị lớn}: Giảm độ sâu của cây, giúp tiết kiệm bộ nhớ nhưng lại làm tăng thời gian truy vấn vì phải kiểm tra nhiều điểm trong các node lớn.
-        \item \textbf{Giá trị mặc định} là 30.
-    \end{itemize}
-    
-    \noindent \textbf{Ví dụ}:
-    \begin{itemize}
-        \item \texttt{leaf\_size = 1}: Cây sẽ có nhiều tầng với mỗi node chỉ chứa 1 điểm, giúp truy vấn nhanh nhưng yêu cầu bộ nhớ cao.
-        \item \texttt{leaf\_size = 50}: Cây sẽ có ít tầng với mỗi node chứa 50 điểm, tiết kiệm bộ nhớ nhưng truy vấn sẽ chậm hơn vì phải kiểm tra nhiều điểm trong node.
     \end{itemize}
     
     \item \texttt{metric}: Định nghĩa loại khoảng cách được sử dụng để tính toán láng giềng. Các công thức metric đã được giải thích ở phần \textbf{Nguyên lý hoạt động}.
@@ -779,7 +765,6 @@ y_pred = svc_model.predict(X_test)
 \begin{itemize}
     \item \texttt{n\_neighbors}: Số lượng hàng xóm gần nhất được xét để dự đoán.
     \item \texttt{weights}: Phương pháp tính trọng số khi lấy trung bình (\texttt{uniform} sử dụng trọng số đều, \texttt{distance} sử dụng trọng số ngược khoảng cách).
-    \item \texttt{leaf\_size}: Kích thước lá trong cây KD-Tree, ảnh hưởng đến tốc độ tìm kiếm lân cận.
     \item \texttt{metric}: Hàm khoảng cách được sử dụng để đo độ tương đồng giữa các điểm, bao gồm:
     \begin{itemize}
         \item \texttt{cityblock}: Khoảng cách Manhattan.
@@ -801,7 +786,6 @@ from sklearn.model_selection import GridSearchCV
 param_grid = {
     'n_neighbors': [3, 4, 5, 6, 7, 10],
     'weights': ['uniform', 'distance'],
-    'leaf_size': [5, 10, 20, 30, 40, 50],
     'metric': [
         'cityblock', 'cosine',
         'sqeuclidean', 'chi_square_distance',
@@ -861,7 +845,7 @@ grid_search_knn.fit(X_train, y_train)
         \item \texttt{verbose=3} trở lên: In thông tin rất chi tiết, bao gồm cả kết quả đánh giá từng tổ hợp siêu tham số trên mỗi fold.
     \end{itemize}
 \end{itemize}
-\noindent \textbf{Tham số tốt nhất của KNN sau khi dùng GridsearchCV:} \texttt{\{'leaf\_size': 5, 'metric': 'cityblock', 'n\_neighbors': 3, 'weights': 'distance'\}}
+\noindent \textbf{Tham số tốt nhất của KNN sau khi dùng GridsearchCV:} \texttt{\{'metric': 'cityblock', 'n\_neighbors': 4, 'weights': 'distance'\}}
 
 \subsubsection{GridSearchCV cho SVM}  
 \hspace{5mm}Tương tự như KNN, GridSearchCV được áp dụng để tối ưu hóa siêu tham số cho SVM. Không gian siêu tham số bao gồm:  
@@ -1011,15 +995,15 @@ Trong đó:
 \paragraph{KNN} 
 Kết quả dự đoán của mô hình KNN được tóm tắt như sau:
 \begin{itemize}
-    \item Nhóm \textit{Cấm}: Dự đoán đúng 33 biển báo. Chỉ có 1 biển bị nhầm lẫn với nhóm \textit{Hiệu lệnh}, cho thấy KNN nhận diện tốt các đặc trưng của nhóm này.
-    \item Nhóm \textit{Chỉ dẫn}: Dự đoán đúng 23 biển báo. Tuy nhiên, có 3 biển bị nhầm với nhóm \textit{Hiệu lệnh} và 7 biển nhầm với nhóm \textit{Phụ}, điều này cho thấy khó khăn trong việc phân biệt giữa các biển nền xanh và biển có chi tiết phức tạp.
-    \item Nhóm \textit{Hiệu lệnh}: Dự đoán đúng 25 biển báo. 5 biển bị nhầm với nhóm \textit{Cấm} và 1 biển bị nhầm với nhóm \textit{Chỉ dẫn}, điều này có thể bắt nguồn từ sự tương đồng về hình dạng.
+    \item Nhóm \textit{Cấm}: Dự đoán đúng 32 biển báo. Chỉ có 2 biển bị nhầm lẫn, cho thấy KNN nhận diện tốt các đặc trưng của nhóm này.
+    \item Nhóm \textit{Chỉ dẫn}: Dự đoán đúng 27 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh}, 1 với \textit{Nguy hiểm} và 4 biển nhầm với nhóm \textit{Phụ}, điều này cho thấy khó khăn trong việc phân biệt giữa các biển có chi tiết phức tạp.
+    \item Nhóm \textit{Hiệu lệnh}: Dự đoán đúng 24 biển báo. 4 biển bị nhầm với nhóm \textit{Cấm} và 3 biển bị nhầm với nhóm \textit{Chỉ dẫn}, điều này có thể bắt nguồn từ sự tương đồng về hình dạng.
     \item Nhóm \textit{Nguy hiểm}: Dự đoán đúng toàn bộ 29 biển báo, cho thấy khả năng nhận diện rất tốt nhờ đặc trưng viền đỏ hình tam giác dễ nhận diện.
-    \item Nhóm \textit{Phụ}: Dự đoán đúng 22 biển báo. Chỉ có 1 biển bị nhầm lẫn với nhóm \textit{Nguy hiểm}, điều đó cho thấy hiệu suất nằm ở mức ổn đối với nhóm này.
+    \item Nhóm \textit{Phụ}: Dự đoán đúng 22 biển báo. Chỉ có 1 biển bị nhầm lẫn với nhóm \textit{Chỉ dẫn}, điều đó cho thấy hiệu suất nằm ở mức ổn đối với nhóm này.
 \end{itemize}
 
 \textbf{Nhận xét}:  
-Mô hình KNN đạt hiệu suất cao đối với nhóm \textit{Cấm} và \textit{Nguy hiểm}, nhờ các đặc trưng dễ nhận diện (đối với biển \textit{Cấm} thì chúng thường có hình tròn với viền đỏ, còn với biển \textit{Nguy hiểm} thì chúng thường có hình dạng là tam giác). Tuy nhiên, các nhầm lẫn chủ yếu xảy ra với nhóm \textit{Chỉ dẫn} và \textit{Phụ}, cũng như giữa nhóm \textit{Hiệu lệnh} và \textit{Cấm}.
+Mô hình KNN đạt hiệu suất cao đối với nhóm \textit{Cấm} và \textit{Nguy hiểm}, nhờ các đặc trưng dễ nhận diện (đối với biển \textit{Cấm} thì chúng thường có hình tròn với viền đỏ, còn với biển \textit{Nguy hiểm} thì chúng thường có hình dạng là tam giác). Tuy nhiên, các nhầm lẫn chủ yếu xảy ra với nhóm \textit{Chỉ dẫn} và \textit{Phụ}, cũng như giữa các nhóm \textit{Hiệu lệnh}, \textit{Chỉ dẫn} và \textit{Cấm}.
 
 \begin{figure}[H]
     \centering
@@ -1031,15 +1015,15 @@ Mô hình KNN đạt hiệu suất cao đối với nhóm \textit{Cấm} và \te
 \paragraph{SVM}  
 Kết quả dự đoán của mô hình SVM được tóm tắt như sau:
 \begin{itemize}
-    \item \textbf{Nhóm \textit{Cấm}}: Dự đoán đúng 33 biển báo. Chỉ có 1 biển bị nhầm lẫn với nhóm \textit{Hiệu lệnh}, và không có sự nhầm lẫn với các nhóm khác. Điều này cho thấy SVM phân biệt rất tốt nhóm \textit{Cấm}.
-    \item \textbf{Nhóm \textit{Chỉ dẫn}}: Dự đoán đúng 29 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh} và 3 biển nhầm với nhóm \textit{Phụ}. Điều này phản ánh sự cải thiện so với KNN nhưng vẫn còn nhầm lẫn giữa các biển nền xanh với chi tiết phức tạp.
-    \item \textbf{Nhóm \textit{Hiệu lệnh}}: Dự đoán đúng 24 biển báo. Có 3 biển nhầm với nhóm \textit{Cấm} và 4 biển nhầm với nhóm \textit{Chỉ dẫn}, phản ánh rằng các chi tiết phức tạp trong nhóm này vẫn là một thách thức đối với mô hình.
+    \item \textbf{Nhóm \textit{Cấm}}: Dự đoán đúng 32 biển báo. Chỉ có 2 biển bị phân loại sai, tương tự như hiệu suất khi sử dụng mô hình KNN để phân loại. Điều này cho thấy SVM phân biệt rất tốt nhóm \textit{Cấm}.
+    \item \textbf{Nhóm \textit{Chỉ dẫn}}: Dự đoán đúng 30 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh} và 2 biển nhầm với nhóm \textit{Phụ}. Điều này phản ánh sự cải thiện so với KNN.
+    \item \textbf{Nhóm \textit{Hiệu lệnh}}: Dự đoán đúng 24 biển báo. Có 1 biển nhầm với nhóm \textit{Phụ}, 2 biển nhầm với nhóm \textit{Cấm} và 4 biển nhầm với nhóm \textit{Chỉ dẫn}, phản ánh rằng các chi tiết phức tạp trong nhóm này vẫn là một thách thức đối với mô hình.
     \item \textbf{Nhóm \textit{Nguy hiểm}}: Dự đoán đúng toàn bộ 29 biển báo mà không có bất kỳ sự nhầm lẫn nào. Điều này cho thấy SVM nhận diện xuất sắc các đặc trưng nổi bật của nhóm \textit{Nguy hiểm}.
-    \item \textbf{Nhóm \textit{Phụ}}: Dự đoán đúng 21 biển báo. Có 1 biển bị nhầm lẫn với nhóm \textit{Cấm} và 1 biển nhầm với nhóm \textit{Nguy hiểm}. Điều này cho thấy hiệu suất của SVM ở nhóm này vẫn còn hạn chế, dù có cải thiện hơn KNN.
+    \item \textbf{Nhóm \textit{Phụ}}: Dự đoán đúng 20 biển báo. Có 1 biển bị nhầm lẫn với nhóm \textit{Hiệu lệnh} và 2 biển nhầm với nhóm \textit{Chỉ dẫn}. Điều này cho thấy hiệu suất của SVM ở nhóm này vẫn còn hạn chế và có hiệu suất tệ hơn KNN.
 \end{itemize}
 
 \textbf{Nhận xét}:  
-Mô hình SVM cải thiện đáng kể so với KNN ở nhóm \textit{Chỉ dẫn}, với số lượng biển báo được dự đoán đúng tăng lên đáng kể. Nhóm \textit{Nguy hiểm} tiếp tục đạt hiệu suất tối đa, không có nhầm lẫn. Tuy nhiên, nhóm \textit{Hiệu lệnh} vẫn gây khó khăn cho mô hình, với các biển báo bị nhầm lẫn với nhóm \textit{Cấm} và \textit{Chỉ dẫn}. Điều này cho thấy cần tập trung vào việc cải thiện khả năng phân biệt chi tiết phức tạp và tương đồng giữa các nhóm này.
+Mô hình SVM cải thiện đáng kể so với KNN ở nhóm \textit{Chỉ dẫn}, với số lượng biển báo được dự đoán đúng tăng lên đáng kể. Nhóm \textit{Nguy hiểm} và \textit{Cấm} tiếp tục đạt hiệu suất tối đa, không có nhầm lẫn. Tuy nhiên, nhóm \textit{Hiệu lệnh} vẫn gây khó khăn cho mô hình, với các biển báo bị nhầm lẫn với các nhóm \textit{Cấm}, \textit{Chỉ dẫn} và \textit{Phụ}. Điều này cho thấy cần tập trung vào việc cải thiện khả năng phân biệt chi tiết phức tạp và tương đồng giữa các nhóm này. Đặc biệt khi sử dụng mô hình SVM để phân loại biển \textit{Phụ} thì có hiệu suất giảm đi so với khi sử dụng mô hình KNN.
 
 \begin{figure}[H]
     \centering
@@ -1066,7 +1050,7 @@ Nhìn chung, KNN hoạt động tốt với các nhóm biển báo có đặc tr
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{classification_report_knn.png}
+    \includegraphics[width=0.7\textwidth]{classification_report_knn.png}
     \caption{Classification Report của mô hình KNN}
     \label{fig:knn_classification_report}
 \end{figure}
@@ -1084,7 +1068,7 @@ Nhìn chung, SVM vượt trội hơn KNN trong việc nhận diện các nhóm b
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{classification_report_svm.png}
+    \includegraphics[width=0.7\textwidth]{classification_report_svm.png}
     \caption{Classification Report của mô hình SVM}
     \label{fig:svm_classification_report}
 \end{figure}
@@ -1128,7 +1112,7 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
 \subsubsection{Chọn mô hình}
 \begin{itemize}
     \item Người dùng có thể chọn sử dụng mô hình tốt nhất (Best Model) hoặc tùy chỉnh thông số.
-    \item Đối với KNN: có thể điều chỉnh n\_neighbors, weights, metrics và leaf\_size
+    \item Đối với KNN: có thể điều chỉnh n\_neighbors, weights và metrics
     \item Đối với SVM: có thể điều chỉnh kernel, C, degree và gamma
 \end{itemize}
 
@@ -1167,11 +1151,11 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
 \vspace{1cm}
 \subsection*{Kết luận chung}
 
-\hspace{6mm}- Với tập dataset đã được chuẩn bị, trong ba mô hình mà nhóm chọn, mô hình \textbf{SVM} đạt độ chính xác cao nhất với \textbf{91\%}. Mô hình này cho thấy khả năng phân loại tốt đối với hầu hết các nhóm biển báo. 
+\hspace{6mm}- Với tập dataset đã được chuẩn bị, trong hai mô hình mà nhóm chọn, mô hình \textbf{SVM} đạt độ chính xác cao nhất với \textbf{91\%}. Mô hình này cho thấy khả năng phân loại tốt đối với hầu hết các nhóm biển báo. 
 
-- Nhóm \textit{Cấm} được phân loại tốt nhất trên cả ba mô hình, với độ chính xác cao. Nguyên nhân có thể do số lượng ảnh của nhóm \textit{Cấm} cao hơn so với các nhóm khác, và đặc trưng của biển báo \textit{Cấm} (thường có viền và nền màu đỏ) giúp mô hình dễ dàng nhận diện nhờ sự khác biệt màu sắc mạnh mẽ, ít bị nhầm lẫn với các biển báo khác.
+- Nhóm \textit{Cấm} được phân loại tốt nhất trên cả hai mô hình, với độ chính xác cao. Nguyên nhân có thể do số lượng ảnh của nhóm \textit{Cấm} cao hơn so với các nhóm khác, và đặc trưng của biển báo \textit{Cấm} (thường có viền và nền màu đỏ) giúp mô hình dễ dàng nhận diện nhờ sự khác biệt màu sắc mạnh mẽ, ít bị nhầm lẫn với các biển báo khác.
   
-- Nhóm \textit{Hiệu lệnh} và \textit{Chỉ dẫn} thường bị nhầm lẫn do màu sắc và hình dạng tương đồng. Điều này thể hiện sự cần thiết phải cải thiện khả năng phân biệt chi tiết giữa các biển báo này.
+- Nhóm \textit{Hiệu lệnh}, \textit{Chỉ dẫn} và \textit{Phụ} thường bị nhầm lẫn do màu sắc, hình dạng có phần tương đồng kèm theo nội dung chi tiết trong biển báo là quá nhiều. Điều này thể hiện sự cần thiết phải cải thiện khả năng phân biệt chi tiết giữa các biển báo này.
 
 - Điều kiện môi trường có thể gây khó khăn cho việc nhận diện biển báo, chẳng hạn như khi biển báo bị che khuất bởi ánh sáng yếu, thời tiết xấu như mưa hoặc sương mù, hoặc khi hình ảnh có chất lượng kém. Những yếu tố này ảnh hưởng đến khả năng quan sát và phân loại chính xác của mô hình.
 
@@ -1189,7 +1173,7 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
         \item Phát hiện và loại bỏ nhiễu trong hình ảnh nhằm nâng cao độ chính xác của mô hình.
     \end{itemize}
 
-- \textbf{Nâng cấp mô hình học máy:}
+- \textbf{Nâng cấp mô hình phân loại:}
     \begin{itemize}
         \item Triển khai các mô hình học sâu để cải thiện khả năng nhận diện và phân loại biển báo giao thông.
     \end{itemize}
