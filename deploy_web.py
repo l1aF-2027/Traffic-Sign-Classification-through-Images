@@ -17,7 +17,7 @@ project_dir = os.getcwd()
 
 # [Giữ nguyên các hàm helper từ code gốc]
 def blur_image(image):
-    blurred_image = cv2.medianBlur(image, 5)
+    blurred_image = cv2.GaussianBlur(image, (5,5), 0)
     return blurred_image
 
 def color_histogram(image):
@@ -78,8 +78,7 @@ def plot_classification_report(y_true, y_pred, labels, model_name):
 # Cấu hình trang
 st.set_page_config(
     page_title="Traffic Sign Classification Web",
-    page_icon=":vertical_traffic_light:",
-    layout="wide"  # Thêm layout wide để có nhiều không gian hơn cho 2 cột
+    page_icon=":vertical_traffic_light:"
 )
 
 def plot_misclassified_images(test_images, test_labels_encoded, y_pred, label_encoder, model_name):
