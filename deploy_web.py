@@ -313,7 +313,7 @@ if uploaded_files:
     for i, img in enumerate(images):
         col = cols[i % num_cols]
         with col:
-            st.image(img, use_column_width=True, width=128)
+            st.image(img, use_container_width=True, width=128)
             
             img_np = np.array(img)
             img_bgr = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
