@@ -299,34 +299,28 @@ mapping = {
     'Phu': 'Phụ'
 }
 
-if "images" not in st.session_state:
-    st.session_state.images = []
-
 uploaded_files = st.file_uploader("Tải các hình ảnh lên", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
 
 if uploaded_files:
+    images = []
     for uploaded_file in uploaded_files:
         image = Image.open(uploaded_file)
-        st.session_state.images.append(image)  
+        images.append(image)
 
-if st.session_state.images:
-    num_cols = 5  
+    num_cols = 10
     cols = st.columns(num_cols)
-
-    for i, img in enumerate(st.session_state.images):
+    
+    for i, img in enumerate(images):
         col = cols[i % num_cols]
         with col:
             st.image(img, use_container_width=True, width=128)
-
-            if st.button(f"Xóa {i}", key=f"delete_{i}"):
-                st.session_state.images.pop(i) 
-                st.experimental_rerun()  
-
+            
             img_np = np.array(img)
             img_bgr = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
             img_resized = cv2.resize(img_bgr, (64, 64))
             image_inputs = extract_features([img_resized])
-
+            
+            # Dự đoán từ cả hai model
             pred_knn = model_KNN.predict(image_inputs)[0]
             pred_svm = model_SVM.predict(image_inputs)[0]
             
