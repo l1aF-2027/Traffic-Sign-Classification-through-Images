@@ -325,9 +325,9 @@ if uploaded_files:
             pred_svm = model_SVM.predict(image_inputs)[0]
             
             caption = f"""
-            <div style='text-align: center; color: black; margin-top: -10px;'>
-                KNN: {mapping.get(label_encoder.classes_[pred_knn], 'Unknown')}<br>
-                SVM: {mapping.get(label_encoder.classes_[pred_svm], 'Unknown')}
+            <div style='text-align: center; color: black; margin-top: -10px; font-size: 12px;'>
+                <span style='display: inline-block; margin-right: 10px;'>KNN: {mapping.get(label_encoder.classes_[pred_knn], 'Unknown')}</span>
+                <span style='display: inline-block;'>SVM: {mapping.get(label_encoder.classes_[pred_svm], 'Unknown')}</span>
             </div>
             """
             st.markdown(caption, unsafe_allow_html=True)
