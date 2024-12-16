@@ -48,6 +48,13 @@
 \titleformat{\subparagraph}[block]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
 \titlespacing*{\subparagraph}{0pt}{1ex plus 0.5ex minus 0.2ex}{1ex}
 
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+
 \begin{document}
 
 \begin{titlepage}
@@ -622,18 +629,10 @@ Trong đó:
 \end{itemize}
 \hspace{5mm}Năm 1995, Corinna Cortes và Vladimir N. Vapnik đề xuất một ý tưởng mới cho phép thuật toán gán nhãn sai cho một số mẫu luyện tập. Nếu không tồn tại siêu phẳng nào phân tách được hai lớp dữ liệu, thì thuật toán \textbf{Biên mềm} sẽ chọn một siêu phẳng phân tách các mẫu luyện tập tốt nhất có thể, và đồng thời cực đại hóa khoảng cách giữa siêu phẳng với các mẫu được gán đúng nhãn. Phương pháp này sử dụng các biến bù $\xi_i$ dùng để đo độ sai lệch của mẫu $x_i$. Hàm mục tiêu có thêm một số hạng mới để phạt thuật toán khi $\xi_i$ khác không, và bài toán tối ưu hóa trở thành việc trao đổi giữa độ lứa của biên và mức phạt nhỏ. Theo đó hàm mục tiêu trở thành:
 \[
-\min_{\mathbf{w}, b,\xi_i} (\frac{1}{2} \|\mathbf{w}\|^2 \quad  + C\sum{\xi_i})\text{với điều kiện} \quad y_i (\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1 - \xi_i \quad \forall i, \xi_i \req 0
-\quad \text{\cite{boser1992}}
+\min_{\mathbf{w}, b,\xi_i} \frac{1}{2} \|\mathbf{w}\|^2 \quad  + C\sum^i{}\text{với điều kiện} \quad y_i (\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1 \quad \forall i
+\quad \text{\cite{svm_wiki}}
 \]
-Trong đó:
-\begin{itemize}
-    \item \(\mathbf{w}\) là vector trọng số.
-    \item \(b\) là bias (hệ số bù).
-    \item \(y_i\) là nhãn của điểm dữ liệu (\(y_i = \pm 1\)).
-    \item \(\mathbf{x}_i\) là điểm dữ liệu.
-    \item \(\xi_i\) là biến bù của điểmm dữ liệu \(x_i\).
-    \item \(C\) là tham số điều chỉnh mức phạt đối với các lỗi phân loại.
-\end{itemize}
+
 \subparagraph{Kernel Trick (Nếu dữ liệu phi tuyến)}  
 \hspace{5mm}Nếu dữ liệu không thể phân chia một cách rõ ràng bằng siêu phẳng trong không gian gốc (dữ liệu phi tuyến), SVM sử dụng kernel trick để ánh xạ dữ liệu vào không gian đặc trưng cao hơn, nơi phân chia trở thành tuyến tính. Hàm kernel \(K(\mathbf{x}_i, \mathbf{x}_j)\) có thể tính toán khoảng cách trong không gian cao mà không cần tính toán trực tiếp các tọa độ trong không gian đó. Một số hàm kernel phổ biến \cite{svm_kernel}
 
@@ -654,10 +653,9 @@ Trong đó:
     \end{itemize}
     \item \textbf{Radial Basis Function (RBF) kernel:}
     \[
-    K(\mathbf{x}_i, \mathbf{x}_j) = \exp\left(-\gamma{\|\mathbf{x}_i - \mathbf{x}_j\|^2}\right)
+    K(\mathbf{x}_i, \mathbf{x}_j) = \exp\left(-\frac{\|\mathbf{x}_i - \mathbf{x}_j\|^2}{2\sigma^2}\right)
     \]
     \begin{itemize}
-        \item Với \(\gamma\) là hệ số quyết định mức độ ảnh hưởng của một điểm dữ liệu khác.
         \item Kernel Gaussian, sử dụng khoảng cách Euclid để tính toán ảnh hưởng của các điểm dữ liệu.
     \end{itemize}
     \item \textbf{Sigmoid kernel:}
@@ -943,49 +941,45 @@ Bảng dưới đây thể hiện số lượng ảnh huấn luyện và kiểm 
 Để đánh giá hiệu suất của mô hình, các độ đo phổ biến trong bài toán phân loại đã được sử dụng, bao gồm:  
 
 \subsubsection{Accuracy}
-\textbf{Khái niệm:} Accuracy đo lường tỷ lệ dự đoán đúng trên tổng số dự đoán.  
+\textbf{Định nghĩa:} Accuracy là tỷ lệ số lượng dự đoán chính xác trên tổng số lượng mẫu.  
 \textbf{Công thức:}  
 \[
 \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
 \]
-Trong đó:
+\textbf{Trong đó:}  
 \begin{itemize}
-    \item \(TP\) (True Positive): Số mẫu dương được dự đoán đúng.
-    \item \(TN\) (True Negative): Số mẫu âm được dự đoán đúng.
-    \item \(FP\) (False Positive): Số mẫu âm bị dự đoán nhầm là dương.
-    \item \(FN\) (False Negative): Số mẫu dương bị dự đoán nhầm là âm.
+    \item \(TP\) (True Positive): Số lượng mẫu thuộc lớp dương được mô hình dự đoán chính xác.
+    \item \(TN\) (True Negative): Số lượng mẫu thuộc lớp âm được mô hình dự đoán chính xác.
+    \item \(FP\) (False Positive): Số lượng mẫu thuộc lớp âm nhưng bị mô hình dự đoán nhầm là lớp dương.
+    \item \(FN\) (False Negative): Số lượng mẫu thuộc lớp dương nhưng bị mô hình dự đoán nhầm là lớp âm.
 \end{itemize}
 
 \subsubsection{Precision}
-\textbf{Khái niệm:} Precision đo lường tỷ lệ mẫu dương dự đoán đúng trong số các mẫu được dự đoán là dương.  
+\textbf{Định nghĩa:} Precision là tỷ lệ số lượng mẫu thuộc lớp dương được dự đoán chính xác trên tổng số lượng mẫu mà mô hình dự đoán là lớp dương.  
 \textbf{Công thức:}  
 \[
 \text{Precision} = \frac{TP}{TP + FP}
 \]
-Trong đó:
-\begin{itemize}
-    \item \(TP\) (True Positive): Số mẫu dương được dự đoán đúng.
-    \item \(FP\) (False Positive): Số mẫu âm bị dự đoán nhầm là dương.
-\end{itemize}
 
 \subsubsection{Recall}
-\textbf{Khái niệm:} Recall thể hiện tỷ lệ mẫu dương thực sự được phát hiện chính xác trong số các mẫu dương thực tế.  
+\textbf{Định nghĩa:} Recall là tỷ lệ số lượng mẫu thuộc lớp dương được mô hình dự đoán chính xác trên tổng số lượng mẫu thực sự thuộc lớp dương.  
 \textbf{Công thức:}  
 \[
 \text{Recall} = \frac{TP}{TP + FN}
 \]
-Trong đó:
-\begin{itemize}
-    \item \(TP\) (True Positive): Số mẫu dương được dự đoán đúng.
-    \item \(FN\) (False Negative): Số mẫu dương bị dự đoán nhầm là âm.
-\end{itemize}
 
 \subsubsection{F1-score}
-\textbf{Khái niệm:} F1-score là trung bình điều hòa giữa Precision và Recall, cung cấp một thước đo cân bằng.  
+\textbf{Định nghĩa:} F1-score là trung bình điều hòa giữa Precision và Recall, cung cấp một thước đo cân bằng giữa hai độ đo.  
 \textbf{Công thức:}  
 \[
 \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 \]
+\textbf{Trong đó:}  
+\begin{itemize}
+    \item \(Precision\): Tỷ lệ số lượng mẫu thuộc lớp dương được dự đoán chính xác trên tổng số lượng mẫu dự đoán là lớp dương.
+    \item \(Recall\): Tỷ lệ số lượng mẫu thuộc lớp dương được dự đoán chính xác trên tổng số lượng mẫu thực sự thuộc lớp dương.
+\end{itemize}
+
 
 \newpage
 \subsection{Kết quả thực nghiệm}
@@ -1137,7 +1131,7 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
 \subsection{Truy cập web}
 \hspace{5mm}Để truy cập trang web, nhấn vào \href{https://traffic-sign-classification-through-images.streamlit.app/}{\textbf{Traffic Sign Classification Web}} hoặc quét mã QR dưới đây:
 \begin{center}
-    \includegraphics[width=0.35\textwidth]{link_web.png}
+    \includegraphics[width=0.3\textwidth]{link_web.png}
 \end{center}
 
 \newpage
