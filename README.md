@@ -30,7 +30,10 @@ A simple app template for you to classify the traffic signs and also our Compute
 
 1. **data**: Store traffic sign images and labels in train, test, and demo directories
 
-2. **extras**: Contains Vietnam's legal documents regarding traffic signs and requirements.txt file storing Mr. Mai Tien Dung's requirements for slides and report
+2. **extras**: Contains two folders and one file:
+   - One folder for code containing scripts for tasks such as checking the percentage of traffic signs in the image frame, renaming multiple image files, etc.
+   - Another folder containing Vietnam's legal documents regarding traffic signs.
+   - `requirements.txt` file storing Mr. Mai Tien Dung's requirements for slides and report.
 
 3. **grid_search_results**: Store parameter tuning attempts and different data processing methods
 
