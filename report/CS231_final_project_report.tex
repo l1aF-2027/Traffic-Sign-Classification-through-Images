@@ -150,15 +150,21 @@ Hà Huy Hoàng & 22520460 & \parbox{5cm}{\centering Trích xuất đặc trưng 
 \setcounter{section}{1}
 \subsection{Mô tả bài toán}
 % \addcontentsline{toc}{subsection}{Mô tả bài toán}
-\hspace{5mm}Trong giao thông đô thị, biển báo giao thông có sự đa dạng về hình dạng, màu sắc và nội dung, kèm theo đó là số lượng biển dày đặc; điều này khiến việc nhận diện chúng trở thành thách thức lớn cho người tham gia giao thông đường bộ. Để hỗ trợ người lái xe, ta cần xây dựng một hệ thống phân loại, có khả năng nhận diện và phân loại biển báo vào thành các nhóm chính: cấm, nguy hiểm, hiệu lệnh, chỉ dẫn và biển phụ.
+\hspace{5mm}Trong giao thông đô thị, biển báo giao thông có sự đa dạng về hình dạng, màu sắc và nội dung, kèm theo đó là số lượng biển dày đặc; điều này khiến việc nhận diện chúng trở thành thách thức lớn cho người tham gia giao thông đường bộ. Trong đồ án này, dữ liệu được thu thập đa số dưới góc nhìn của người lái xe máy. Mục tiêu là xây dựng một hệ thống phân loại, có khả năng nhận diện và phân loại biển báo vào các nhóm chính: cấm, nguy hiểm, hiệu lệnh, chỉ dẫn và biển phụ.  
 
 \subsection{Lí do thực hiện bài toán}
 % \addcontentsline{toc}{subsection}{Lí do thực hiện bài toán}
-\hspace{5mm}Phân loại biển báo giao thông không chỉ hỗ trợ người lái xe tránh nhầm lẫn mà còn là bước nền tảng cho các hệ thống giao thông thông minh. Nhận diện chính xác biển báo giúp phát triển các ứng dụng như bản đồ thông minh, cảnh báo tức thời... Đặc biệt, đây là yếu tố quan trọng trong hệ thống lái tự động, hỗ trợ xe tự lái tuân thủ quy định và đảm bảo an toàn giao thông.
+\hspace{5mm}Phân loại biển báo giao thông từ góc nhìn của xe máy là một bước quan trọng nhằm hỗ trợ người lái xe tránh nhầm lẫn và giảm thiểu rủi ro giao thông. Đặc biệt, đây là ứng dụng thiết thực tại Việt Nam, nơi mà phương tiện xe máy chiếm đa số.  
+
+Ngoài việc cải thiện an toàn giao thông, hệ thống này còn tạo tiền đề để phát triển các công nghệ như cảnh báo vi phạm giao thông, bản đồ thông minh, và hệ thống trợ lý giao thông thời gian thực. Về lâu dài, đây là yếu tố quan trọng trong các hệ thống giao thông thông minh và hỗ trợ xe tự lái.
 
 \subsection{Phát biểu bài toán}
 % \addcontentsline{toc}{subsection}{Phát biểu bài toán}
-\textbf{Input:} Đầu vào của bài toán là một ảnh chụp biển báo giao thông chưa được gắn nhãn. Trong ảnh, biển báo chiếm phần lớn khung hình, giúp dễ dàng nhận diện đặc điểm như hình dạng, màu sắc, và biểu tượng đặc trưng.\\[0.2cm]
+\textbf{Input:} Đầu vào của bài toán bao gồm: 
+\begin{itemize}
+    \item Một ảnh biển báo giao thông (trong ảnh, biển báo chiếm phần lớn khung hình (khoảng 40\% tổng số pixels trở lên), giúp dễ dàng nhận diện đặc điểm như hình dạng, màu sắc, và biểu tượng đặc trưng).
+    \item Nhãn chứa tên nhóm biển báo.
+\end{itemize}
 \textbf{Output:} Đầu ra của bài toán là một nhãn phân loại của biển báo trong ảnh, thuộc một trong các loại sau: "Cấm", "Chỉ dẫn", "Hiệu lệnh", "Nguy hiểm", "Phụ".\\[0.2cm]
 Với các loại biển báo được mô tả như sau:
 \begin{itemize}
@@ -744,7 +750,8 @@ y_pred = svc_model.predict(X_test)
 
 \noindent Cú pháp cơ bản của GridSearchCV thường bao gồm các thành phần chính \cite{gridsearchcv_mygreatlearning}:
 \begin{itemize}
-    \item \texttt{estimator}: Mô hình học máy cần tối ưu hóa, ví dụ \texttt{KNeighborsClassifier}, \texttt{SVC}, \texttt{RandomForestClassifier}, v.v. Đây là tham số bắt buộc phải có.
+    \item \texttt{estimator}: Mô hình học máy cần tối ưu hóa, ví dụ \texttt{KNeighborsClassifier}, \\
+    \texttt{SVC}, \texttt{RandomForestClassifier}, v.v. Đây là tham số bắt buộc phải có.
     \item \texttt{param\_grid}: Một từ điển hoặc danh sách các từ điển, chứa các tham số cần tối ưu và các giá trị tương ứng để thử nghiệm.
     %     \begin{minted}[frame=single,fontsize=\footnotesize,linenos]{python}
     %     param_grid = {
@@ -785,7 +792,7 @@ param_grid = {
     'n_neighbors': [3, 4, 5, 6, 7, 10],
     'weights': ['uniform', 'distance'],
     'metric': [
-        'cityblock', 'cosine',
+        'cityblock', 'euclidean', 'cosine',
         'sqeuclidean', 'chi_square_distance',
         'bhattacharyya_distance', 'intersection_distance'
     ]
@@ -886,7 +893,7 @@ grid_search_svm.fit(X_train, y_train)
 
 \noindent \textbf{Giải thích các tham số chính:}  
 Tương tự KNN, GridSearchCV với SVM cũng sử dụng các tham số \texttt{cv=3}, \texttt{scoring='f1\_macro'}, và \texttt{verbose=3}.\\[2mm]
-\noindent \textbf{Tham số tốt nhất của SVM sau khi dùng GridsearchCV:} \texttt{\{'C': 0.1, 'degree': 3, 'gamma': 0.1, 'kernel': 'poly'\}}
+\noindent \textbf{Tham số tốt nhất của SVM sau khi dùng GridsearchCV:} \texttt{\{'C': 0.4, 'degree': 4, 'gamma': 'scale', 'kernel': 'poly'\}}
 
 \newpage
 \section*{\centering CHƯƠNG 3. THỰC NGHIỆM VÀ KẾT QUẢ}
@@ -908,8 +915,8 @@ Bộ dữ liệu sử dụng trong nghiên cứu được xây dựng từ nhi�
 \subsubsection{Cấu trúc bộ dữ liệu}
 Bộ dữ liệu gồm tổng cộng 1565 ảnh, được chia thành hai tập:
 \begin{itemize}
-    \item \textbf{Tập huấn luyện (Training set):} Gồm 1415 ảnh, chiếm khoảng 90\% dữ liệu, được sử dụng để huấn luyện mô hình.
-    \item \textbf{Tập kiểm tra (Test set):} Gồm 150 ảnh, chiếm khoảng 10\% dữ liệu, được sử dụng để đánh giá hiệu quả của mô hình.
+    \item \textbf{Tập huấn luyện (Training set):} Gồm 1416 ảnh, chiếm khoảng 90\% dữ liệu, được sử dụng để huấn luyện mô hình.
+    \item \textbf{Tập kiểm tra (Test set):} Gồm 149 ảnh, chiếm khoảng 10\% dữ liệu, được sử dụng để đánh giá hiệu quả của mô hình.
 \end{itemize}
 
 Bộ dữ liệu được chia thành 5 nhóm (class) chính dựa trên loại biển báo giao thông:
@@ -927,11 +934,11 @@ Bảng dưới đây thể hiện số lượng ảnh huấn luyện và kiểm 
     \begin{tabular}{|c|c|c|}
         \hline
         \textbf{Nhóm (Class)} & \textbf{Số lượng ảnh huấn luyện} & \textbf{Số lượng ảnh kiểm tra} \\ \hline
-        Cấm & 330 & 34 \\ \hline
+        Cấm & 327 & 33 \\ \hline
         Chỉ dẫn & 320 & 33 \\ \hline
         Hiệu lệnh & 272 & 31 \\ \hline
-        Nguy hiểm & 268 & 29 \\ \hline
-        Phụ & 225 & 23 \\ \hline
+        Nguy hiểm & 271 & 29 \\ \hline
+        Phụ & 226 & 23 \\ \hline
     \end{tabular}
     \centering
     \caption{Số lượng ảnh trong bộ dữ liệu theo từng nhóm}
@@ -989,9 +996,9 @@ Bảng dưới đây thể hiện số lượng ảnh huấn luyện và kiểm 
 \paragraph{KNN} 
 Kết quả dự đoán của mô hình KNN được tóm tắt như sau:
 \begin{itemize}
-    \item Nhóm \textit{Cấm}: Dự đoán đúng 32 biển báo. Chỉ có 2 biển bị nhầm lẫn, cho thấy KNN nhận diện tốt các đặc trưng của nhóm này.
-    \item Nhóm \textit{Chỉ dẫn}: Dự đoán đúng 27 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh}, 1 với \textit{Nguy hiểm} và 4 biển nhầm với nhóm \textit{Phụ}, điều này cho thấy khó khăn trong việc phân biệt giữa các biển có chi tiết phức tạp.
-    \item Nhóm \textit{Hiệu lệnh}: Dự đoán đúng 24 biển báo. 4 biển bị nhầm với nhóm \textit{Cấm} và 3 biển bị nhầm với nhóm \textit{Chỉ dẫn}, điều này có thể bắt nguồn từ sự tương đồng về hình dạng.
+    \item Nhóm \textit{Cấm}: Dự đoán đúng 31 biển báo. Chỉ có 2 biển bị nhầm lẫn, cho thấy KNN nhận diện tốt các đặc trưng của nhóm này.
+    \item Nhóm \textit{Chỉ dẫn}: Dự đoán đúng 29 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh} và 3 biển nhầm với nhóm \textit{Phụ}, điều này cho thấy mô hình gặp khó khăn hơn trong việc phân biệt giữa các biển có chi tiết phức tạp.
+    \item Nhóm \textit{Hiệu lệnh}: Dự đoán đúng 27 biển báo. 2 biển bị nhầm với nhóm \textit{Cấm} và 2 biển bị nhầm với nhóm \textit{Chỉ dẫn}, điều này có thể bắt nguồn từ sự tương đồng về hình dạng.
     \item Nhóm \textit{Nguy hiểm}: Dự đoán đúng toàn bộ 29 biển báo, cho thấy khả năng nhận diện rất tốt nhờ đặc trưng viền đỏ hình tam giác dễ nhận diện.
     \item Nhóm \textit{Phụ}: Dự đoán đúng 22 biển báo. Chỉ có 1 biển bị nhầm lẫn với nhóm \textit{Chỉ dẫn}, điều đó cho thấy hiệu suất nằm ở mức ổn đối với nhóm này.
 \end{itemize}
@@ -1009,15 +1016,15 @@ Mô hình KNN đạt hiệu suất cao đối với nhóm \textit{Cấm} và \te
 \paragraph{SVM}  
 Kết quả dự đoán của mô hình SVM được tóm tắt như sau:
 \begin{itemize}
-    \item \textbf{Nhóm \textit{Cấm}}: Dự đoán đúng 32 biển báo. Chỉ có 2 biển bị phân loại sai, tương tự như hiệu suất khi sử dụng mô hình KNN để phân loại. Điều này cho thấy SVM phân biệt rất tốt nhóm \textit{Cấm}.
-    \item \textbf{Nhóm \textit{Chỉ dẫn}}: Dự đoán đúng 30 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh} và 2 biển nhầm với nhóm \textit{Phụ}. Điều này phản ánh sự cải thiện so với KNN.
-    \item \textbf{Nhóm \textit{Hiệu lệnh}}: Dự đoán đúng 24 biển báo. Có 1 biển nhầm với nhóm \textit{Phụ}, 2 biển nhầm với nhóm \textit{Cấm} và 4 biển nhầm với nhóm \textit{Chỉ dẫn}, phản ánh rằng các chi tiết phức tạp trong nhóm này vẫn là một thách thức đối với mô hình.
+    \item \textbf{Nhóm \textit{Cấm}}: Dự đoán đúng 31 biển báo. Chỉ có 2 biển bị phân loại sai, tương tự như hiệu suất khi sử dụng mô hình KNN để phân loại. Điều này cho thấy SVM phân biệt rất tốt nhóm \textit{Cấm}.
+    \item \textbf{Nhóm \textit{Chỉ dẫn}}: Dự đoán đúng 31 biển báo. Tuy nhiên, có 1 biển bị nhầm với nhóm \textit{Hiệu lệnh} và 1 biển nhầm với nhóm \textit{Phụ}. Điều này phản ánh sự cải thiện so với KNN.
+    \item \textbf{Nhóm \textit{Hiệu lệnh}}: Dự đoán đúng 25 biển báo. Có 1 biển nhầm với nhóm \textit{Phụ}, 1 biển nhầm với nhóm \textit{Cấm} và 4 biển nhầm với nhóm \textit{Chỉ dẫn}, phản ánh rằng các chi tiết phức tạp trong nhóm này vẫn là một thách thức đối với mô hình. Và thể hiện việc hiệu suất của mô hình SVM tệ hơn mô hình KNN tại nhóm biển báo này.
     \item \textbf{Nhóm \textit{Nguy hiểm}}: Dự đoán đúng toàn bộ 29 biển báo mà không có bất kỳ sự nhầm lẫn nào. Điều này cho thấy SVM nhận diện xuất sắc các đặc trưng nổi bật của nhóm \textit{Nguy hiểm}.
-    \item \textbf{Nhóm \textit{Phụ}}: Dự đoán đúng 20 biển báo. Có 1 biển bị nhầm lẫn với nhóm \textit{Hiệu lệnh} và 2 biển nhầm với nhóm \textit{Chỉ dẫn}. Điều này cho thấy hiệu suất của SVM ở nhóm này vẫn còn hạn chế và có hiệu suất tệ hơn KNN.
+    \item \textbf{Nhóm \textit{Phụ}}: Dự đoán đúng 19 biển báo. Có 2 biển bị nhầm lẫn với nhóm \textit{Hiệu lệnh} và 2 biển nhầm với nhóm \textit{Chỉ dẫn}. Điều này cho thấy hiệu suất của SVM ở nhóm này vẫn còn hạn chế và có hiệu suất tệ hơn KNN.
 \end{itemize}
 
 \textbf{Nhận xét}:  
-Mô hình SVM cải thiện đáng kể so với KNN ở nhóm \textit{Chỉ dẫn}, với số lượng biển báo được dự đoán đúng tăng lên đáng kể. Nhóm \textit{Nguy hiểm} và \textit{Cấm} tiếp tục đạt hiệu suất tối đa, không có nhầm lẫn. Tuy nhiên, nhóm \textit{Hiệu lệnh} vẫn gây khó khăn cho mô hình, với các biển báo bị nhầm lẫn với các nhóm \textit{Cấm}, \textit{Chỉ dẫn} và \textit{Phụ}. Điều này cho thấy cần tập trung vào việc cải thiện khả năng phân biệt chi tiết phức tạp và tương đồng giữa các nhóm này. Đặc biệt khi sử dụng mô hình SVM để phân loại biển \textit{Phụ} thì có hiệu suất giảm đi so với khi sử dụng mô hình KNN.
+Mô hình SVM cải thiện đáng kể so với KNN ở nhóm \textit{Chỉ dẫn}, với số lượng biển báo được dự đoán đúng tăng lên. Nhóm \textit{Nguy hiểm} và \textit{Cấm} tiếp tục đạt hiệu suất tối đa, không có nhầm lẫn. Tuy nhiên, khi sử dụng mô hình SVM để phân loại biển \textit{Phụ} và \textit{Hiệu lệnh} thì có hiệu suất giảm đi so với khi sử dụng mô hình KNN.
 
 \begin{figure}[H]
     \centering
@@ -1031,16 +1038,16 @@ Mô hình SVM cải thiện đáng kể so với KNN ở nhóm \textit{Chỉ d�
 \textbf{\textit{Classification report}} cung cấp thông tin chi tiết về các chỉ số như \textit{precision}, \textit{recall}, và \textit{F1-score} cho từng nhóm biển báo, qua đó đánh giá hiệu suất toàn diện của mô hình KNN. Đây là một công cụ quan trọng để hiểu rõ hơn về những điểm mạnh và hạn chế trong khả năng phân loại của mô hình trên từng loại biển báo cụ thể.  
 
 \paragraph{KNN}  
-Mô hình KNN đạt độ chính xác tổng thể (\textit{accuracy}) ở mức 88\%, thể hiện khả năng phân loại tốt trên tập dữ liệu kiểm tra. Tuy nhiên, các chỉ số hiệu suất của từng nhóm biển báo cho thấy sự khác biệt đáng kể:  
+Mô hình KNN đạt độ chính xác tổng thể (\textit{accuracy}) là 93\%, thể hiện khả năng phân loại đáng tin cậy trên tập dữ liệu biển báo giao thông. Cả \textit{macro average} và \textit{weighted average} đều cho kết quả tương đương, chứng tỏ mô hình hoạt động ổn định trên tất cả các nhóm. Mô hình KNN còn thể hiện khả năng phân loại vượt trội hơn so với SVM. Dưới đây là nhận xét chi tiết:
 \begin{itemize}
-    \item \textbf{Nhóm \textit{Cấm}}: Đạt hiệu suất cao nhất với \textit{recall} là 97\% và \textit{F1-score} là 92\%. Mô hình nhận diện rất tốt các biển báo thuộc nhóm này nhờ đặc trưng hình học và màu sắc nổi bật, giúp dễ dàng phân biệt với các nhóm khác.  
-    \item \textbf{Nhóm \textit{Chỉ dẫn}}: Mặc dù có \textit{precision} cao (96\%), \textit{recall} chỉ đạt 70\%, dẫn đến \textit{F1-score} là 81\%. Điều này cho thấy mô hình dễ bỏ sót các biển báo thuộc nhóm này, đặc biệt là những biển báo có nhiều chi tiết hoặc tương đồng với các nhóm khác.  
-    \item \textbf{Nhóm \textit{Hiệu lệnh}}: Hiệu suất khá tốt với \textit{F1-score} là 83\%. Tuy nhiên, mô hình vẫn gặp khó khăn trong việc phân biệt nhóm này với các nhóm khác do chi tiết phức tạp hoặc sự tương đồng giữa các biển báo, chẳng hạn như về màu sắc hoặc hình dạng.  
-    \item \textbf{Nhóm \textit{Nguy hiểm}}: Đây là nhóm được phân loại tốt nhất, đạt cả \textit{recall} và \textit{precision} rất cao, lần lượt là 100\% và 97\%. Điều này cho thấy mô hình phát hiện chính xác hầu hết các biển báo thuộc nhóm này nhờ vào đặc điểm viền đỏ tam giác rất dễ nhận biết.  
-    \item \textbf{Nhóm \textit{Phụ}}: Hiệu suất khá tốt với \textit{recall} là 96\% và \textit{F1-score} là 85\%. Tuy nhiên, \textit{precision} chỉ đạt 76\%, phản ánh sự nhầm lẫn giữa nhóm này và các nhóm khác, đặc biệt là những biển báo có kích thước nhỏ hoặc ít nổi bật trong hình ảnh.  
+    \item \textbf{Nhóm \textit{Cấm}}: Đạt hiệu suất cao nhất với \textit{recall} là 94\% và \textit{F1-score} là 94\%. Mô hình nhận diện rất tốt các biển báo thuộc nhóm này nhờ đặc trưng hình học và màu sắc nổi bật, giúp dễ dàng phân biệt với các nhóm khác.  
+    \item \textbf{Nhóm \textit{Chỉ dẫn}}: Các chỉ số đều đạt 88\%, thể hiện hiệu suất khá tốt nhưng thấp hơn so với các nhóm khác. Kết quả này có thể do đặc điểm của biển chỉ dẫn đôi khi gây nhầm lẫn với nhóm biển \textit{Phụ}.
+    \item \textbf{Nhóm \textit{Hiệu lệnh}}: Hiệu suất khá tốt với \textit{F1-score} là 93\%. Tuy nhiên \textit{recall} chỉ đạt 87\%. Điều này cho thấy mô hình có xu hướng bỏ sót một số biển báo thuộc nhóm này.
+    \item \textbf{Nhóm \textit{Nguy hiểm}}: Đây là nhóm được phân loại tốt nhất, đạt cả \textit{recall} và \textit{precision} rất cao, đều là 100\%. Điều này cho thấy mô hình phát hiện chính xác tất các biển báo thuộc nhóm này nhờ vào đặc điểm dễ nhận biết. 
+    \item \textbf{Nhóm \textit{Phụ}}: Hiệu suất khá tốt với \textit{recall} là 96\% và \textit{F1-score} là 92\%. Tuy nhiên, \textit{precision} chỉ đạt 88\% (tương đồng với biển \textit{Chỉ dẫn}). Điều này ngụ ý rằng mô hình có xu hướng phân loại quá mức cho nhóm này, có thể do sự tương đồng với nhóm biển \textit{Chỉ dẫn}.
 \end{itemize}
 
-Nhìn chung, KNN hoạt động tốt với các nhóm biển báo có đặc trưng hình học và màu sắc nổi bật như \textit{Cấm} và \textit{Nguy hiểm}. Tuy nhiên, các nhóm như \textit{Chỉ dẫn}, \textit{Hiệu lệnh}, và \textit{Phụ} vẫn gây khó khăn do đặc điểm phức tạp hoặc sự tương đồng giữa các nhóm, dẫn đến tỷ lệ bỏ sót và nhầm lẫn đáng kể.
+Nhìn chung, KNN hoạt động tốt với các nhóm biển báo có đặc trưng hình học và màu sắc nổi bật như \textit{Cấm} và \textit{Nguy hiểm}. Tuy nhiên, các nhóm như \textit{Chỉ dẫn}, \textit{Hiệu lệnh}, và \textit{Phụ} vẫn gây ra đôi chút khó khăn do đặc điểm phức tạp hay sự tương đồng giữa các nhóm; dẫn đến việc xảy ra một số trường hợp bỏ sót và nhầm lẫn.
 
 \begin{figure}[H]
     \centering
@@ -1050,15 +1057,15 @@ Nhìn chung, KNN hoạt động tốt với các nhóm biển báo có đặc tr
 \end{figure}
 
 \paragraph{SVM}
-Mô hình SVM đạt độ chính xác tổng thể (\textit{accuracy}) ở mức 91\%, vượt trội hơn so với KNN. Các chỉ số \textit{precision}, \textit{recall}, và \textit{F1-score} cho từng nhóm biển báo cũng thể hiện sự cải thiện đáng kể:
-\begin{itemize} \item \textbf{Nhóm \textit{Cấm}}: Mô hình đạt \textit{recall} là 97\% và \textit{F1-score} là 93\%, cho thấy khả năng nhận diện khá tốt đối với nhóm này.
-\item \textbf{Nhóm \textit{Chỉ dẫn}}: Cải thiện rõ rệt với cả \textit{precision} và \textit{recall} đạt 88\%, dẫn đến \textit{F1-score} là 88\%. Điều này thể hiện rằng SVM giảm đáng kể tỷ lệ bỏ sót so với KNN.
-\item \textbf{Nhóm \textit{Hiệu lệnh}}: Mặc dù \textit{precision} cao (92\%), \textit{recall} chỉ đạt 77\%, dẫn đến \textit{F1-score} là 84\%. Nhóm này vẫn là thách thức với SVM do đặc trưng phức tạp của các biển báo.
-\item \textbf{Nhóm \textit{Nguy hiểm}}: Hiệu suất rất cao, với \textit{recall} đạt 100\% và \textit{F1-score} là 98\%, tương tự KNN. Mô hình phân loại chính xác hầu hết các biển báo thuộc nhóm này.
-\item \textbf{Nhóm \textit{Phụ}}: Với \textit{recall} là 91\% và \textit{F1-score} là 89\%, nhóm này đạt hiệu suất cao hơn KNN, cho thấy khả năng phân biệt của SVM tốt hơn đối với nhóm có đặc điểm ít rõ ràng hơn.
+Mô hình SVM đạt độ chính xác tổng thể (\textit{accuracy}) ở mức 91\%. Các chỉ số \textit{precision}, \textit{recall}, và \textit{F1-score} cho từng nhóm biển báo phần nào cho thấy hiệu suất tệ hơn so với mô hình KNN:
+\begin{itemize} \item \textbf{Nhóm \textit{Cấm}}: Mô hình đạt \textit{recall} là 94\% và \textit{F1-score} là 95\%, cho thấy khả năng nhận diện khá tốt đối với nhóm này.
+\item \textbf{Nhóm \textit{Chỉ dẫn}}:Hiệu suất tương đương với mô hình KNN khi \textit{precision} đạt 84\% và \textit{recall} đạt 94\%, dẫn đến \textit{F1-score} là 89\%. Điều này thể hiện rằng SVM giảm đáng kể tỷ lệ bỏ sót so với KNN.
+\item \textbf{Nhóm \textit{Hiệu lệnh}}: Thể hiện hiệu suất tệ hơn với KNN khi mà \textit{precision} chỉ đạt 86\% (so với 93\% khi dùng mô hình KNN), \textit{recall} chỉ đạt 81\%, dẫn đến \textit{F1-score} là 83\%. Nhóm này vẫn là thách thức với SVM do đặc trưng phức tạp của các biển báo.
+\item \textbf{Nhóm \textit{Nguy hiểm}}: Hiệu suất rất cao, với \textit{precision}, \textit{recall}, \textit{F1-score} đều đạt 100\%; tương tự KNN. Mô hình phân loại chính xác tất cả các biển báo thuộc nhóm này.
+\item \textbf{Nhóm \textit{Phụ}}: Với \textit{recall} là 83\% và \textit{F1-score} là 84\%, nhóm này đạt hiệu suất tệ hơn đáng kể so với KNN.
 \end{itemize}
 
-Nhìn chung, SVM vượt trội hơn KNN trong việc nhận diện các nhóm biển báo phức tạp như \textit{Chỉ dẫn} và \textit{Phụ}, nhờ vào khả năng tối ưu hóa siêu phẳng phân tách. Tuy nhiên, nhóm \textit{Hiệu lệnh} vẫn gây khó khăn cho mô hình do sự đa dạng trong đặc trưng biển báo.
+Nhìn chung, SVM có hiểu suất kém hơn KNN trong việc nhận diện các nhóm biển báo phức tạp như \textit{Hiệu lệnh} và \textit{Phụ}.
 
 \begin{figure}[H]
     \centering
@@ -1145,9 +1152,9 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
 \vspace{1cm}
 \subsection*{Kết luận chung}
 
-\hspace{6mm}- Với tập dataset đã được chuẩn bị, trong hai mô hình mà nhóm chọn, mô hình \textbf{SVM} đạt độ chính xác cao nhất với \textbf{91\%}. Mô hình này cho thấy khả năng phân loại tốt đối với hầu hết các nhóm biển báo. 
+\hspace{6mm}- Với tập dataset đã được chuẩn bị, trong hai mô hình mà nhóm chọn, mô hình \textbf{KNN} đạt độ chính xác cao hơn với \textbf{93\%}. Mô hình này cho thấy khả năng phân loại tốt đối với hầu hết các nhóm biển báo. 
 
-- Nhóm \textit{Cấm} được phân loại tốt nhất trên cả hai mô hình, với độ chính xác cao. Nguyên nhân có thể do số lượng ảnh của nhóm \textit{Cấm} cao hơn so với các nhóm khác, và đặc trưng của biển báo \textit{Cấm} (thường có viền và nền màu đỏ) giúp mô hình dễ dàng nhận diện nhờ sự khác biệt màu sắc mạnh mẽ, ít bị nhầm lẫn với các biển báo khác.
+- Nhóm \textit{Nguy hiểm} được phân loại tốt nhất trên cả hai mô hình, với độ chính xác cao. Nguyên nhân có thể do đặc trưng của biển báo \textit{Nguy hiểm} (thường có hình tam giác và nền vàng) giúp mô hình dễ dàng nhận diện nhờ sự khác biệt màu sắc, ít bị nhầm lẫn với các biển báo khác. Nhóm biển báo được phân loại tốt tiếp theo là nhóm \textit{Cấm}, tuy đặc trưng của nhóm biển báo này khá dễ nhận biết tuy nhiên vẫn có thể có sự nhầm lẫn giữa các nhóm khác.
   
 - Nhóm \textit{Hiệu lệnh}, \textit{Chỉ dẫn} và \textit{Phụ} thường bị nhầm lẫn do màu sắc, hình dạng có phần tương đồng kèm theo nội dung chi tiết trong biển báo là quá nhiều. Điều này thể hiện sự cần thiết phải cải thiện khả năng phân biệt chi tiết giữa các biển báo này.
 
