@@ -204,21 +204,25 @@ Color Histogram hoạt động bằng cách phân tích sự phân bố màu s�
 \begin{itemize}
     \item \textbf{RGB (Red, Green, Blue)}: Mỗi điểm ảnh được đại diện bởi ba giá trị màu cơ bản.
     \item \textbf{HSV (Hue, Saturation, Value)}: Không gian màu này tách biệt thông tin sắc độ, độ bão hòa và cường độ sáng, thường được sử dụng để xử lý ảnh trong điều kiện ánh sáng không đồng đều.
+    \item \textbf{CMY(K) (Cyan, Magenta, Yellow, Black)}: Được sử dụng chủ yếu trong in ấn, không gian này dựa trên các màu cơ bản trừ của ánh sáng.
+    \item \textbf{Lab (CIELAB)}: Được thiết kế để gần đúng với nhận thức màu sắc của con người, không gian này bao gồm ba thành phần: độ sáng (L), trục xanh-đỏ (a), và trục vàng-xanh (b).
 \end{itemize}
 
-\subparagraph{Phân chia không gian màu}
-\hspace{5mm}Không gian màu được chia thành các khoảng màu rời rạc, gọi là bins. Số lượng bins (khoảng màu) được điều chỉnh dựa trên yêu cầu của ứng dụng:
-\begin{itemize}
-    \item \textbf{Số bins ít}: Biểu diễn tổng quát, giảm kích thước đặc trưng nhưng mất chi tiết màu sắc.
-    \item \textbf{Số bins nhiều}: Biểu diễn chi tiết hơn về màu sắc, nhưng yêu cầu tài nguyên tính toán cao hơn.
-\end{itemize}
+\subparagraph{Phân chia không gian màu}  
+\hspace{5mm}Không gian màu được chia thành các khoảng rời rạc, gọi là \textbf{bins}, nhằm đơn giản hóa quá trình phân tích và xử lý. Số lượng bins phụ thuộc vào yêu cầu ứng dụng:  
+\begin{itemize}  
+    \item \textbf{Số bins ít}: Biểu diễn tổng quát, giảm kích thước dữ liệu và chi phí tính toán nhưng có thể làm mất thông tin chi tiết về màu sắc.  
+    \item \textbf{Số bins nhiều}: Biểu diễn chi tiết hơn, phù hợp với các bài toán phức tạp nhưng yêu cầu nhiều tài nguyên và dung lượng lưu trữ hơn.  
+\end{itemize}  
 
-\subparagraph{Đếm tần suất màu sắc}
-\hspace{5mm}Mỗi pixel trong hình ảnh được ánh xạ vào một khoảng màu cụ thể, dựa trên giá trị màu sắc của nó. Histogram sau đó được tạo ra bằng cách đếm số lượng pixel thuộc về mỗi khoảng màu. Ví dụ:
-\begin{itemize}
-    \item Nếu một bin đại diện cho các giá trị màu từ 0 đến 31, tất cả các pixel có giá trị nằm trong khoảng này sẽ được gộp chung và đếm số lượng.
-\end{itemize}
-\hspace{5mm}Kết quả là một histogram cho thấy sự phân bố màu sắc trong ảnh.
+\subparagraph{Đếm tần suất màu sắc}  
+\hspace{5mm}Mỗi pixel được ánh xạ vào một bin dựa trên giá trị màu của nó. Quá trình này cho phép tạo ra \textbf{histogram màu}, biểu diễn sự phân bố của màu sắc trong ảnh thông qua tần suất xuất hiện của các pixel trong từng bin:  
+\begin{itemize}  
+    \item \textbf{Ánh xạ pixel vào bins}: Các pixel có giá trị thuộc cùng một khoảng màu được gộp chung. Ví dụ, nếu một bin đại diện cho giá trị \(0{-}31\), tất cả pixel trong khoảng này sẽ thuộc về bin đó.  
+    \item \textbf{Tính toán histogram}: Số lượng pixel trong mỗi bin biểu diễn tần suất xuất hiện của khoảng màu tương ứng, giúp mô tả sự phân bố màu sắc trong hình ảnh.  
+\end{itemize}  
+
+\hspace{5mm}Histogram màu không chỉ giúp phân tích tổng quan về màu sắc trong ảnh mà còn cung cấp đặc trưng hữu ích cho các bài toán nhận dạng, phân đoạn hoặc tăng cường hình ảnh.  
 
 \paragraph{Cài đặt trong bài toán}
 \hspace{5mm}Đoạn mã Python dưới đây minh họa cách cài đặt Color Histogram sử dụng thư viện OpenCV:
@@ -230,9 +234,7 @@ def color_histogram(image):
     feature = []
 
     for k in range(channel):
-        histogram = np.squeeze(cv2.calcHist(
-                               [image], [k], None, 
-                               [BIN_SIZE], [0, 256]))
+        histogram = np.squeeze(cv2.calcHist([image], [k], None, [BIN_SIZE], [0, 256]))
         histogram = histogram / size
         feature.extend(histogram)
 
@@ -257,10 +259,14 @@ Giải thích các tham số trong \texttt{cv2.calcHist}:
     \centering
     \includegraphics[width=0.3\textwidth]{color_histogram.png}
     \caption{Hình ảnh biển báo.}
-    \vspace{0.5cm}
+    \label{fig:color_histogram1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.9\textwidth]{color_histogram_extracted.png}
     \caption{Color Histogram được trích xuất từ hình ảnh biển báo (Hình 1).}
-    \label{fig:color_histogram}
+    \label{fig:color_histogram2}
 \end{figure}
 
 \paragraph{Nhận xét về Color Histogram}
@@ -520,14 +526,8 @@ def extract_features(images):
     d(p, q) = -\ln \left(\sum_{i=1}^{n} \sqrt{p_i q_i}\right)
     \]
     Được dùng để đo độ tương đồng giữa hai phân phối xác suất.
-
-    \item \textbf{Intersection Distance:}
-    \[
-    d(p, q) = \sum_{i=1}^{n} \min(p_i, q_i)
-    \]
-    Hiệu quả khi làm việc với các giá trị không âm, ví dụ như histogram.
 \end{itemize}
-
+\newpage
 \subparagraph{Tìm K điểm gần nhất}  
 \hspace{5mm}Sau khi tính toán khoảng cách, thuật toán chọn \(K\) điểm dữ liệu có khoảng cách ngắn nhất tới điểm dữ liệu cần dự đoán. \(K\) là một tham số được chọn trước, ảnh hưởng đến hiệu suất của thuật toán. Nếu \(K\) quá nhỏ, mô hình có thể dễ bị nhiễu. Nếu \(K\) quá lớn, mô hình có thể mất đi độ chính xác do ảnh hưởng của các điểm không liên quan.
 
@@ -589,7 +589,7 @@ y_pred = knn_model.predict(X_test)
 
 \paragraph{Nguồn gốc}
 \begin{itemize}
-    \item \textbf{1974 - Vladimir Vapnik và Alexey Chervonenkis:} Phát triển lý thuyết VC (Vapnik–Chervonenkis), đặt nền tảng lý thuyết cho các thuật toán học máy dựa trên biên tối đa và khả năng tổng quát hóa, cơ sở cho việc xây dựng SVM \cite{vapnik1974}.
+    \item \textbf{1974 - Vladimir Vapnik và Alexey Chervonenkis:} Phát triển lý thuyết VC (hay tên đầy đủ là Vapnik–Chervonenkis) và đặt nền tảng lý thuyết cho các thuật toán học máy dựa trên biên tối đa và khả năng tổng quát hóa, cơ sở cho việc xây dựng SVM \cite{vapnik1974}.
     \item \textbf{1982, 1995 - Vladimir Vapnik:} Giới thiệu thuật toán SVM, tập trung vào mô hình phân loại tuyến tính dựa trên nguyên lý biên tối đa. SVM sử dụng siêu phẳng tối ưu để phân chia các lớp dữ liệu, giảm thiểu lỗi phân loại \cite{vapnik1995}.
     \item \textbf{1992 - Bernhard Boser, Isabelle Guyon và Vladimir Vapnik:} Đề xuất kernel trick, mở rộng khả năng của SVM để giải quyết các bài toán phân loại phi tuyến \cite{boser1992}.
 \end{itemize}
@@ -751,7 +751,7 @@ y_pred = svc_model.predict(X_test)
     % GridSearchCV sẽ thử nghiệm tất cả các tổ hợp giá trị này.
     \item \texttt{cv}: Số lượng lần chia nhỏ dữ liệu để thực hiện \textit{cross-validation}. Khi \texttt{cv=k}, dữ liệu sẽ được chia thành \(k\) tập con. Trong mỗi lần thử nghiệm, một tập con được sử dụng để đánh giá và \(k-1\) tập con còn lại được dùng để huấn luyện. Điều này đảm bảo mô hình được đánh giá toàn diện và hiệu quả.
     \item \texttt{scoring}: Tiêu chí đánh giá hiệu suất của mô hình. GridSearchCV hỗ trợ nhiều độ đo khác nhau, như \texttt{'accuracy'}, \texttt{'f1\_macro'}, \texttt{'roc\_auc'}, v.v., tùy thuộc vào bài toán cụ thể. Người dùng có thể chọn tiêu chí phù hợp để tối ưu hóa mô hình.
-    \item \texttt{verbose}: Mức độ chi tiết khi hiển thị kết quả trong quá trình tìm kiếm. Tham số này có thể nhận các giá trị từ 0 đến 3, với \texttt{verbose=0} là mức yên lặng hoàn toàn và \texttt{verbose=3} hiển thị thông tin chi tiết nhất.
+    \item \texttt{verbose}: Mức độ chi tiết khi hiển thị kết quả trong quá trình tìm kiếm. Tham số này có thể nhận các giá trị từ 0 đến 3, với \texttt{verbose=0} là chế độ không hiển thị thông tin và \texttt{verbose=3} hiển thị thông tin chi tiết nhất.
 \end{itemize}
 
 \subsubsection{GridSearchCV cho KNN}  
@@ -1125,7 +1125,7 @@ Các ảnh dưới đây không tồn tại trong bộ dữ liệu huấn luyệ
 \end{itemize}
 
 \subsection{Truy cập web}
-\hspace{5mm}Để truy cập trang web, nhấn vào \href{https://traffic-sign-classification-through-images.streamlit.app/}{\textbf{Traffic Sign Classification Web}} hoặc quét mã QR dưới đây:
+\hspace{5mm}Lưu ý rằng ứng dụng được triển khai bằng framework \textbf{Streamlit}, nên có thể cần chờ một khoảng thời gian để ứng dụng khởi động (wake up) nếu nó đang ở trạng thái ngủ (idle). Để truy cập trang web, nhấn vào \href{https://traffic-sign-classification-through-images.streamlit.app/}{\textbf{Traffic Sign Classification Web}} hoặc quét mã QR dưới đây.
 \begin{center}
     \includegraphics[width=0.3\textwidth]{link_web.png}
 \end{center}
